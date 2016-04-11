@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VLDOCUMENT Version="0.38.0.0">
+  <DEPENDENCIES>
+    <PACKAGE Name="VL.CoreLib" Version="0.35.21" />
+    <PACKAGE Name="VL.CoreLib.VVVV" Version="0.35.21" />
+    <PACKAGE Name="VL.Core" Version="0.35.21" />
+    <PACKAGE Name="VL.Devices.Spacemouse" Version="0.35.42-alpha-gcc18a29bac" />
+    <PACKAGE Name="VL.QRCode" Version="0.35.42-alpha-gcc18a29bac" />
+    <PACKAGE Name="VL.Devices.TheEyeTribe" Version="0.35.42-alpha-gcc18a29bac" />
+    <PACKAGE Name="VL.Devices.Leap" Version="0.35.42-alpha-gcc18a29bac" />
+  </DEPENDENCIES>
+  <PATCHES>
+    <PATCH Name="ControlData" Category="VLOsmos" IsDatatype="true" IsClosed="true">
+      <INFO>
+        <SUMMARY>Basic template with one in/out</SUMMARY>
+      </INFO>
+      <BODY Name="TemplatePatch">
+        <LAYERS>
+          <LAYER Name="Create" />
+          <LAYER Name="Update" />
+        </LAYERS>
+        <INLETS />
+        <OUTLETS />
+        <CONSTS />
+        <REGIONS />
+        <NODES />
+        <LINKS />
+      </BODY>
+    </PATCH>
+    <PATCH Name="World" Category="VLOsmos" IsDatatype="true" IsClosed="true">
+      <BODY Name="UtilsBody">
+        <LAYERS>
+          <LAYER Name="Create" />
+          <LAYER Name="Update" />
+        </LAYERS>
+        <INLETS />
+        <OUTLETS />
+        <CONSTS />
+        <REGIONS />
+        <NODES />
+        <LINKS />
+      </BODY>
+    </PATCH>
+  </PATCHES>
+  <INFO>
+    <AUTHORS>vvvv group</AUTHORS>
+    <LICENSEURL>https://www.gnu.org/licenses/lgpl.html</LICENSEURL>
+    <PROJECTURL>http://vvvv.org/</PROJECTURL>
+  </INFO>
+</VLDOCUMENT>

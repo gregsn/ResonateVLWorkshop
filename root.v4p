@@ -1,0 +1,11 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
+   <PATCH nodename="E:\dev\ResonateVLWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p">
+   <BOUNDS type="Window" left="6750" top="3795" width="7695" height="6720">
+   </BOUNDS>
+   <PACK Name="addonpack" Version="34.101.0">
+   </PACK>
+   <NODE systemname="ControlData (VLOsmos)" filename="vl\VVVV.VLOsmos.Core.vl" nodename="ControlData (VLOsmos)" componentmode="Hidden" id="2">
+   <BOUNDS type="Node" left="3030" top="1185" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   </PATCH>

@@ -15,20 +15,40 @@
         </LAYERS>
         <INLETS>
           <INLET Name="World" Layer="Update">
-            <POSITION x="435" y="163" />
+            <POSITION x="201" y="148" />
           </INLET>
         </INLETS>
-        <OUTLETS />
+        <OUTLETS>
+          <OUTLET Name="Positions" Layer="Update">
+            <POSITION x="74" y="367" />
+          </OUTLET>
+          <OUTLET Name="Masss" Layer="Update">
+            <POSITION x="177" y="367" />
+          </OUTLET>
+          <OUTLET Name="Names" Layer="Update">
+            <POSITION x="259" y="367" />
+          </OUTLET>
+          <OUTLET Name="IDs" Layer="Update">
+            <POSITION x="346" y="367" />
+          </OUTLET>
+          <OUTLET Name="Ages" Layer="Update">
+            <POSITION x="422" y="367" />
+          </OUTLET>
+        </OUTLETS>
         <CONSTS />
         <REGIONS>
           <REGION Name="ForEachLoop#2" Layer="Update" Kind="ForEachLoop">
-            <POSITION x="456" y="291.371826" />
+            <POSITION x="211.650818" y="256.371826" />
             <SIZE x="80" y="80" />
             <INPUTS>
-              <INPUT Name="Inputs" />
+              <INPUT Name="Bubbles" />
             </INPUTS>
             <OUTPUTS>
-              <OUPUT Name="Outputs" />
+              <OUPUT Name="Positions" />
+              <OUPUT Name="Masss" />
+              <OUPUT Name="Names" />
+              <OUPUT Name="IDs" />
+              <OUPUT Name="Ages" />
             </OUTPUTS>
             <BODY Name="ForEachLoopBody">
               <LAYERS>
@@ -37,25 +57,62 @@
                 <LAYER Name="Destroy" />
               </LAYERS>
               <INLETS>
-                <INLET Name="Input" Layer="Update">
-                  <POSITION x="459.150818" y="293" />
+                <INLET Name="Bubble" Layer="Update">
+                  <POSITION x="214.150818" y="258" />
                 </INLET>
               </INLETS>
               <OUTLETS>
-                <OUTLET Name="Output" Layer="Update">
-                  <POSITION x="459.150818" y="373" />
+                <OUTLET Name="Position" Layer="Update">
+                  <POSITION x="156.150818" y="327" />
+                </OUTLET>
+                <OUTLET Name="Mass" Layer="Update">
+                  <POSITION x="213" y="327" />
+                </OUTLET>
+                <OUTLET Name="Name" Layer="Update">
+                  <POSITION x="266" y="327" />
+                </OUTLET>
+                <OUTLET Name="ID" Layer="Update">
+                  <POSITION x="307" y="327" />
+                </OUTLET>
+                <OUTLET Name="Age" Layer="Update">
+                  <POSITION x="353" y="327" />
                 </OUTLET>
               </OUTLETS>
               <CONSTS />
               <REGIONS />
-              <NODES />
-              <LINKS />
+              <NODES>
+                <OPERATION Name="Split" Layer="Update">
+                  <POSITION x="225" y="283" />
+                  <NODEREF LastCat="VLOsmos.Bubble" LastFile="Core.vl">
+                    <OPERATIONNODE Name="Split" />
+                    <CATEGORY Name="Bubble" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Position" />
+                    <OUPUT Name="Mass" />
+                    <OUPUT Name="Name" />
+                    <OUPUT Name="ID" />
+                    <OUPUT Name="Age" />
+                  </OUTPUTS>
+                </OPERATION>
+              </NODES>
+              <LINKS>
+                <Link source="Inlets/Bubble" sink="Nodes/Split/Inputs/Input" />
+                <Link source="Nodes/Split/Outputs/Position" sink="Outlets/Position" />
+                <Link source="Nodes/Split/Outputs/Mass" sink="Outlets/Mass" />
+                <Link source="Nodes/Split/Outputs/Name" sink="Outlets/Name" />
+                <Link source="Nodes/Split/Outputs/ID" sink="Outlets/ID" />
+                <Link source="Nodes/Split/Outputs/Age" sink="Outlets/Age" />
+              </LINKS>
             </BODY>
           </REGION>
         </REGIONS>
         <NODES>
           <OPERATION Name="Split#1" Layer="Update">
-            <POSITION x="433.150818" y="218" />
+            <POSITION x="199.150818" y="203" />
             <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
               <OPERATIONNODE Name="Split" />
               <CATEGORY Name="World" IsDirectParent="true" />
@@ -71,8 +128,13 @@
           </OPERATION>
         </NODES>
         <LINKS>
-          <Link source="Nodes/Split#1/Outputs/Bubbles" sink="Regions/ForEachLoop#2/Inputs/Inputs" />
+          <Link source="Nodes/Split#1/Outputs/Bubbles" sink="Regions/ForEachLoop#2/Inputs/Bubbles" />
           <Link source="Inlets/World" sink="Nodes/Split#1/Inputs/Input" />
+          <Link source="Regions/ForEachLoop#2/Outputs/Positions" sink="Outlets/Positions" />
+          <Link source="Regions/ForEachLoop#2/Outputs/Masss" sink="Outlets/Masss" />
+          <Link source="Regions/ForEachLoop#2/Outputs/Names" sink="Outlets/Names" />
+          <Link source="Regions/ForEachLoop#2/Outputs/IDs" sink="Outlets/IDs" />
+          <Link source="Regions/ForEachLoop#2/Outputs/Ages" sink="Outlets/Ages" />
         </LINKS>
       </BODY>
     </PATCH>

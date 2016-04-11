@@ -93,13 +93,15 @@
         <LAYERS>
           <LAYER Name="Join" />
           <LAYER Name="Split" />
+          <LAYER Name="GetWorldSize" />
+          <LAYER Name="Create" />
         </LAYERS>
         <INLETS>
           <INLET Name="Bubbles" Layer="Split" PadType="Field">
             <POSITION x="266" y="377" />
           </INLET>
           <INLET Name="Bubbles#1" Layer="Join" Type="Spread&lt;Bubble&gt;">
-            <POSITION x="345" y="160" />
+            <POSITION x="293" y="147" />
           </INLET>
           <INLET Name="GameOver" Layer="Split" PadType="Field" Type="Boolean">
             <POSITION x="525" y="373" />
@@ -110,7 +112,7 @@
             <POSITION x="265" y="436" />
           </OUTLET>
           <OUTLET Name="Bubbles#1" Layer="Join" PadType="Field">
-            <POSITION x="349" y="235" />
+            <POSITION x="297" y="222" />
           </OUTLET>
           <OUTLET Name="WorldSize" Layer="Split">
             <POSITION x="381" y="436" />
@@ -118,10 +120,17 @@
           <OUTLET Name="GameOver" Layer="Split">
             <POSITION x="525" y="436" />
           </OUTLET>
+          <OUTLET Name="WorldSize#1" Layer="GetWorldSize">
+            <POSITION x="663" y="436" />
+          </OUTLET>
         </OUTLETS>
         <CONSTS>
           <CONST Name="WorldSize" Layer="Split" Type="Vector2">
-            <POSITION x="384" y="361" />
+            <POSITION x="381" y="346" />
+            <VALUE><![CDATA[2.0]]></VALUE>
+          </CONST>
+          <CONST Name="WorldSize#1" Layer="GetWorldSize" Type="Vector2">
+            <POSITION x="665" y="345" />
             <VALUE><![CDATA[2.0]]></VALUE>
           </CONST>
         </CONSTS>
@@ -132,6 +141,7 @@
           <Link source="Inlets/Bubbles#1" sink="Outlets/Bubbles#1" />
           <Link source="Constants/WorldSize" sink="Outlets/WorldSize" />
           <Link source="Inlets/GameOver" sink="Outlets/GameOver" />
+          <Link source="Constants/WorldSize#1" sink="Outlets/WorldSize#1" />
         </LINKS>
       </BODY>
     </PATCH>

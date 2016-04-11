@@ -1,17 +1,9 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
    <PATCH nodename="C:\dev\ResonateVLWorkshop\GameLogic.v4p" systemname="GameLogic" filename="C:\dev\ResonateVLWorkshop\GameLogic.v4p">
-   <BOUNDS type="Window" left="0" top="1170" width="9855" height="7635">
+   <BOUNDS type="Window" left="0" top="0" width="6795" height="7635">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
-   <NODE systemname="GameLogic (VLOsmos)" filename="vl\GameLogic.vl" nodename="GameLogic (VLOsmos)" componentmode="Hidden" id="0">
-   <BOUNDS type="Node" left="3045" top="1890" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="World" visible="1">
-   </PIN>
-   <PIN pinname="ControlData" visible="1" slicecount="1" values="||">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="1" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="3045" top="3450" width="795" height="240">
    </BOUNDS>
@@ -19,9 +11,9 @@
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="World">
    </PIN>
+   <PIN pinname="Input Node" slicecount="1" values="||">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="0" srcpinname="World" dstnodeid="1" dstpinname="Input Node">
-   </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="2" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="3060" top="960" width="795" height="240">
    </BOUNDS>
@@ -32,6 +24,12 @@
    <PIN pinname="Descriptive Name" slicecount="1" values="ControlData">
    </PIN>
    </NODE>
-   <LINK srcnodeid="2" srcpinname="Output Node" dstnodeid="0" dstpinname="ControlData">
+   <NODE systemname="GameLogic (VLOsmos)" filename="vl\GameLogic.vl" nodename="GameLogic (VLOsmos)" componentmode="Hidden" id="26">
+   <BOUNDS type="Node" left="3045" top="1890" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="26" srcpinname="World" dstnodeid="1" dstpinname="Input Node">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Output Node" dstnodeid="26" dstpinname="ControlData">
    </LINK>
    </PATCH>

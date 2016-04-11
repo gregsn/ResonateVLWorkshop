@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VLDOCUMENT Version="0.38.0.0">
+  <DEPENDENCIES>
+    <PACKAGE Name="VL.Core" Version="0.38.92-g16f7ca3554" />
+    <PACKAGE Name="VL.CoreLib" Version="0.38.92-g16f7ca3554" />
+    <PACKAGE Name="VL.CoreLib.VVVV" Version="0.38.92-g16f7ca3554" />
+    <FILE Name="Core.vl" Location="./Core.vl" />
+  </DEPENDENCIES>
+  <PATCHES>
+    <PATCH Name="Display" Category="VVVV.VLOsmos" IsDatatype="true" IsClosed="true" IsMutable="true">
+      <BODY Name="UtilsBody">
+        <LAYERS>
+          <LAYER Name="Create" />
+          <LAYER Name="Update" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="World" Layer="Update">
+            <POSITION x="435" y="163" />
+          </INLET>
+        </INLETS>
+        <OUTLETS />
+        <CONSTS />
+        <REGIONS>
+          <REGION Name="ForEachLoop#2" Layer="Update" Kind="ForEachLoop">
+            <POSITION x="456" y="291.371826" />
+            <SIZE x="80" y="80" />
+            <INPUTS>
+              <INPUT Name="Inputs" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Outputs" />
+            </OUTPUTS>
+            <BODY Name="ForEachLoopBody">
+              <LAYERS>
+                <LAYER Name="Create" />
+                <LAYER Name="Update" />
+                <LAYER Name="Destroy" />
+              </LAYERS>
+              <INLETS>
+                <INLET Name="Input" Layer="Update">
+                  <POSITION x="459.150818" y="293" />
+                </INLET>
+              </INLETS>
+              <OUTLETS>
+                <OUTLET Name="Output" Layer="Update">
+                  <POSITION x="459.150818" y="373" />
+                </OUTLET>
+              </OUTLETS>
+              <CONSTS />
+              <REGIONS />
+              <NODES />
+              <LINKS />
+            </BODY>
+          </REGION>
+        </REGIONS>
+        <NODES>
+          <OPERATION Name="Split#1" Layer="Update">
+            <POSITION x="433.150818" y="218" />
+            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
+              <OPERATIONNODE Name="Split" />
+              <CATEGORY Name="World" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Bubbles" />
+              <OUPUT Name="WorldSize" />
+              <OUPUT Name="GameOver" />
+            </OUTPUTS>
+          </OPERATION>
+        </NODES>
+        <LINKS>
+          <Link source="Nodes/Split#1/Outputs/Bubbles" sink="Regions/ForEachLoop#2/Inputs/Inputs" />
+          <Link source="Inlets/World" sink="Nodes/Split#1/Inputs/Input" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+  </PATCHES>
+</VLDOCUMENT>

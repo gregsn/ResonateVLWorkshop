@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VLDOCUMENT Version="0.38.0.0">
+  <DEPENDENCIES>
+    <PACKAGE Name="VL.Core" Version="0.38.92-g16f7ca3554" />
+    <PACKAGE Name="VL.CoreLib" Version="0.38.92-g16f7ca3554" />
+    <PACKAGE Name="VL.CoreLib.VVVV" Version="0.38.92-g16f7ca3554" />
+    <FILE Name="Control.vl" Location="./Control.vl" />
+    <FILE Name="Core.vl" Location="./Core.vl" />
+    <FILE Name="Display.vl" Location="./Display.vl" />
+    <FILE Name="GameLogic.vl" Location="./GameLogic.vl" />
+  </DEPENDENCIES>
+  <PATCHES />
+</VLDOCUMENT>

@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VLDOCUMENT Version="0.38.0.0">
+  <DEPENDENCIES>
+    <PACKAGE Name="VL.Core" Version="0.38.92-g16f7ca3554" />
+    <PACKAGE Name="VL.CoreLib" Version="0.38.92-g16f7ca3554" />
+    <PACKAGE Name="VL.CoreLib.VVVV" Version="0.38.92-g16f7ca3554" />
+    <FILE Name="Core.vl" Location="./Core.vl" />
+  </DEPENDENCIES>
+  <PATCHES>
+    <PATCH Name="GameLogic" Category="VVVV.VLOsmos" IsDatatype="true" IsClosed="true" IsMutable="true">
+      <BODY Name="UtilsBody">
+        <LAYERS>
+          <LAYER Name="Create" />
+          <LAYER Name="Update" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="ControlData" Layer="Update">
+            <POSITION x="448" y="94" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="World" Layer="Update">
+            <POSITION x="444" y="546" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS />
+        <REGIONS>
+          <REGION Name="ForEachLoop" Layer="Update" Kind="ForEachLoop">
+            <POSITION x="449" y="208.371826" />
+            <SIZE x="80" y="80" />
+            <INPUTS>
+              <INPUT Name="Inputs" />
+            </INPUTS>
+            <OUTPUTS />
+            <BODY Name="ForEachLoopBody">
+              <LAYERS>
+                <LAYER Name="Create" />
+                <LAYER Name="Update" />
+                <LAYER Name="Destroy" />
+              </LAYERS>
+              <INLETS>
+                <INLET Name="Input" Layer="Update">
+                  <POSITION x="452" y="210" />
+                </INLET>
+              </INLETS>
+              <OUTLETS />
+              <CONSTS />
+              <REGIONS />
+              <NODES>
+                <OPERATION Name="Split" Layer="Update">
+                  <POSITION x="454" y="238" />
+                  <NODEREF LastCat="VLOsmos.ActorControlData" LastFile="Core.vl">
+                    <OPERATIONNODE Name="Split" />
+                    <CATEGORY Name="ActorControlData" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="DoEmit" />
+                    <OUPUT Name="Angle" />
+                    <OUPUT Name="Name" />
+                  </OUTPUTS>
+                </OPERATION>
+              </NODES>
+              <LINKS>
+                <Link source="Inlets/Input" sink="Nodes/Split/Inputs/Input" />
+              </LINKS>
+            </BODY>
+          </REGION>
+          <REGION Name="ForEachLoop#1" Layer="Update" Kind="ForLoop">
+            <POSITION x="450.5" y="387.371826" />
+            <SIZE x="146" y="72" />
+            <INPUTS>
+              <INPUT Name="Iteration Count" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Bubbles" />
+            </OUTPUTS>
+            <BODY Name="ForEachLoopBody">
+              <LAYERS>
+                <LAYER Name="Create" />
+                <LAYER Name="Update" />
+                <LAYER Name="Destroy" />
+              </LAYERS>
+              <INLETS />
+              <OUTLETS>
+                <OUTLET Name="Bubble" Layer="Update">
+                  <POSITION x="453" y="469" />
+                </OUTLET>
+              </OUTLETS>
+              <CONSTS />
+              <REGIONS />
+              <NODES>
+                <OPERATION Name="Join#4" Layer="Update">
+                  <POSITION x="458" y="427" />
+                  <NODEREF LastCat="VLOsmos.Bubble" LastFile="Core.vl">
+                    <OPERATIONNODE Name="Join" />
+                    <CATEGORY Name="Bubble" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                    <INPUT Name="Position" />
+                    <INPUT Name="Mass" />
+                    <INPUT Name="Name" />
+                    <INPUT Name="ID" />
+                    <INPUT Name="Age" />
+                    <INPUT Name="Enabled" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Output" />
+                  </OUTPUTS>
+                </OPERATION>
+              </NODES>
+              <LINKS>
+                <Link source="Nodes/Join#4/Outputs/Output" sink="Outlets/Bubble" />
+              </LINKS>
+            </BODY>
+          </REGION>
+        </REGIONS>
+        <NODES>
+          <OPERATION Name="Split" Layer="Update">
+            <POSITION x="450" y="152" />
+            <NODEREF LastCat="VLOsmos.ControlData" LastFile="Core.vl">
+              <OPERATIONNODE Name="Split" />
+              <CATEGORY Name="ControlData" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="ActorsControlData" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Join#3" Layer="Update">
+            <POSITION x="445" y="502" />
+            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
+              <OPERATIONNODE Name="Join" />
+              <CATEGORY Name="World" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Bubbles" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+        </NODES>
+        <LINKS>
+          <Link source="Nodes/Split/Outputs/ActorsControlData" sink="Regions/ForEachLoop/Inputs/Inputs" />
+          <Link source="Regions/ForEachLoop#1/Outputs/Bubbles" sink="Nodes/Join#3/Inputs/Bubbles" />
+          <Link source="Inlets/ControlData" sink="Nodes/Split/Inputs/Input" />
+          <Link source="Nodes/Join#3/Outputs/Output" sink="Outlets/World" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+  </PATCHES>
+</VLDOCUMENT>

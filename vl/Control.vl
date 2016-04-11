@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VLDOCUMENT Version="0.38.0.0">
+  <DEPENDENCIES>
+    <PACKAGE Name="VL.Core" Version="0.38.92-g16f7ca3554" />
+    <PACKAGE Name="VL.CoreLib" Version="0.38.92-g16f7ca3554" />
+    <PACKAGE Name="VL.CoreLib.VVVV" Version="0.38.92-g16f7ca3554" />
+    <FILE Name="Core.vl" Location="./Core.vl" />
+  </DEPENDENCIES>
+  <PATCHES>
+    <PATCH Name="Control" Category="VVVV.VLOsmos" IsDatatype="true" IsClosed="true" IsMutable="true">
+      <BODY Name="UtilsBody">
+        <LAYERS>
+          <LAYER Name="Create" />
+          <LAYER Name="Update" />
+        </LAYERS>
+        <INLETS />
+        <OUTLETS>
+          <OUTLET Name="ControlData" Layer="Update">
+            <POSITION x="478" y="419" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS />
+        <REGIONS />
+        <NODES>
+          <OPERATION Name="Join#1" Layer="Update">
+            <POSITION x="417" y="243" />
+            <NODEREF LastCat="VLOsmos.ActorControlData" LastFile="Core.vl">
+              <OPERATIONNODE Name="Join" />
+              <CATEGORY Name="ActorControlData" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="DoEmit" />
+              <INPUT Name="Angle" />
+              <INPUT Name="Name" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Cons" Layer="Update">
+            <POSITION x="498" y="295" />
+            <NODEREF LastCat="Collections.SpreadGenerators" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Cons" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Join#2" Layer="Update">
+            <POSITION x="581" y="246" />
+            <NODEREF LastCat="VLOsmos.ActorControlData" LastFile="Core.vl">
+              <OPERATIONNODE Name="Join" />
+              <CATEGORY Name="ActorControlData" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="DoEmit" />
+              <INPUT Name="Angle" />
+              <INPUT Name="Name" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Join" Layer="Update">
+            <POSITION x="480" y="337" />
+            <NODEREF LastCat="VLOsmos.ControlData" LastFile="Core.vl">
+              <OPERATIONNODE Name="Join" />
+              <CATEGORY Name="ControlData" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="ActorsControlData" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Split#2" Layer="Update">
+            <POSITION x="768" y="284" />
+            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
+              <OPERATIONNODE Name="Split" />
+              <CATEGORY Name="World" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Bubbles" />
+              <OUPUT Name="WorldSize" />
+              <OUPUT Name="GameOver" />
+            </OUTPUTS>
+          </OPERATION>
+        </NODES>
+        <LINKS>
+          <Link source="Nodes/Join#1/Outputs/Output" sink="Nodes/Cons/Inputs/Input" />
+          <Link source="Nodes/Cons/Outputs/Result" sink="Nodes/Join/Inputs/ActorsControlData" />
+          <Link source="Nodes/Join#2/Outputs/Output" sink="Nodes/Cons/Inputs/Input 2" />
+          <Link source="Nodes/Join/Outputs/Output" sink="Outlets/ControlData" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+  </PATCHES>
+</VLDOCUMENT>

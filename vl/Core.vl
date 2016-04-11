@@ -135,7 +135,7 @@
         </LINKS>
       </BODY>
     </PATCH>
-    <PATCH Name="GameSketch" Category="VVVV.VLOsmos" IsDatatype="true">
+    <PATCH Name="GameSketch" Category="VVVV.VLOsmos" IsDatatype="true" IsClosed="true">
       <BODY Name="UtilsBody">
         <LAYERS>
           <LAYER Name="Control" />

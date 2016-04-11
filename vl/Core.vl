@@ -1,0 +1,565 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VLDOCUMENT Version="0.38.0.0">
+  <DEPENDENCIES>
+    <PACKAGE Name="VL.CoreLib" Version="0.35.21" />
+    <PACKAGE Name="VL.CoreLib.VVVV" Version="0.35.21" />
+    <PACKAGE Name="VL.Core" Version="0.35.21" />
+    <PACKAGE Name="VL.Devices.Spacemouse" Version="0.35.42-alpha-gcc18a29bac" />
+    <PACKAGE Name="VL.QRCode" Version="0.35.42-alpha-gcc18a29bac" />
+    <PACKAGE Name="VL.Devices.TheEyeTribe" Version="0.35.42-alpha-gcc18a29bac" />
+    <PACKAGE Name="VL.Devices.Leap" Version="0.35.42-alpha-gcc18a29bac" />
+  </DEPENDENCIES>
+  <PATCHES>
+    <PATCH Name="ActorControlData" Category="VLOsmos" IsDatatype="true">
+      <INFO>
+        <SUMMARY>Basic template with one in/out</SUMMARY>
+      </INFO>
+      <BODY Name="TemplatePatch">
+        <LAYERS>
+          <LAYER Name="SetAngle" />
+          <LAYER Name="Split" />
+          <LAYER Name="Join" />
+          <LAYER Name="SetDoEmit" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="DoEmit#1" Layer="Split" PadType="Field">
+            <POSITION x="186" y="247" />
+          </INLET>
+          <INLET Name="DoEmit" Layer="Join" Type="Boolean">
+            <POSITION x="189" y="90" />
+          </INLET>
+          <INLET Name="Angle" Layer="Join" Type="Float32">
+            <POSITION x="308" y="90" />
+          </INLET>
+          <INLET Name="Angle#1" Layer="Split" PadType="Field">
+            <POSITION x="313" y="245" />
+          </INLET>
+          <INLET Name="Angle#2" Layer="SetAngle">
+            <POSITION x="668" y="113" />
+          </INLET>
+          <INLET Name="DoEmit#2" Layer="SetDoEmit">
+            <POSITION x="678" y="272" />
+          </INLET>
+          <INLET Name="Name" Layer="Join" Type="String">
+            <POSITION x="439" y="90" />
+          </INLET>
+          <INLET Name="Name#1" Layer="Split" PadType="Field">
+            <POSITION x="441" y="244" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="DoEmit#1" Layer="Split">
+            <POSITION x="186" y="310" />
+          </OUTLET>
+          <OUTLET Name="DoEmit" Layer="Join" PadType="Field">
+            <POSITION x="190" y="132" />
+          </OUTLET>
+          <OUTLET Name="Angle" Layer="Join" PadType="Field">
+            <POSITION x="308" y="133" />
+          </OUTLET>
+          <OUTLET Name="Angle#1" Layer="Split">
+            <POSITION x="313" y="310" />
+          </OUTLET>
+          <OUTLET Name="Name" Layer="Join" PadType="Field">
+            <POSITION x="439" y="141" />
+          </OUTLET>
+          <OUTLET Name="Angle#2" Layer="SetAngle" PadType="Field">
+            <POSITION x="669" y="143" />
+          </OUTLET>
+          <OUTLET Name="DoEmit#2" Layer="SetDoEmit" PadType="Field">
+            <POSITION x="679" y="302" />
+          </OUTLET>
+          <OUTLET Name="Name#1" Layer="Split">
+            <POSITION x="444" y="310" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS />
+        <REGIONS />
+        <NODES />
+        <LINKS>
+          <Link source="Inlets/DoEmit" sink="Outlets/DoEmit" />
+          <Link source="Inlets/Angle" sink="Outlets/Angle" />
+          <Link source="Inlets/DoEmit#1" sink="Outlets/DoEmit#1" />
+          <Link source="Inlets/Angle#1" sink="Outlets/Angle#1" />
+          <Link source="Inlets/Angle#2" sink="Outlets/Angle#2" />
+          <Link source="Inlets/DoEmit#2" sink="Outlets/DoEmit#2" />
+          <Link source="Inlets/Name" sink="Outlets/Name" />
+          <Link source="Inlets/Name#1" sink="Outlets/Name#1" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="World" Category="VLOsmos" IsDatatype="true">
+      <BODY Name="UtilsBody">
+        <LAYERS>
+          <LAYER Name="Join" />
+          <LAYER Name="Split" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="Bubbles" Layer="Split" PadType="Field">
+            <POSITION x="266" y="377" />
+          </INLET>
+          <INLET Name="Bubbles#1" Layer="Join" Type="Spread&lt;Bubble&gt;">
+            <POSITION x="345" y="160" />
+          </INLET>
+          <INLET Name="GameOver" Layer="Split" PadType="Field" Type="Boolean">
+            <POSITION x="525" y="373" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="Bubbles" Layer="Split">
+            <POSITION x="265" y="436" />
+          </OUTLET>
+          <OUTLET Name="Bubbles#1" Layer="Join" PadType="Field">
+            <POSITION x="349" y="235" />
+          </OUTLET>
+          <OUTLET Name="WorldSize" Layer="Split">
+            <POSITION x="381" y="436" />
+          </OUTLET>
+          <OUTLET Name="GameOver" Layer="Split">
+            <POSITION x="525" y="436" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS>
+          <CONST Name="WorldSize" Layer="Split" Type="Vector2">
+            <POSITION x="384" y="361" />
+            <VALUE><![CDATA[2.0]]></VALUE>
+          </CONST>
+        </CONSTS>
+        <REGIONS />
+        <NODES />
+        <LINKS>
+          <Link source="Inlets/Bubbles" sink="Outlets/Bubbles" />
+          <Link source="Inlets/Bubbles#1" sink="Outlets/Bubbles#1" />
+          <Link source="Constants/WorldSize" sink="Outlets/WorldSize" />
+          <Link source="Inlets/GameOver" sink="Outlets/GameOver" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="GameSketch" Category="VVVV.VLOsmos" IsDatatype="true">
+      <BODY Name="UtilsBody">
+        <LAYERS>
+          <LAYER Name="Control" />
+          <LAYER Name="GameLogic" />
+          <LAYER Name="Create" />
+          <LAYER Name="Update" />
+          <LAYER Name="Display" />
+        </LAYERS>
+        <INLETS />
+        <OUTLETS />
+        <CONSTS>
+          <CONST Name="Constant#2" Layer="Control" Type="String">
+            <POSITION x="114" y="231" />
+            <SIZE width="564" height="10.7563477" />
+          </CONST>
+          <CONST Name="Constant" Layer="Control" Type="String">
+            <POSITION x="101" y="501" />
+            <SIZE width="564" height="10.7563477" />
+          </CONST>
+        </CONSTS>
+        <REGIONS>
+          <REGION Name="ForEachLoop" Layer="GameLogic" Kind="ForEachLoop">
+            <POSITION x="329" y="333.371826" />
+            <SIZE x="80" y="80" />
+            <INPUTS>
+              <INPUT Name="Inputs" />
+            </INPUTS>
+            <OUTPUTS />
+            <BODY Name="ForEachLoopBody">
+              <LAYERS>
+                <LAYER Name="Create" />
+                <LAYER Name="Update" />
+                <LAYER Name="Destroy" />
+              </LAYERS>
+              <INLETS>
+                <INLET Name="Input" Layer="Update">
+                  <POSITION x="332" y="335" />
+                </INLET>
+              </INLETS>
+              <OUTLETS />
+              <CONSTS />
+              <REGIONS />
+              <NODES>
+                <OPERATION Name="Split" Layer="Update">
+                  <POSITION x="334" y="363" />
+                  <NODEREF LastCat="VLOsmos.ActorControlData" LastFile="Core.vl">
+                    <OPERATIONNODE Name="Split" />
+                    <CATEGORY Name="ActorControlData" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="DoEmit" />
+                    <OUPUT Name="Angle" />
+                    <OUPUT Name="Name" />
+                  </OUTPUTS>
+                </OPERATION>
+              </NODES>
+              <LINKS>
+                <Link source="Inlets/Input" sink="Nodes/Split/Inputs/Input" />
+              </LINKS>
+            </BODY>
+          </REGION>
+          <REGION Name="ForEachLoop#1" Layer="GameLogic" Kind="ForLoop">
+            <POSITION x="597" y="357" />
+            <SIZE x="146" y="72" />
+            <INPUTS>
+              <INPUT Name="Iteration Count" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Bubbles" />
+            </OUTPUTS>
+            <BODY Name="ForEachLoopBody">
+              <LAYERS>
+                <LAYER Name="Create" />
+                <LAYER Name="Update" />
+                <LAYER Name="Destroy" />
+              </LAYERS>
+              <INLETS />
+              <OUTLETS>
+                <OUTLET Name="Bubble" Layer="Update">
+                  <POSITION x="606" y="428" />
+                </OUTLET>
+              </OUTLETS>
+              <CONSTS />
+              <REGIONS />
+              <NODES>
+                <OPERATION Name="Join#4" Layer="Update">
+                  <POSITION x="611" y="386" />
+                  <NODEREF LastCat="VLOsmos.Bubble" LastFile="Core.vl">
+                    <OPERATIONNODE Name="Join" />
+                    <CATEGORY Name="Bubble" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                    <INPUT Name="Position" />
+                    <INPUT Name="Mass" />
+                    <INPUT Name="Name" />
+                    <INPUT Name="ID" />
+                    <INPUT Name="Age" />
+                    <INPUT Name="Enabled" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Output" />
+                  </OUTPUTS>
+                </OPERATION>
+              </NODES>
+              <LINKS>
+                <Link source="Nodes/Join#4/Outputs/Output" sink="Outlets/Bubble" />
+              </LINKS>
+            </BODY>
+          </REGION>
+          <REGION Name="ForEachLoop#2" Layer="Display" Kind="ForEachLoop">
+            <POSITION x="431.849182" y="575.3718" />
+            <SIZE x="80" y="80" />
+            <INPUTS>
+              <INPUT Name="Inputs" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Outputs" />
+            </OUTPUTS>
+            <BODY Name="ForEachLoopBody">
+              <LAYERS>
+                <LAYER Name="Create" />
+                <LAYER Name="Update" />
+                <LAYER Name="Destroy" />
+              </LAYERS>
+              <INLETS>
+                <INLET Name="Input" Layer="Update">
+                  <POSITION x="435" y="577" />
+                </INLET>
+              </INLETS>
+              <OUTLETS>
+                <OUTLET Name="Output" Layer="Update">
+                  <POSITION x="435" y="657" />
+                </OUTLET>
+              </OUTLETS>
+              <CONSTS />
+              <REGIONS />
+              <NODES />
+              <LINKS />
+            </BODY>
+          </REGION>
+        </REGIONS>
+        <NODES>
+          <OPERATION Name="Join" Layer="Control">
+            <POSITION x="311" y="186" />
+            <NODEREF LastCat="VLOsmos.ControlData" LastFile="Core.vl">
+              <OPERATIONNODE Name="Join" />
+              <CATEGORY Name="ControlData" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="ActorsControlData" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Split" Layer="GameLogic">
+            <POSITION x="311" y="277" />
+            <NODEREF LastCat="VLOsmos.ControlData" LastFile="Core.vl">
+              <OPERATIONNODE Name="Split" />
+              <CATEGORY Name="ControlData" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="ActorsControlData" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Join#1" Layer="Control">
+            <POSITION x="248" y="92" />
+            <NODEREF LastCat="VLOsmos.ActorControlData" LastFile="Core.vl">
+              <OPERATIONNODE Name="Join" />
+              <CATEGORY Name="ActorControlData" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="DoEmit" />
+              <INPUT Name="Angle" />
+              <INPUT Name="Name" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Cons" Layer="Control">
+            <POSITION x="329" y="144" />
+            <NODEREF LastCat="Collections.SpreadGenerators" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Cons" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Join#2" Layer="Control">
+            <POSITION x="412" y="95" />
+            <NODEREF LastCat="VLOsmos.ActorControlData" LastFile="Core.vl">
+              <OPERATIONNODE Name="Join" />
+              <CATEGORY Name="ActorControlData" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="DoEmit" />
+              <INPUT Name="Angle" />
+              <INPUT Name="Name" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Join#3" Layer="GameLogic">
+            <POSITION x="551" y="444" />
+            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
+              <OPERATIONNODE Name="Join" />
+              <CATEGORY Name="World" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Bubbles" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Split#1" Layer="Display">
+            <POSITION x="447" y="539" />
+            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
+              <OPERATIONNODE Name="Split" />
+              <CATEGORY Name="World" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Bubbles" />
+              <OUPUT Name="WorldSize" />
+              <OUPUT Name="GameOver" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Split#2" Layer="Control">
+            <POSITION x="599" y="133" />
+            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
+              <OPERATIONNODE Name="Split" />
+              <CATEGORY Name="World" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Bubbles" />
+              <OUPUT Name="WorldSize" />
+              <OUPUT Name="GameOver" />
+            </OUTPUTS>
+          </OPERATION>
+        </NODES>
+        <LINKS>
+          <Link source="Nodes/Join/Outputs/Output" sink="Nodes/Split/Inputs/Input" />
+          <Link source="Nodes/Join#1/Outputs/Output" sink="Nodes/Cons/Inputs/Input" />
+          <Link source="Nodes/Join#2/Outputs/Output" sink="Nodes/Cons/Inputs/Input 2" />
+          <Link source="Nodes/Cons/Outputs/Result" sink="Nodes/Join/Inputs/ActorsControlData" />
+          <Link source="Nodes/Split/Outputs/ActorsControlData" sink="Regions/ForEachLoop/Inputs/Inputs" />
+          <Link source="Regions/ForEachLoop#1/Outputs/Bubbles" sink="Nodes/Join#3/Inputs/Bubbles" />
+          <Link source="Nodes/Join#3/Outputs/Output" sink="Nodes/Split#1/Inputs/Input" />
+          <Link source="Nodes/Split#1/Outputs/Bubbles" sink="Regions/ForEachLoop#2/Inputs/Inputs" />
+          <Link source="Nodes/Join#3/Outputs/Output" sink="Nodes/Split#2/Inputs/Input">
+            <SEGMENTS>
+              <Point x="123.5" y="13.2922363" />
+              <Point x="283.5" y="-29.7077637" />
+              <Point x="324.5" y="-119.707764" />
+              <Point x="333.5" y="-284.707764" />
+              <Point x="286.5" y="-341.707764" />
+              <Point x="209.5" y="-369.707764" />
+              <Point x="113.5" y="-377.707764" />
+              <Point x="67.5" y="-353.707764" />
+            </SEGMENTS>
+          </Link>
+        </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="ControlData" Category="VLOsmos" IsDatatype="true">
+      <BODY Name="Utils2Body">
+        <LAYERS>
+          <LAYER Name="Split" />
+          <LAYER Name="Join" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="ActorsControlData" Layer="Join" Type="Spread&lt;ActorControlData&gt;">
+            <POSITION x="329" y="126" />
+          </INLET>
+          <INLET Name="ActorsControlData#1" Layer="Split" PadType="Field">
+            <POSITION x="335" y="236" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="ActorsControlData" Layer="Join" PadType="Field">
+            <POSITION x="328" y="168" />
+          </OUTLET>
+          <OUTLET Name="ActorsControlData#1" Layer="Split">
+            <POSITION x="335" y="274" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS />
+        <REGIONS />
+        <NODES />
+        <LINKS>
+          <Link source="Inlets/ActorsControlData" sink="Outlets/ActorsControlData" />
+          <Link source="Inlets/ActorsControlData#1" sink="Outlets/ActorsControlData#1" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="Bubble" Category="VLOsmos" IsDatatype="true">
+      <BODY Name="UtilsBody">
+        <LAYERS>
+          <LAYER Name="Join" />
+          <LAYER Name="Split" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="Position#1" Layer="Join" Type="Vector2">
+            <POSITION x="200" y="66" />
+          </INLET>
+          <INLET Name="Position" Layer="Split" PadType="Field">
+            <POSITION x="206" y="259" />
+          </INLET>
+          <INLET Name="Mass" Layer="Split" PadType="Field">
+            <POSITION x="326" y="259" />
+          </INLET>
+          <INLET Name="Mass#1" Layer="Join" Type="Float32">
+            <POSITION x="331" y="66" />
+          </INLET>
+          <INLET Name="Name#1" Layer="Split" PadType="Field">
+            <POSITION x="434" y="259" />
+          </INLET>
+          <INLET Name="Name" Layer="Join" Type="String">
+            <POSITION x="437" y="66" />
+          </INLET>
+          <INLET Name="ID#1" Layer="Split" PadType="Field">
+            <POSITION x="521" y="256" />
+          </INLET>
+          <INLET Name="ID" Layer="Join" Type="Integer32">
+            <POSITION x="526" y="66" />
+          </INLET>
+          <INLET Name="Age" Layer="Join" Type="Float64">
+            <POSITION x="626" y="66" />
+          </INLET>
+          <INLET Name="Age#1" Layer="Split" PadType="Field">
+            <POSITION x="632" y="255" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="Position#1" Layer="Join" PadType="Field">
+            <POSITION x="205" y="110" />
+          </OUTLET>
+          <OUTLET Name="Position" Layer="Split">
+            <POSITION x="211" y="322" />
+          </OUTLET>
+          <OUTLET Name="Mass" Layer="Split">
+            <POSITION x="329" y="322" />
+          </OUTLET>
+          <OUTLET Name="Mass#1" Layer="Join" PadType="Field">
+            <POSITION x="330" y="108" />
+          </OUTLET>
+          <OUTLET Name="Name#1" Layer="Split">
+            <POSITION x="437" y="322" />
+          </OUTLET>
+          <OUTLET Name="Name" Layer="Join" PadType="Field">
+            <POSITION x="439" y="104" />
+          </OUTLET>
+          <OUTLET Name="ID#1" Layer="Split">
+            <POSITION x="520" y="322" />
+          </OUTLET>
+          <OUTLET Name="ID" Layer="Join" PadType="Field">
+            <POSITION x="527" y="106" />
+          </OUTLET>
+          <OUTLET Name="Age" Layer="Join" PadType="Field">
+            <POSITION x="629" y="115" />
+          </OUTLET>
+          <OUTLET Name="Age#1" Layer="Split">
+            <POSITION x="630" y="322" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS />
+        <REGIONS />
+        <NODES />
+        <LINKS>
+          <Link source="Inlets/Position" sink="Outlets/Position" />
+          <Link source="Inlets/Position#1" sink="Outlets/Position#1" />
+          <Link source="Inlets/Mass#1" sink="Outlets/Mass#1" />
+          <Link source="Inlets/Name" sink="Outlets/Name" />
+          <Link source="Inlets/Mass" sink="Outlets/Mass" />
+          <Link source="Inlets/ID" sink="Outlets/ID" />
+          <Link source="Inlets/Name#1" sink="Outlets/Name#1" />
+          <Link source="Inlets/ID#1" sink="Outlets/ID#1" />
+          <Link source="Inlets/Age" sink="Outlets/Age" />
+          <Link source="Inlets/Age#1" sink="Outlets/Age#1" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="Utils" Category="VVVV.VLOsmos">
+      <BODY Name="UtilsBody">
+        <LAYERS />
+        <INLETS />
+        <OUTLETS />
+        <CONSTS />
+        <REGIONS />
+        <NODES />
+        <LINKS />
+      </BODY>
+    </PATCH>
+  </PATCHES>
+  <INFO>
+    <AUTHORS>vvvv group</AUTHORS>
+    <LICENSEURL>https://www.gnu.org/licenses/lgpl.html</LICENSEURL>
+    <PROJECTURL>http://vvvv.org/</PROJECTURL>
+  </INFO>
+</VLDOCUMENT>

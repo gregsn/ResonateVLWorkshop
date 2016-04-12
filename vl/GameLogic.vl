@@ -14,40 +14,80 @@
           <LAYER Name="Update" />
         </LAYERS>
         <INLETS>
-          <INLET Name="Bubbles" Layer="Update" PadType="Field">
-            <POSITION x="623" y="90" />
-          </INLET>
           <INLET Name="ControlData" Layer="Update">
-            <POSITION x="913" y="129" />
+            <POSITION x="176.946869" y="-251.081909" />
+          </INLET>
+          <INLET Name="Bubbles" Layer="Update" PadType="Field">
+            <POSITION x="551.645935" y="-271.483337" />
+          </INLET>
+          <INLET Name="WorldSize" Layer="Update" PadType="Field">
+            <POSITION x="651.638367" y="-272.070953" />
           </INLET>
         </INLETS>
         <OUTLETS>
+          <OUTLET Name="WorldSize" Layer="Create" PadType="Field">
+            <POSITION x="-581.339844" y="87.6854248" />
+          </OUTLET>
           <OUTLET Name="Bubbles" Layer="Create" PadType="Field">
-            <POSITION x="110" y="388" />
+            <POSITION x="-437.971436" y="521.4981" />
           </OUTLET>
           <OUTLET Name="Bubbles#1" Layer="Update" PadType="Field">
-            <POSITION x="538" y="390" />
+            <POSITION x="562.0024" y="393.225525" />
           </OUTLET>
           <OUTLET Name="World" Layer="Update">
-            <POSITION x="704" y="487" />
+            <POSITION x="700.306946" y="428.834717" />
           </OUTLET>
         </OUTLETS>
         <CONSTS>
           <CONST Name="Iteration Count" Layer="Create">
-            <POSITION x="50" y="67" />
+            <POSITION x="-476.741852" y="-63.2979736" />
+            <SIZE width="40" height="15.50846" />
             <VALUE><![CDATA[18]]></VALUE>
           </CONST>
           <CONST Name="Width" Layer="Create">
-            <POSITION x="368" y="112" />
+            <POSITION x="-177.1167" y="-23.0229187" />
             <VALUE><![CDATA[{"type":"Vector2 [2D]","value":{"X":0.210000023,"Y":0.18}}]]></VALUE>
+          </CONST>
+          <CONST Name="Position" Layer="Create">
+            <POSITION x="-385.503357" y="257.195953" />
+            <VALUE><![CDATA[{"type":"Vector2 [2D]","value":{"X":0.0,"Y":0.0}}]]></VALUE>
+          </CONST>
+          <CONST Name="Position#1" Layer="Create">
+            <POSITION x="-261.9292" y="257.195953" />
+            <VALUE><![CDATA[{"type":"Vector2 [2D]","value":{"X":0.109999985,"Y":0.6999998}}]]></VALUE>
+          </CONST>
+          <CONST Name="Name" Layer="Create">
+            <POSITION x="-385.503357" y="237.186142" />
+            <SIZE width="19.0874634" height="12" />
+            <VALUE><![CDATA["A"]]></VALUE>
+          </CONST>
+          <CONST Name="Name#1" Layer="Create">
+            <POSITION x="-261.9292" y="237.186142" />
+            <VALUE><![CDATA["B"]]></VALUE>
+          </CONST>
+          <CONST Name="Velocity" Layer="Create">
+            <POSITION x="-385.503357" y="321.526184" />
+            <VALUE><![CDATA[{"type":"Vector2 [2D]","value":{"X":0.01,"Y":0.119999982}}]]></VALUE>
+          </CONST>
+          <CONST Name="Velocity#1" Layer="Create">
+            <POSITION x="-261.9292" y="321.526184" />
+            <VALUE><![CDATA[{"type":"Vector2 [2D]","value":{"X":-0.06999999,"Y":-0.01}}]]></VALUE>
+          </CONST>
+          <CONST Name="Mass" Layer="Create">
+            <POSITION x="-385.503357" y="295.063" />
+            <VALUE><![CDATA[2.0]]></VALUE>
+          </CONST>
+          <CONST Name="Mass#1" Layer="Create">
+            <POSITION x="-261.9292" y="295.063" />
+            <VALUE><![CDATA[5.0]]></VALUE>
           </CONST>
         </CONSTS>
         <REGIONS>
           <REGION Name="ForEachLoop" Layer="Update" Kind="ForEachLoop">
-            <POSITION x="914" y="209.371826" />
+            <POSITION x="163.090591" y="-177.830368" />
             <SIZE x="80" y="80" />
             <INPUTS>
-              <INPUT Name="Inputs" />
+              <INPUT Name="ActorControlDatas" />
             </INPUTS>
             <OUTPUTS />
             <BODY Name="ForEachLoopBody">
@@ -57,16 +97,133 @@
                 <LAYER Name="Destroy" />
               </LAYERS>
               <INLETS>
-                <INLET Name="Input" Layer="Update">
-                  <POSITION x="917" y="211" />
+                <INLET Name="ActorControlData" Layer="Update">
+                  <POSITION x="177.845016" y="-177.616165" />
                 </INLET>
               </INLETS>
               <OUTLETS />
               <CONSTS />
-              <REGIONS />
+              <REGIONS>
+                <REGION Name="Where" Layer="Update" Kind="HigherOrderFunction">
+                  <POSITION x="311.7503" y="-154.7848" />
+                  <SIZE x="100" y="100" />
+                  <NODEREF LastCat="Collections.Spread" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+                    <OPERATIONNODE Name="Where" />
+                    <CATEGORY Name="Spread" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                    <INPUT Name="Enabled" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Output" />
+                  </OUTPUTS>
+                  <BODY Name="WhereBody">
+                    <LAYERS>
+                      <LAYER Name="Predicate" />
+                    </LAYERS>
+                    <INLETS>
+                      <INLET Name="Source" Layer="Predicate">
+                        <POSITION x="353.008423" y="-154.406631" />
+                      </INLET>
+                      <INLET Name="Index" Layer="Predicate">
+                        <POSITION x="414.4482" y="-154.406631" />
+                      </INLET>
+                    </INLETS>
+                    <OUTLETS>
+                      <OUTLET Name="Result" Layer="Predicate">
+                        <POSITION x="337.345154" y="-42.38958" />
+                      </OUTLET>
+                    </OUTLETS>
+                    <CONSTS />
+                    <REGIONS />
+                    <NODES>
+                      <OPERATION Name="Split" Layer="Predicate">
+                        <POSITION x="356.590057" y="-128.413849" />
+                        <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
+                          <CATEGORY Name="LogicBubble" />
+                          <OPERATIONNODE Name="Split" />
+                        </NODEREF>
+                        <INPUTS>
+                          <INPUT Name="Input" />
+                        </INPUTS>
+                        <OUTPUTS>
+                          <OUPUT Name="Position" />
+                          <OUPUT Name="Velocity" />
+                          <OUPUT Name="Mass" />
+                          <OUPUT Name="Name" />
+                          <OUPUT Name="ID" />
+                          <OUPUT Name="Age" />
+                        </OUTPUTS>
+                      </OPERATION>
+                      <OPERATION Name="=" Layer="Predicate">
+                        <POSITION x="386.487061" y="-78.12191" />
+                        <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+                          <OPERATIONNODE Name="=" />
+                          <CATEGORY Name="Adaptive" IsDirectParent="true" />
+                        </NODEREF>
+                        <INPUTS>
+                          <INPUT Name="Input" />
+                          <INPUT Name="Input 2" />
+                        </INPUTS>
+                        <OUTPUTS>
+                          <OUPUT Name="Result" />
+                        </OUTPUTS>
+                      </OPERATION>
+                    </NODES>
+                    <LINKS>
+                      <Link source="Inlets/Source" sink="Nodes/Split/Inputs/Input" />
+                      <Link source="Nodes/Split/Outputs/Name" sink="Nodes/=/Inputs/Input 2" />
+                      <Link source="Nodes/=/Outputs/Result" sink="Outlets/Result" />
+                    </LINKS>
+                  </BODY>
+                </REGION>
+                <REGION Name="ForEachLoop" Layer="Update" Kind="ForEachLoop">
+                  <POSITION x="318.772278" y="51.2372131" />
+                  <SIZE x="80" y="80" />
+                  <INPUTS>
+                    <INPUT Name="Inputs" />
+                  </INPUTS>
+                  <OUTPUTS />
+                  <BODY Name="ForEachLoopBody">
+                    <LAYERS>
+                      <LAYER Name="Create" />
+                      <LAYER Name="Update" />
+                      <LAYER Name="Destroy" />
+                    </LAYERS>
+                    <INLETS>
+                      <INLET Name="Input" Layer="Update">
+                        <POSITION x="332.985962" y="8.706215" />
+                      </INLET>
+                    </INLETS>
+                    <OUTLETS />
+                    <CONSTS />
+                    <REGIONS />
+                    <NODES>
+                      <OPERATION Name="EmitAndAccelerate" Layer="Update">
+                        <POSITION x="312.4494" y="68.38577" />
+                        <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
+                          <OPERATIONNODE Name="EmitAndAccelerate" />
+                        </NODEREF>
+                        <INPUTS>
+                          <INPUT Name="Input" />
+                          <INPUT Name="ActorControlData" />
+                          <INPUT Name="Enabled" />
+                        </INPUTS>
+                        <OUTPUTS>
+                          <OUPUT Name="Output" />
+                        </OUTPUTS>
+                      </OPERATION>
+                    </NODES>
+                    <LINKS>
+                      <Link source="Inlets/Input" sink="Nodes/EmitAndAccelerate/Inputs/Input" />
+                    </LINKS>
+                  </BODY>
+                </REGION>
+              </REGIONS>
               <NODES>
                 <OPERATION Name="Split" Layer="Update">
-                  <POSITION x="919" y="239" />
+                  <POSITION x="179.428268" y="-151.487961" />
                   <NODEREF LastCat="VLOsmos.ActorControlData" LastFile="Core.vl">
                     <OPERATIONNODE Name="Split" />
                     <CATEGORY Name="ActorControlData" IsDirectParent="true" />
@@ -82,12 +239,15 @@
                 </OPERATION>
               </NODES>
               <LINKS>
-                <Link source="Inlets/Input" sink="Nodes/Split/Inputs/Input" />
+                <Link source="Inlets/ActorControlData" sink="Nodes/Split/Inputs/Input" />
+                <Link source="Nodes/Split/Outputs/Name" sink="Regions/Where/WhereBody/Nodes/=/Inputs/Input" />
+                <Link source="Regions/Where/Outputs/Output" sink="Regions/ForEachLoop/Inputs/Inputs" />
+                <Link source="Inlets/ActorControlData" sink="Regions/ForEachLoop/ForEachLoopBody/Nodes/EmitAndAccelerate/Inputs/ActorControlData" />
               </LINKS>
             </BODY>
           </REGION>
           <REGION Name="ForEachLoop#1" Layer="Update" Kind="ForEachLoop">
-            <POSITION x="578.5" y="179" />
+            <POSITION x="558.5023" y="3.87585449" />
             <SIZE x="146" y="72" />
             <INPUTS>
               <INPUT Name="Old LogicBubbles" />
@@ -104,22 +264,22 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Old LogicBubble" Layer="Update">
-                  <POSITION x="576" y="185" />
+                  <POSITION x="568.0023" y="5.50402832" />
                 </INLET>
               </INLETS>
               <OUTLETS>
                 <OUTLET Name="New LogicBubble" Layer="Update">
-                  <POSITION x="549" y="355" />
+                  <POSITION x="561.0023" y="180.504028" />
                 </OUTLET>
                 <OUTLET Name="Bubble" Layer="Update">
-                  <POSITION x="705" y="355" />
+                  <POSITION x="717.0023" y="180.504028" />
                 </OUTLET>
               </OUTLETS>
               <CONSTS />
               <REGIONS />
               <NODES>
                 <OPERATION Name="Join#4" Layer="Update">
-                  <POSITION x="720" y="314" />
+                  <POSITION x="732.0023" y="139.504028" />
                   <NODEREF LastCat="VLOsmos.Bubble" LastFile="Core.vl">
                     <OPERATIONNODE Name="Join" />
                     <CATEGORY Name="Bubble" IsDirectParent="true" />
@@ -138,7 +298,7 @@
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Update" Layer="Update">
-                  <POSITION x="574" y="220" />
+                  <POSITION x="638.463562" y="50.5003357" />
                   <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
                     <CATEGORY Name="LogicBubble" IsDirectParent="true" />
                     <OPERATIONNODE Name="Update" />
@@ -154,7 +314,7 @@
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Split" Layer="Update">
-                  <POSITION x="728" y="265" />
+                  <POSITION x="740.0023" y="90.50403" />
                   <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
                     <OPERATIONNODE Name="Split" />
                     <CATEGORY Name="LogicBubble" IsDirectParent="true" />
@@ -190,7 +350,7 @@
             </BODY>
           </REGION>
           <REGION Name="ForLoop" Layer="Create" Kind="ForLoop">
-            <POSITION x="71.46825" y="215.243652" />
+            <POSITION x="-472.617462" y="73.92078" />
             <SIZE x="80" y="80" />
             <INPUTS>
               <INPUT Name="Iteration Count" />
@@ -206,24 +366,25 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Index" Layer="Update" PadType="Iteration">
-                  <POSITION x="83" y="230" />
+                  <POSITION x="-460.541718" y="88.677124" />
                 </INLET>
               </INLETS>
               <OUTLETS>
                 <OUTLET Name="Bubble" Layer="Update">
-                  <POSITION x="112" y="360" />
+                  <POSITION x="-439.306061" y="216.365784" />
                 </OUTLET>
               </OUTLETS>
               <CONSTS>
                 <CONST Name="Mass" Layer="Update">
-                  <POSITION x="167" y="233" />
+                  <POSITION x="-371.238739" y="88.49533" />
+                  <SIZE width="40" height="15.50846" />
                   <VALUE><![CDATA[1.0]]></VALUE>
                 </CONST>
               </CONSTS>
               <REGIONS />
               <NODES>
                 <OPERATION Name="Create" Layer="Update">
-                  <POSITION x="113" y="318" />
+                  <POSITION x="-434.2538" y="176.677124" />
                   <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
                     <CATEGORY Name="LogicBubble" IsDirectParent="true" />
                     <OPERATIONNODE Name="Create" />
@@ -240,7 +401,7 @@
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Random" Layer="Update">
-                  <POSITION x="109" y="234" />
+                  <POSITION x="-434.541718" y="92.677124" />
                   <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
                     <OPERATIONNODE Name="Random" />
                     <CATEGORY Name="Adaptive" IsDirectParent="true" />
@@ -254,7 +415,7 @@
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Random#1" Layer="Update">
-                  <POSITION x="179" y="272" />
+                  <POSITION x="-349.1631" y="141.813385" />
                   <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
                     <OPERATIONNODE Name="Random" />
                     <CATEGORY Name="Adaptive" IsDirectParent="true" />
@@ -279,7 +440,7 @@
         </REGIONS>
         <NODES>
           <OPERATION Name="Split" Layer="Update">
-            <POSITION x="915" y="153" />
+            <POSITION x="178.946869" y="-227.08194" />
             <NODEREF LastCat="VLOsmos.ControlData" LastFile="Core.vl">
               <OPERATIONNODE Name="Split" />
               <CATEGORY Name="ControlData" IsDirectParent="true" />
@@ -292,7 +453,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Join#3" Layer="Update">
-            <POSITION x="703" y="440" />
+            <POSITION x="702.0767" y="385.5278" />
             <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
               <OPERATIONNODE Name="Join" />
               <CATEGORY Name="World" IsDirectParent="true" />
@@ -307,7 +468,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="GetWorldSize" Layer="Create">
-            <POSITION x="203" y="116" />
+            <POSITION x="-328.6683" y="-43.37564" />
             <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
               <OPERATIONNODE Name="GetWorldSize" />
             </NODEREF>
@@ -319,7 +480,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="FromCenterWidth" Layer="Create">
-            <POSITION x="120" y="157" />
+            <POSITION x="-430.568146" y="-7.625595" />
             <NODEREF LastCat="Math.Ranges.Range" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
               <CATEGORY Name="Range" />
               <OPERATIONNODE Name="FromCenterWidth" />
@@ -333,7 +494,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Split#2" Layer="Create">
-            <POSITION x="112" y="183" />
+            <POSITION x="-431.541718" y="41.677124" />
             <NODEREF LastCat="Math.Ranges.Range" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
               <CATEGORY Name="Ranges" />
               <OPERATIONNODE Name="Split" />
@@ -347,7 +508,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Outbox" Layer="Create">
-            <POSITION x="292" y="290" />
+            <POSITION x="-108.091705" y="148.677124" />
             <NODEREF LastCat="IO" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <ANYNODE Name="Outbox" />
               <CATEGORY Name="IO" />
@@ -361,7 +522,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Outbox#1" Layer="Create">
-            <POSITION x="352" y="291" />
+            <POSITION x="-51.2735" y="148.086227" />
             <NODEREF LastCat="IO" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <ANYNODE Name="Outbox" />
               <CATEGORY Name="IO" />
@@ -375,7 +536,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="FromCenterWidth#1" Layer="Create">
-            <POSITION x="263" y="168" />
+            <POSITION x="-278.966736" y="26.15213" />
             <NODEREF LastCat="Math.Ranges.Range" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="FromCenterWidth" />
             </NODEREF>
@@ -388,7 +549,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Split#1" Layer="Create">
-            <POSITION x="265" y="198" />
+            <POSITION x="-278.541718" y="56.677124" />
             <NODEREF LastCat="Math.Ranges.Range" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
               <CATEGORY Name="Range" />
               <OPERATIONNODE Name="Split" />
@@ -401,14 +562,76 @@
               <OUPUT Name="To" />
             </OUTPUTS>
           </OPERATION>
+          <OPERATION Name="Concat" Layer="Create">
+            <POSITION x="-434.6873" y="463.7644" />
+            <NODEREF LastCat="Collections.Spread" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Concat" />
+              <CATEGORY Name="Spread" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+              <INPUT Name="Input 3" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Cons" Layer="Create">
+            <POSITION x="-381.649567" y="424.495575" />
+            <NODEREF LastCat="Collections.SpreadGenerators" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Cons" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Create#1" Layer="Create">
+            <POSITION x="-380.893463" y="374.855774" />
+            <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
+              <CATEGORY Name="LogicBubble" IsDirectParent="true" />
+              <OPERATIONNODE Name="Create" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Position" />
+              <INPUT Name="Velocity" />
+              <INPUT Name="Mass" />
+              <INPUT Name="Name" />
+              <INPUT Name="ID" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Create" Layer="Create">
+            <POSITION x="-261.9292" y="374.855774" />
+            <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
+              <CATEGORY Name="LogicBubble" IsDirectParent="true" />
+              <OPERATIONNODE Name="Create" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Position" />
+              <INPUT Name="Velocity" />
+              <INPUT Name="Mass" />
+              <INPUT Name="Name" />
+              <INPUT Name="ID" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
         </NODES>
         <LINKS>
-          <Link source="Nodes/Split/Outputs/ActorsControlData" sink="Regions/ForEachLoop/Inputs/Inputs" />
+          <Link source="Nodes/Split/Outputs/ActorsControlData" sink="Regions/ForEachLoop/Inputs/ActorControlDatas" />
           <Link source="Regions/ForEachLoop#1/Outputs/Bubbles" sink="Nodes/Join#3/Inputs/Bubbles" />
           <Link source="Inlets/ControlData" sink="Nodes/Split/Inputs/Input" />
           <Link source="Nodes/Join#3/Outputs/Output" sink="Outlets/World" />
           <Link source="Constants/Iteration Count" sink="Regions/ForLoop/Inputs/Iteration Count" />
-          <Link source="Regions/ForLoop/Outputs/Bubbles" sink="Outlets/Bubbles" />
           <Link source="Nodes/GetWorldSize/Outputs/WorldSize" sink="Nodes/FromCenterWidth/Inputs/Width" />
           <Link source="Nodes/FromCenterWidth/Outputs/Output" sink="Nodes/Split#2/Inputs/Input" />
           <Link source="Nodes/Split#2/Outputs/From" sink="Regions/ForLoop/ForLoopBody/Nodes/Random/Inputs/From" />
@@ -422,7 +645,22 @@
           <Link source="Constants/Width" sink="Nodes/FromCenterWidth#1/Inputs/Width" />
           <Link source="Regions/ForEachLoop#1/Outputs/New LogicBubbles" sink="Outlets/Bubbles#1" />
           <Link source="Inlets/Bubbles" sink="Regions/ForEachLoop#1/ForEachLoopBody/Nodes/Update/Inputs/Other Bubbles" />
-          <Link source="Nodes/FromCenterWidth/Outputs/Output" sink="Regions/ForEachLoop#1/ForEachLoopBody/Nodes/Update/Inputs/WorldRange" />
+          <Link source="Regions/ForLoop/Outputs/Bubbles" sink="Nodes/Concat/Inputs/Input" />
+          <Link source="Nodes/Concat/Outputs/Output" sink="Outlets/Bubbles" />
+          <Link source="Nodes/Create#1/Outputs/Output" sink="Nodes/Cons/Inputs/Input" />
+          <Link source="Nodes/Create/Outputs/Output" sink="Nodes/Cons/Inputs/Input 2" />
+          <Link source="Nodes/Cons/Outputs/Result" sink="Nodes/Concat/Inputs/Input 2" />
+          <Link source="Constants/Position" sink="Nodes/Create#1/Inputs/Position" />
+          <Link source="Constants/Position#1" sink="Nodes/Create/Inputs/Position" />
+          <Link source="Constants/Name" sink="Nodes/Create#1/Inputs/Name" />
+          <Link source="Constants/Name#1" sink="Nodes/Create/Inputs/Name" />
+          <Link source="Constants/Velocity" sink="Nodes/Create#1/Inputs/Velocity" />
+          <Link source="Constants/Velocity#1" sink="Nodes/Create/Inputs/Velocity" />
+          <Link source="Inlets/Bubbles" sink="Regions/ForEachLoop/ForEachLoopBody/Regions/Where/Inputs/Input" />
+          <Link source="Nodes/FromCenterWidth/Outputs/Output" sink="Outlets/WorldSize" />
+          <Link source="Inlets/WorldSize" sink="Regions/ForEachLoop#1/ForEachLoopBody/Nodes/Update/Inputs/WorldRange" />
+          <Link source="Constants/Mass" sink="Nodes/Create#1/Inputs/Mass" />
+          <Link source="Constants/Mass#1" sink="Nodes/Create/Inputs/Mass" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -432,19 +670,26 @@
           <LAYER Name="Create" />
           <LAYER Name="Update" />
           <LAYER Name="Split" />
+          <LAYER Name="EmitAndAccelerate" />
         </LAYERS>
         <INLETS>
           <INLET Name="Position" Layer="Update" PadType="Field">
-            <POSITION x="235" y="218" />
+            <POSITION x="178.309875" y="190.871063" />
           </INLET>
           <INLET Name="Velocity#1" Layer="Update" PadType="Field">
-            <POSITION x="395" y="214" />
+            <POSITION x="341.124878" y="189.6861" />
           </INLET>
           <INLET Name="WorldRange" Layer="Update">
-            <POSITION x="478" y="208" />
+            <POSITION x="512.150635" y="157.457" />
           </INLET>
           <INLET Name="Other Bubbles" Layer="Update">
-            <POSITION x="598" y="208" />
+            <POSITION x="632.150635" y="157.457" />
+          </INLET>
+          <INLET Name="Mass#2" Layer="EmitAndAccelerate" PadType="Field">
+            <POSITION x="786.6248" y="314.863525" />
+          </INLET>
+          <INLET Name="ActorControlData" Layer="EmitAndAccelerate">
+            <POSITION x="819.243" y="311.156921" />
           </INLET>
           <INLET Name="Position#1" Layer="Create" Type="Vector2">
             <POSITION x="849" y="-93" />
@@ -465,7 +710,7 @@
             <POSITION x="1097" y="-93" />
           </INLET>
           <INLET Name="Name#1" Layer="Split" PadType="Field">
-            <POSITION x="1131" y="75" />
+            <POSITION x="1133.732" y="62.02275" />
           </INLET>
           <INLET Name="Name" Layer="Create" Type="String">
             <POSITION x="1203" y="-93" />
@@ -482,10 +727,13 @@
         </INLETS>
         <OUTLETS>
           <OUTLET Name="Position#2" Layer="Update" PadType="Field">
-            <POSITION x="262" y="449" />
+            <POSITION x="205.309875" y="446.267944" />
           </OUTLET>
           <OUTLET Name="Velocity#2" Layer="Update" PadType="Field">
-            <POSITION x="396" y="446" />
+            <POSITION x="339.309875" y="443.267944" />
+          </OUTLET>
+          <OUTLET Name="Mass#2" Layer="EmitAndAccelerate" PadType="Field">
+            <POSITION x="803.6752" y="557.2758" />
           </OUTLET>
           <OUTLET Name="Position#1" Layer="Create" PadType="Field">
             <POSITION x="854" y="-25" />
@@ -521,11 +769,17 @@
             <POSITION x="1293" y="-28" />
           </OUTLET>
         </OUTLETS>
-        <CONSTS />
+        <CONSTS>
+          <CONST Name="MassLoss factor" Layer="Update">
+            <POSITION x="900.0471" y="423.83786" />
+            <SIZE width="40" height="15.50846" />
+            <VALUE><![CDATA[0.1]]></VALUE>
+          </CONST>
+        </CONSTS>
         <REGIONS />
         <NODES>
           <PROCESS Name="DeltaTime">
-            <POSITION x="297" y="236" />
+            <POSITION x="240.309875" y="233.267944" />
             <NODEREF LastCat="Animation" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
               <PROCESSNODE Name="DeltaTime" />
             </NODEREF>
@@ -539,7 +793,7 @@
             </FRAGMENTS>
           </PROCESS>
           <OPERATION Name="+" Layer="Update">
-            <POSITION x="295" y="340" />
+            <POSITION x="238.309875" y="337.267944" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="+" />
               <CATEGORY Name="Adaptive" IsDirectParent="true" />
@@ -555,7 +809,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="*" Layer="Update">
-            <POSITION x="318" y="299" />
+            <POSITION x="261.309875" y="296.267944" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <CATEGORY Name="Adaptive" IsDirectParent="true" />
               <OPERATIONNODE Name="*" Version="Scale" />
@@ -570,7 +824,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Reflect" Layer="Update">
-            <POSITION x="357" y="394" />
+            <POSITION x="300.309875" y="391.267944" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="Reflect" />
               <CATEGORY Name="Adaptive" IsDirectParent="true" />
@@ -588,7 +842,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Split" Layer="Update">
-            <POSITION x="478" y="250" />
+            <POSITION x="512.150635" y="199.457" />
             <NODEREF LastCat="Math.Ranges.Range" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="Split" />
               <CATEGORY Name="Range" IsDirectParent="true" />
@@ -599,6 +853,52 @@
             <OUTPUTS>
               <OUPUT Name="From" />
               <OUPUT Name="To" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Split#1" Layer="EmitAndAccelerate">
+            <POSITION x="811.8297" y="383.065155" />
+            <NODEREF LastCat="VLOsmos.ActorControlData" LastFile="Core.vl">
+              <OPERATIONNODE Name="Split" />
+              <CATEGORY Name="ActorControlData" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="DoEmit" />
+              <OUPUT Name="Angle" />
+              <OUPUT Name="Name" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="SwitchOutput" Layer="EmitAndAccelerate">
+            <POSITION x="808.864441" y="495.746124" />
+            <NODEREF LastCat="Control" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="SwitchOutput" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Condition" />
+              <INPUT Name="Input" />
+              <INPUT Name="Default" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="True" />
+              <OUPUT Name="False" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="-" Layer="EmitAndAccelerate">
+            <POSITION x="874.1008" y="455.714722" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="-" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+              <INPUT Name="Input 3" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
         </NODES>
@@ -620,7 +920,7 @@
           <Link source="Nodes/Reflect/Outputs/Output" sink="Outlets/Position#2" />
           <Link source="Inlets/Velocity#1" sink="Nodes/Reflect/Inputs/Velocity">
             <SEGMENTS>
-              <Point x="-21" y="139" />
+              <Point x="-23.8150024" y="160.581848" />
             </SEGMENTS>
           </Link>
           <Link source="Nodes/Reflect/Outputs/Velocity" sink="Outlets/Velocity#2" />
@@ -629,7 +929,36 @@
           <Link source="Nodes/Split/Outputs/To" sink="Nodes/Reflect/Inputs/Max" />
           <Link source="Inlets/Position#2" sink="Outlets/Position" />
           <Link source="Inlets/Velocity#2" sink="Outlets/Velocity#1" />
+          <Link source="Inlets/ActorControlData" sink="Nodes/Split#1/Inputs/Input" />
+          <Link source="Nodes/Split#1/Outputs/DoEmit" sink="Nodes/SwitchOutput/Inputs/Condition" />
+          <Link source="Inlets/Mass#2" sink="Nodes/SwitchOutput/Inputs/Input" />
+          <Link source="Constants/MassLoss factor" sink="Nodes/-/Inputs/Input 2" />
+          <Link source="Inlets/Mass#2" sink="Nodes/-/Inputs/Input" />
+          <Link source="Nodes/-/Outputs/Output" sink="Nodes/SwitchOutput/Inputs/Default" />
+          <Link source="Nodes/SwitchOutput/Outputs/True" sink="Outlets/Mass#2" />
         </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="IDFactory" Category="VVVV.VLOsmos" IsDatatype="true">
+      <BODY Name="UtilsBody">
+        <LAYERS>
+          <LAYER Name="GenerateID" />
+          <LAYER Name="Create" />
+        </LAYERS>
+        <INLETS />
+        <OUTLETS>
+          <OUTLET Name="ID" Layer="Create" PadType="Field">
+            <POSITION x="631" y="188" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS>
+          <CONST Name="Constant" Layer="GenerateID" Type="Float32">
+            <POSITION x="335" y="178" />
+          </CONST>
+        </CONSTS>
+        <REGIONS />
+        <NODES />
+        <LINKS />
       </BODY>
     </PATCH>
   </PATCHES>

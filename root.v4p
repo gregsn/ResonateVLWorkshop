@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
    <PATCH nodename="C:\dev\ResonateVLWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="0" top="0" width="6795" height="7635">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -9,7 +9,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="2445" top="915" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="0" top="0" width="6795" height="7635">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
    <PIN pinname="ControlData" visible="1">
    </PIN>
@@ -21,7 +21,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="2430" top="3000" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="0" top="0" width="6795" height="7635">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
    <PIN pinname="World" visible="1" slicecount="1" values="||">
    </PIN>
@@ -31,7 +31,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="2430" top="2100" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="0" top="0" width="6795" height="7635">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
    </NODE>
    <LINK srcnodeid="10" srcpinname="ControlData" dstnodeid="20" dstpinname="ControlData">

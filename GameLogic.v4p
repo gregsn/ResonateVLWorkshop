@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
    <PATCH nodename="C:\dev\ResonateVLWorkshop\GameLogic.v4p" systemname="GameLogic" filename="C:\dev\ResonateVLWorkshop\GameLogic.v4p">
-   <BOUNDS type="Window" left="0" top="0" width="6795" height="7635">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -24,12 +24,12 @@
    <PIN pinname="Descriptive Name" slicecount="1" values="ControlData">
    </PIN>
    </NODE>
-   <NODE systemname="GameLogic (VLOsmos)" filename="vl\GameLogic.vl" nodename="GameLogic (VLOsmos)" componentmode="Hidden" id="26">
+   <NODE systemname="GameLogic (VLOsmos)" filename="vl\GameLogic.vl" nodename="GameLogic (VLOsmos)" componentmode="Hidden" id="28">
    <BOUNDS type="Node" left="3045" top="1890" width="100" height="100">
    </BOUNDS>
    </NODE>
-   <LINK srcnodeid="26" srcpinname="World" dstnodeid="1" dstpinname="Input Node">
+   <LINK srcnodeid="28" srcpinname="World" dstnodeid="1" dstpinname="Input Node">
    </LINK>
-   <LINK srcnodeid="2" srcpinname="Output Node" dstnodeid="26" dstpinname="ControlData">
+   <LINK srcnodeid="2" srcpinname="Output Node" dstnodeid="28" dstpinname="ControlData">
    </LINK>
    </PATCH>

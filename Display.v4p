@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
    <PATCH nodename="C:\dev\ResonateVLWorkshop\Display.v4p" systemname="Display" filename="C:\dev\ResonateVLWorkshop\Display.v4p">
-   <BOUNDS type="Window" left="0" top="0" width="6795" height="7635">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -29,7 +29,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="1575" top="4770" width="2400" height="1800">
    </BOUNDS>
-   <BOUNDS type="Window" left="0" top="3360" width="6960" height="7080">
+   <BOUNDS type="Window" left="21690" top="4140" width="6960" height="7080">
    </BOUNDS>
    <PIN pinname="Layers" visible="1">
    </PIN>
@@ -54,6 +54,8 @@
    <PIN pinname="Render State" visible="1">
    </PIN>
    <PIN pinname="Color" slicecount="1" values="|0.00000,0.60271,0.99753,1.00000|">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" values="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="3" srcpinname="Layer" dstnodeid="2" dstpinname="Layers">

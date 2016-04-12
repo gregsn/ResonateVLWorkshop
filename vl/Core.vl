@@ -107,16 +107,16 @@
             <POSITION x="232.4444" y="402.3333" />
           </INLET>
           <INLET Name="Bubbles#1" Layer="Join" Type="Spread&lt;Bubble&gt;">
-            <POSITION x="293" y="144.777786" />
+            <POSITION x="293" y="140.983261" />
           </INLET>
           <INLET Name="Emitters#1" Layer="Join">
-            <POSITION x="394.666626" y="144.777786" />
+            <POSITION x="406.050171" y="140.983261" />
           </INLET>
           <INLET Name="GameOver" Layer="Split" PadType="Field" Type="Boolean">
             <POSITION x="458.3334" y="391.888916" />
           </INLET>
           <INLET Name="Collisions#1" Layer="Join" Type="Spread&lt;CollisionData&gt;">
-            <POSITION x="525.7777" y="144.777786" />
+            <POSITION x="525.7777" y="140.983261" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -136,7 +136,7 @@
             <POSITION x="314.333374" y="454.888916" />
           </OUTLET>
           <OUTLET Name="Emitters#1" Layer="Join" PadType="Field">
-            <POSITION x="394.6666" y="230.1111" />
+            <POSITION x="412.88028" y="219.486435" />
           </OUTLET>
           <OUTLET Name="GameOver" Layer="Split">
             <POSITION x="458.3334" y="454.888916" />
@@ -606,13 +606,108 @@
     </PATCH>
     <PATCH Name="Utils" Category="VVVV.VLOsmos">
       <BODY Name="UtilsBody">
-        <LAYERS />
-        <INLETS />
-        <OUTLETS />
-        <CONSTS />
+        <LAYERS>
+          <LAYER Name="GetEmitterData" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="Radius" Layer="GetEmitterData">
+            <POSITION x="787" y="141" />
+          </INLET>
+          <INLET Name="Position" Layer="GetEmitterData">
+            <POSITION x="571" y="141" />
+          </INLET>
+          <INLET Name="Velocity" Layer="GetEmitterData" Type="Vector2">
+            <POSITION x="681" y="141" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="Output" Layer="GetEmitterData">
+            <POSITION x="643" y="436" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS>
+          <CONST Name="Constant" Layer="GetEmitterData" Type="Float32">
+            <POSITION x="686" y="219" />
+            <VALUE><![CDATA[-1.0]]></VALUE>
+          </CONST>
+        </CONSTS>
         <REGIONS />
-        <NODES />
-        <LINKS />
+        <NODES>
+          <OPERATION Name="Normalize" Layer="GetEmitterData">
+            <POSITION x="627" y="181" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Normalize" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="*" Layer="GetEmitterData">
+            <POSITION x="629" y="255" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="*" Version="Scale" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Scalar" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="*#1" Layer="GetEmitterData">
+            <POSITION x="651" y="306" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="*" Version="Scale" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Scalar" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="+" Layer="GetEmitterData">
+            <POSITION x="639" y="376" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="+" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+              <INPUT Name="Input 3" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+        </NODES>
+        <LINKS>
+          <Link source="Nodes/Normalize/Outputs/Output" sink="Nodes/*/Inputs/Input" />
+          <Link source="Constants/Constant" sink="Nodes/*/Inputs/Scalar" />
+          <Link source="Inlets/Velocity" sink="Nodes/Normalize/Inputs/Input" />
+          <Link source="Nodes/*/Outputs/Output" sink="Nodes/*#1/Inputs/Input" />
+          <Link source="Inlets/Radius" sink="Nodes/*#1/Inputs/Scalar">
+            <SEGMENTS>
+              <Point x="-4" y="97.5" />
+            </SEGMENTS>
+          </Link>
+          <Link source="Nodes/*#1/Outputs/Output" sink="Nodes/+/Inputs/Input 2" />
+          <Link source="Inlets/Position" sink="Nodes/+/Inputs/Input" />
+          <Link source="Nodes/+/Outputs/Output" sink="Outlets/Output" />
+        </LINKS>
       </BODY>
     </PATCH>
     <PATCH Name="EmitData" Category="VLOsmos" IsDatatype="true" IsClosed="true">

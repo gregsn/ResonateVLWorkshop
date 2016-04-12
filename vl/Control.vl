@@ -19,7 +19,16 @@
             <POSITION x="382" y="390" />
           </OUTLET>
         </OUTLETS>
-        <CONSTS />
+        <CONSTS>
+          <CONST Name="ID" Layer="Update">
+            <POSITION x="551" y="164" />
+            <VALUE><![CDATA[2]]></VALUE>
+          </CONST>
+          <CONST Name="ID#1" Layer="Update">
+            <POSITION x="384" y="183" />
+            <VALUE><![CDATA[1]]></VALUE>
+          </CONST>
+        </CONSTS>
         <REGIONS />
         <NODES>
           <OPERATION Name="Join#1" Layer="Update">
@@ -33,7 +42,8 @@
               <INPUT Name="DoEmit" />
               <INPUT Name="Angle" />
               <INPUT Name="Name" />
-              <INPUT Name="Enabled" />
+              <INPUT Name="ID" />
+              <INPUT Name="Enabled" IsEnabled="true" />
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Output" />
@@ -63,7 +73,8 @@
               <INPUT Name="DoEmit" />
               <INPUT Name="Angle" />
               <INPUT Name="Name" />
-              <INPUT Name="Enabled" />
+              <INPUT Name="ID" />
+              <INPUT Name="Enabled" IsEnabled="true" />
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Output" />
@@ -95,6 +106,8 @@
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Bubbles" />
+              <OUPUT Name="Emitters" />
+              <OUPUT Name="Collisions" />
               <OUPUT Name="WorldSize" />
               <OUPUT Name="GameOver" />
             </OUTPUTS>
@@ -105,6 +118,8 @@
           <Link source="Nodes/Cons/Outputs/Result" sink="Nodes/Join/Inputs/ActorsControlData" />
           <Link source="Nodes/Join#2/Outputs/Output" sink="Nodes/Cons/Inputs/Input 2" />
           <Link source="Nodes/Join/Outputs/Output" sink="Outlets/ControlData" />
+          <Link source="Constants/ID" sink="Nodes/Join#2/Inputs/ID" />
+          <Link source="Constants/ID#1" sink="Nodes/Join#1/Inputs/ID" />
         </LINKS>
       </BODY>
     </PATCH>

@@ -29,17 +29,28 @@
             <POSITION x="538" y="390" />
           </OUTLET>
           <OUTLET Name="World" Layer="Update">
-            <POSITION x="704" y="487" />
+            <POSITION x="696" y="541" />
+          </OUTLET>
+          <OUTLET Name="WorldSerial" Layer="Update">
+            <POSITION x="821" y="541" />
           </OUTLET>
         </OUTLETS>
         <CONSTS>
           <CONST Name="Iteration Count" Layer="Create">
-            <POSITION x="50" y="67" />
+            <POSITION x="73" y="124" />
             <VALUE><![CDATA[18]]></VALUE>
           </CONST>
           <CONST Name="Width" Layer="Create">
             <POSITION x="368" y="112" />
             <VALUE><![CDATA[{"type":"Vector2 [2D]","value":{"X":0.210000023,"Y":0.18}}]]></VALUE>
+          </CONST>
+          <CONST Name="Enabled" Layer="Update">
+            <POSITION x="899" y="438" />
+            <VALUE><![CDATA[true]]></VALUE>
+          </CONST>
+          <CONST Name="Omit Header" Layer="Update">
+            <POSITION x="894" y="398" />
+            <VALUE><![CDATA[true]]></VALUE>
           </CONST>
         </CONSTS>
         <REGIONS>
@@ -78,6 +89,7 @@
                     <OUPUT Name="DoEmit" />
                     <OUPUT Name="Angle" />
                     <OUPUT Name="Name" />
+                    <OUPUT Name="ID" />
                   </OUTPUTS>
                 </OPERATION>
               </NODES>
@@ -273,6 +285,7 @@
                 <Link source="Nodes/Random/Outputs/Output" sink="Nodes/Create/Inputs/Position" />
                 <Link source="Constants/Mass" sink="Nodes/Create/Inputs/Mass" />
                 <Link source="Nodes/Random#1/Outputs/Output" sink="Nodes/Create/Inputs/Velocity" />
+                <Link source="Inlets/Index" sink="Nodes/Create/Inputs/ID" />
               </LINKS>
             </BODY>
           </REGION>
@@ -292,8 +305,8 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Join#3" Layer="Update">
-            <POSITION x="703" y="440" />
-            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
+            <POSITION x="690" y="410" />
+            <NODEREF LastCat="VVVV.VLOsmos.World" LastFile="Core.vl">
               <OPERATIONNODE Name="Join" />
               <CATEGORY Name="World" IsDirectParent="true" />
             </NODEREF>
@@ -308,7 +321,7 @@
           </OPERATION>
           <OPERATION Name="GetWorldSize" Layer="Create">
             <POSITION x="203" y="116" />
-            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
+            <NODEREF LastCat="VVVV.VLOsmos.World" LastFile="Core.vl">
               <OPERATIONNODE Name="GetWorldSize" />
             </NODEREF>
             <INPUTS>
@@ -401,6 +414,25 @@
               <OUPUT Name="To" />
             </OUTPUTS>
           </OPERATION>
+          <PROCESS Name="Serializer">
+            <POSITION x="823" y="463" />
+            <NODEREF LastCat="Runtime.Serialization" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
+              <PROCESSNODE Name="Serializer" Version="Json" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Value" FragmentId="Update" />
+              <INPUT Name="Indent" FragmentId="Update" />
+              <INPUT Name="Omit Header" FragmentId="Update" />
+              <INPUT Name="Enabled" FragmentId="Update" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" FragmentId="Update" />
+            </OUTPUTS>
+            <FRAGMENTS>
+              <FRAGMENT Name="Create" />
+              <FRAGMENT Name="Update" />
+            </FRAGMENTS>
+          </PROCESS>
         </NODES>
         <LINKS>
           <Link source="Nodes/Split/Outputs/ActorsControlData" sink="Regions/ForEachLoop/Inputs/Inputs" />
@@ -423,6 +455,10 @@
           <Link source="Regions/ForEachLoop#1/Outputs/New LogicBubbles" sink="Outlets/Bubbles#1" />
           <Link source="Inlets/Bubbles" sink="Regions/ForEachLoop#1/ForEachLoopBody/Nodes/Update/Inputs/Other Bubbles" />
           <Link source="Nodes/FromCenterWidth/Outputs/Output" sink="Regions/ForEachLoop#1/ForEachLoopBody/Nodes/Update/Inputs/WorldRange" />
+          <Link source="Constants/Enabled" sink="Nodes/Serializer/Inputs/Enabled" />
+          <Link source="Constants/Omit Header" sink="Nodes/Serializer/Inputs/Omit Header" />
+          <Link source="Nodes/Join#3/Outputs/Output" sink="Nodes/Serializer/Inputs/Value" />
+          <Link source="Nodes/Serializer/Outputs/Result" sink="Outlets/WorldSerial" />
         </LINKS>
       </BODY>
     </PATCH>

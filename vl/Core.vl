@@ -97,48 +97,60 @@
           <LAYER Name="Create" />
         </LAYERS>
         <INLETS>
-          <INLET Name="Emitters" Layer="Split" PadType="Field" Type="Spread&lt;EmitData&gt;">
-            <POSITION x="166" y="371.7778" />
-          </INLET>
           <INLET Name="Bubbles" Layer="Split" PadType="Field">
-            <POSITION x="266" y="377" />
+            <POSITION x="36.00003" y="402.555542" />
+          </INLET>
+          <INLET Name="Emitters" Layer="Split" PadType="Field" Type="Spread&lt;EmitData&gt;">
+            <POSITION x="131.555588" y="404.000031" />
+          </INLET>
+          <INLET Name="Collisions" Layer="Split" PadType="Field">
+            <POSITION x="232.4444" y="402.3333" />
           </INLET>
           <INLET Name="Bubbles#1" Layer="Join" Type="Spread&lt;Bubble&gt;">
-            <POSITION x="293" y="141.444458" />
+            <POSITION x="293" y="144.777786" />
           </INLET>
           <INLET Name="Emitters#1" Layer="Join">
-            <POSITION x="427.999969" y="141.444458" />
+            <POSITION x="394.666626" y="144.777786" />
           </INLET>
           <INLET Name="GameOver" Layer="Split" PadType="Field" Type="Boolean">
-            <POSITION x="525" y="373" />
+            <POSITION x="458.3334" y="391.888916" />
+          </INLET>
+          <INLET Name="Collisions#1" Layer="Join" Type="Spread&lt;CollisionData&gt;">
+            <POSITION x="525.7777" y="144.777786" />
           </INLET>
         </INLETS>
         <OUTLETS>
           <OUTLET Name="Bubbles" Layer="Split">
-            <POSITION x="265" y="436" />
+            <POSITION x="35.00003" y="454.888916" />
+          </OUTLET>
+          <OUTLET Name="Emitters" Layer="Split">
+            <POSITION x="129.444489" y="454.888916" />
+          </OUTLET>
+          <OUTLET Name="Collisions" Layer="Split">
+            <POSITION x="229.111053" y="454.888916" />
           </OUTLET>
           <OUTLET Name="Bubbles#1" Layer="Join" PadType="Field">
             <POSITION x="297" y="222" />
           </OUTLET>
           <OUTLET Name="WorldSize" Layer="Split">
-            <POSITION x="381" y="436" />
+            <POSITION x="314.333374" y="454.888916" />
+          </OUTLET>
+          <OUTLET Name="Emitters#1" Layer="Join" PadType="Field">
+            <POSITION x="394.6666" y="230.1111" />
           </OUTLET>
           <OUTLET Name="GameOver" Layer="Split">
-            <POSITION x="525" y="436" />
+            <POSITION x="458.3334" y="454.888916" />
+          </OUTLET>
+          <OUTLET Name="Collisions#1" Layer="Join" PadType="Field">
+            <POSITION x="521.333252" y="220.111115" />
           </OUTLET>
           <OUTLET Name="WorldSize#1" Layer="GetWorldSize">
             <POSITION x="663" y="436" />
           </OUTLET>
-          <OUTLET Name="Emitters" Layer="Split">
-            <POSITION x="165" y="436" />
-          </OUTLET>
-          <OUTLET Name="Emitters#1" Layer="Join" PadType="Field">
-            <POSITION x="427.999939" y="226.777771" />
-          </OUTLET>
         </OUTLETS>
         <CONSTS>
           <CONST Name="WorldSize" Layer="Split" Type="Vector2">
-            <POSITION x="381" y="346" />
+            <POSITION x="314.333374" y="364.888916" />
             <VALUE><![CDATA[2.0]]></VALUE>
           </CONST>
           <CONST Name="WorldSize#1" Layer="GetWorldSize" Type="Vector2">
@@ -156,6 +168,8 @@
           <Link source="Constants/WorldSize#1" sink="Outlets/WorldSize#1" />
           <Link source="Inlets/Emitters" sink="Outlets/Emitters" />
           <Link source="Inlets/Emitters#1" sink="Outlets/Emitters#1" />
+          <Link source="Inlets/Collisions" sink="Outlets/Collisions" />
+          <Link source="Inlets/Collisions#1" sink="Outlets/Collisions#1" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -392,6 +406,7 @@
               <INPUT Name="Input" />
               <INPUT Name="Bubbles" />
               <INPUT Name="Emitters" />
+              <INPUT Name="Collisions" />
               <INPUT Name="Enabled" />
             </INPUTS>
             <OUTPUTS>
@@ -408,8 +423,9 @@
               <INPUT Name="Input" />
             </INPUTS>
             <OUTPUTS>
-              <OUPUT Name="Emitters" />
               <OUPUT Name="Bubbles" />
+              <OUPUT Name="Emitters" />
+              <OUPUT Name="Collisions" />
               <OUPUT Name="WorldSize" />
               <OUPUT Name="GameOver" />
             </OUTPUTS>
@@ -424,8 +440,9 @@
               <INPUT Name="Input" />
             </INPUTS>
             <OUTPUTS>
-              <OUPUT Name="Emitters" />
               <OUPUT Name="Bubbles" />
+              <OUPUT Name="Emitters" />
+              <OUPUT Name="Collisions" />
               <OUPUT Name="WorldSize" />
               <OUPUT Name="GameOver" />
             </OUTPUTS>
@@ -618,6 +635,39 @@
           </OUTLET>
           <OUTLET Name="Position#1" Layer="Split">
             <POSITION x="298" y="282" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS />
+        <REGIONS />
+        <NODES />
+        <LINKS>
+          <Link source="Inlets/Position" sink="Outlets/Position" />
+          <Link source="Inlets/Position#1" sink="Outlets/Position#1" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="CollisionData" Category="VLOsmos" IsDatatype="true" IsClosed="true">
+      <BODY Name="Utils2Body">
+        <LAYERS>
+          <LAYER Name="Create" />
+          <LAYER Name="Update" />
+          <LAYER Name="Join" />
+          <LAYER Name="Split" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="Position" Layer="Join" Type="Vector2">
+            <POSITION x="571" y="135" />
+          </INLET>
+          <INLET Name="Position#1" Layer="Split" PadType="Field">
+            <POSITION x="589" y="274" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="Position" Layer="Join" PadType="Field">
+            <POSITION x="579" y="182" />
+          </OUTLET>
+          <OUTLET Name="Position#1" Layer="Split">
+            <POSITION x="594" y="324" />
           </OUTLET>
         </OUTLETS>
         <CONSTS />

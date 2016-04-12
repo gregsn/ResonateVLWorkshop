@@ -12,6 +12,7 @@
         <LAYERS>
           <LAYER Name="Update" />
           <LAYER Name="Create" />
+          <LAYER Name="True" />
         </LAYERS>
         <INLETS />
         <OUTLETS>
@@ -19,7 +20,16 @@
             <POSITION x="382" y="390" />
           </OUTLET>
         </OUTLETS>
-        <CONSTS />
+        <CONSTS>
+          <CONST Name="Name" Layer="Update">
+            <POSITION x="344.5454" y="145.9091" />
+            <VALUE><![CDATA["A"]]></VALUE>
+          </CONST>
+          <CONST Name="Name#1" Layer="Update">
+            <POSITION x="519.999939" y="154.090912" />
+            <VALUE><![CDATA["B"]]></VALUE>
+          </CONST>
+        </CONSTS>
         <REGIONS />
         <NODES>
           <OPERATION Name="Join#1" Layer="Update">
@@ -53,7 +63,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Join#2" Layer="Update">
-            <POSITION x="485" y="215" />
+            <POSITION x="477.7273" y="207.727264" />
             <NODEREF LastCat="VLOsmos.ActorControlData" LastFile="Core.vl">
               <OPERATIONNODE Name="Join" />
               <CATEGORY Name="ActorControlData" IsDirectParent="true" />
@@ -105,6 +115,8 @@
           <Link source="Nodes/Cons/Outputs/Result" sink="Nodes/Join/Inputs/ActorsControlData" />
           <Link source="Nodes/Join#2/Outputs/Output" sink="Nodes/Cons/Inputs/Input 2" />
           <Link source="Nodes/Join/Outputs/Output" sink="Outlets/ControlData" />
+          <Link source="Constants/Name" sink="Nodes/Join#1/Inputs/Name" />
+          <Link source="Constants/Name#1" sink="Nodes/Join#2/Inputs/Name" />
         </LINKS>
       </BODY>
     </PATCH>

@@ -1,51 +1,187 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\dev\ResonateVLWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="0" top="0" width="6795" height="7635">
+   <PATCH nodename="C:\[w]\vl\logic paert\ResonateVLWorkshop\root.v4p" systemname="root" filename="C:\[w]\vl\logic paert\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="15">
+   <BOUNDS type="Window" left="1920" top="735" width="11370" height="11820">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
-   <NODE systemname="Control" filename="Control.v4p" componentmode="InAWindow" id="10" nodename="Control.v4p">
-   <BOUNDS type="Node" left="2445" top="915" width="100" height="100">
+   <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="InAWindow" id="31" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="3105" top="7365" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="2445" top="915" width="4800" height="3600">
+   <BOUNDS type="Box" left="3105" top="7365" width="2400" height="1800">
    </BOUNDS>
-   <BOUNDS type="Window" left="0" top="0" width="6795" height="7635">
+   <BOUNDS type="Window" left="18285" top="6450" width="8415" height="8115">
    </BOUNDS>
-   <PIN pinname="ControlData" visible="1">
+   <PIN pinname="Layers" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="World" visible="1" slicecount="1" values="||">
+   <PIN pinname="Actual Backbuffer Width" visible="1">
    </PIN>
-   </NODE>
-   <NODE systemname="Display" filename="Display.v4p" componentmode="InAWindow" id="12" nodename="Display.v4p">
-   <BOUNDS type="Node" left="2430" top="3000" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="2430" top="3000" width="4800" height="3600">
-   </BOUNDS>
-   <BOUNDS type="Window" left="0" top="0" width="6795" height="7635">
-   </BOUNDS>
-   <PIN pinname="World" visible="1" slicecount="1" values="||">
+   <PIN pinname="Actual Backbuffer Height" visible="1">
+   </PIN>
+   <PIN pinname="Aspect Ratio" visible="1">
+   </PIN>
+   <PIN pinname="Background Color" slicecount="1" values="|0.12284,0.14947,0.16167,1.00000|">
    </PIN>
    </NODE>
-   <NODE systemname="GameLogic" filename="GameLogic.v4p" componentmode="InAWindow" id="20" nodename="GameLogic.v4p">
-   <BOUNDS type="Node" left="2430" top="2100" width="100" height="100">
+   <NODE systemname="AspectRatio (Transform)" nodename="AspectRatio (Transform)" componentmode="Hidden" id="23" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="3960" top="7845" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="2430" top="2100" width="4800" height="3600">
-   </BOUNDS>
-   <BOUNDS type="Window" left="0" top="0" width="6795" height="7635">
-   </BOUNDS>
+   <PIN pinname="Aspect Width" visible="1">
+   </PIN>
+   <PIN pinname="Aspect Height" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="10" srcpinname="ControlData" dstnodeid="20" dstpinname="ControlData">
+   <LINK srcnodeid="31" srcpinname="Actual Backbuffer Width" dstnodeid="23" dstpinname="Aspect Width" hiddenwhenlocked="1">
    </LINK>
-   <LINK srcnodeid="20" srcpinname="World" dstnodeid="12" dstpinname="World">
+   <LINK srcnodeid="31" srcpinname="Actual Backbuffer Height" dstnodeid="23" dstpinname="Aspect Height" hiddenwhenlocked="1">
    </LINK>
-   <LINK srcnodeid="20" srcpinname="World" dstnodeid="10" dstpinname="World">
-   <LINKPOINT x="2010" y="2505">
-   </LINKPOINT>
-   <LINKPOINT x="1395" y="2070">
-   </LINKPOINT>
-   <LINKPOINT x="1410" y="900">
-   </LINKPOINT>
-   <LINKPOINT x="2010" y="660">
-   </LINKPOINT>
+   <LINK srcnodeid="23" srcpinname="Transform Out" dstnodeid="31" dstpinname="Aspect Ratio" hiddenwhenlocked="1">
+   </LINK>
+   <NODE systemname="Select (Color)" filename="" nodename="Select (Color)" componentmode="Hidden" id="37" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="3930" top="4590" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Select" slicecount="1" values="20">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="SetSlice (Color)" nodename="SetSlice (Color)" componentmode="Hidden" id="39" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="4425" top="5265" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Spread" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Index" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="37" srcpinname="Output" dstnodeid="39" dstpinname="Spread" hiddenwhenlocked="1">
+   </LINK>
+   <NODE systemname="HSV (Color Join)" nodename="HSV (Color Join)" componentmode="Hidden" id="40" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="4560" top="4080" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Saturation" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="40" srcpinname="Output" dstnodeid="39" dstpinname="Input" hiddenwhenlocked="1">
+   </LINK>
+   <NODE systemname="Select (Value)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Select (Value)" componentmode="Hidden" id="41" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="4875" top="4590" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Select" visible="1" slicecount="11" values="0,0,0,0,0,0,0,0,0,0,0">
+   </PIN>
+   <PIN pinname="Former Slice" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="41" srcpinname="Former Slice" dstnodeid="39" dstpinname="Index" hiddenwhenlocked="1">
+   </LINK>
+   <NODE systemname="Control" filename="Control.v4p" componentmode="Hidden" id="85" nodename="Control.v4p" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="3150" top="1605" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3150" top="1605" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="6015" top="3765" width="11370" height="11820">
+   </BOUNDS>
+   </NODE>
+   <NODE id="30" systemname="Segment (DX9)" nodename="Segment (DX9)" componentmode="Hidden" hiddenwhenlocked="1" managers="">
+   <BOUNDS type="Node" left="3165" top="6555" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Resolution X" visible="1" pintype="Input" slicecount="1" values="6">
+   </PIN>
+   <PIN pinname="Resolution Y" visible="1" pintype="Input" slicecount="1" values="6">
+   </PIN>
+   <PIN pinname="Texture" visible="1" slicecount="1" pintype="Input" values="||">
+   </PIN>
+   <PIN pinname="Layer" visible="1" pintype="Output">
+   </PIN>
+   <PIN pinname="Transform" visible="1" pintype="Input" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Render State" visible="1" pintype="Input" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Color" slicecount="1" visible="1" pintype="Input" values="|0.00000,0.60271,0.99753,1.00000|">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" pintype="Input" visible="0" values="1">
+   </PIN>
+   <PIN pinname="Descriptive Name" pintype="Configuration" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Sampler State" pintype="Input" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Texture Transform" pintype="Input" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Texture Coord Mapping" pintype="Input" visible="0" slicecount="1" values="OnShape_UV">
+   </PIN>
+   <PIN pinname="Cycles U" pintype="Input" visible="1" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Cycles V" pintype="Input" visible="1" slicecount="1" values="0.5">
+   </PIN>
+   <PIN pinname="Draw Slicewise" pintype="Input" visible="-1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Space" pintype="Input" slicecount="1" values="World">
+   </PIN>
+   <PIN pinname="ID" pintype="Output" visible="-1">
+   </PIN>
+   <PIN pinname="Resolution" slicecount="1" values="36">
+   </PIN>
+   <PIN pinname="Inner Radius" slicecount="1" values="0.91">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="39" srcpinname="Output" dstnodeid="30" dstpinname="Color" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="30" srcpinname="Layer" dstnodeid="31" dstpinname="Layers" hiddenwhenlocked="1">
+   </LINK>
+   <NODE systemname="Transform (Transform 2d Vector)" nodename="Transform (Transform 2d Vector)" componentmode="Hidden" id="135" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="3105" top="5355" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="TranslateXY" visible="1" slicecount="2" values="0.142481029033661,-0.604024946689606">
+   </PIN>
+   <PIN pinname="ScaleXY" visible="1" slicecount="1" values="0.905791223049164">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="135" srcpinname="Transform Out" dstnodeid="30" dstpinname="Transform" hiddenwhenlocked="1">
+   </LINK>
+   <NODE systemname="Select (Value)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Select (Value)" componentmode="Hidden" id="137" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="3750" top="3570" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Select" slicecount="1" visible="1" values="2">
+   </PIN>
+   <PIN pinname="Input" visible="1" slicecount="1" values="0.750530421733856">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="137" srcpinname="Output" dstnodeid="135" dstpinname="ScaleXY" hiddenwhenlocked="1">
+   </LINK>
+   <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="169" hiddenwhenlocked="1">
+   <BOUNDS type="Node" left="3855" top="2985" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Input 1" visible="1" slicecount="1" values="0.680119216442108">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="169" srcpinname="Output" dstnodeid="137" dstpinname="Input" hiddenwhenlocked="1">
+   </LINK>
+   <NODE id="200" systemname="GameLogic (VLOsmos)" filename="vl\GameLogic.vl" nodename="GameLogic (VLOsmos)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
+   <BOUNDS type="Node" left="3150" top="2310" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="0" top="0" width="2400" height="1800">
+   </BOUNDS>
+   <BOUNDS type="Window" left="0" top="0" width="6000" height="4500">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="200" srcpinname="PositionsXY" dstnodeid="135" dstpinname="TranslateXY" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="85" srcpinname="ControlData" dstnodeid="200" dstpinname="ControlData">
+   </LINK>
+   <LINK srcnodeid="200" srcpinname="Radiuss" dstnodeid="169" dstpinname="Input 1" hiddenwhenlocked="1">
    </LINK>
    </PATCH>

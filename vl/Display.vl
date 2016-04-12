@@ -15,30 +15,42 @@
         </LAYERS>
         <INLETS>
           <INLET Name="World" Layer="Update">
-            <POSITION x="201" y="148" />
+            <POSITION x="171" y="41" />
+          </INLET>
+          <INLET Name="Collision Effects" Layer="Update" PadType="Field">
+            <POSITION x="556" y="185" />
           </INLET>
         </INLETS>
         <OUTLETS>
           <OUTLET Name="Positions" Layer="Update">
-            <POSITION x="74" y="367" />
+            <POSITION x="-74" y="574" />
           </OUTLET>
           <OUTLET Name="Masss" Layer="Update">
-            <POSITION x="177" y="367" />
+            <POSITION x="29" y="574" />
           </OUTLET>
           <OUTLET Name="Names" Layer="Update">
-            <POSITION x="259" y="367" />
+            <POSITION x="111" y="574" />
           </OUTLET>
           <OUTLET Name="IDs" Layer="Update">
-            <POSITION x="346" y="367" />
+            <POSITION x="198" y="574" />
           </OUTLET>
           <OUTLET Name="Ages" Layer="Update">
-            <POSITION x="422" y="367" />
+            <POSITION x="274" y="574" />
+          </OUTLET>
+          <OUTLET Name="Emit Positions" Layer="Update">
+            <POSITION x="386" y="574" />
+          </OUTLET>
+          <OUTLET Name="Collision Effects" Layer="Update" PadType="Field">
+            <POSITION x="544" y="452" />
+          </OUTLET>
+          <OUTLET Name="Collision Positions" Layer="Update">
+            <POSITION x="675" y="574" />
           </OUTLET>
         </OUTLETS>
         <CONSTS />
         <REGIONS>
           <REGION Name="ForEachLoop#2" Layer="Update" Kind="ForEachLoop">
-            <POSITION x="211.650818" y="256.371826" />
+            <POSITION x="-35.3491821" y="457.371826" />
             <SIZE x="80" y="80" />
             <INPUTS>
               <INPUT Name="Bubbles" />
@@ -58,31 +70,31 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Bubble" Layer="Update">
-                  <POSITION x="214.150818" y="258" />
+                  <POSITION x="25.1508179" y="470" />
                 </INLET>
               </INLETS>
               <OUTLETS>
                 <OUTLET Name="Position" Layer="Update">
-                  <POSITION x="156.150818" y="327" />
+                  <POSITION x="-32.8491821" y="539" />
                 </OUTLET>
                 <OUTLET Name="Mass" Layer="Update">
-                  <POSITION x="213" y="327" />
+                  <POSITION x="24" y="539" />
                 </OUTLET>
                 <OUTLET Name="Name" Layer="Update">
-                  <POSITION x="266" y="327" />
+                  <POSITION x="77" y="539" />
                 </OUTLET>
                 <OUTLET Name="ID" Layer="Update">
-                  <POSITION x="307" y="327" />
+                  <POSITION x="118" y="539" />
                 </OUTLET>
                 <OUTLET Name="Age" Layer="Update">
-                  <POSITION x="353" y="327" />
+                  <POSITION x="164" y="539" />
                 </OUTLET>
               </OUTLETS>
               <CONSTS />
               <REGIONS />
               <NODES>
                 <OPERATION Name="Split" Layer="Update">
-                  <POSITION x="225" y="283" />
+                  <POSITION x="36" y="495" />
                   <NODEREF LastCat="VLOsmos.Bubble" LastFile="Core.vl">
                     <OPERATIONNODE Name="Split" />
                     <CATEGORY Name="Bubble" IsDirectParent="true" />
@@ -92,7 +104,7 @@
                   </INPUTS>
                   <OUTPUTS>
                     <OUPUT Name="Position" />
-                    <OUPUT Name="Velocity" />
+                    <OUPUT Name="Radius" />
                     <OUPUT Name="Mass" />
                     <OUPUT Name="Name" />
                     <OUPUT Name="ID" />
@@ -110,10 +122,179 @@
               </LINKS>
             </BODY>
           </REGION>
+          <REGION Name="ForEachLoop" Layer="Update" Kind="ForEachLoop">
+            <POSITION x="340.5" y="439.371826" />
+            <SIZE x="80" y="80" />
+            <INPUTS>
+              <INPUT Name="Inputs" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Positions" />
+            </OUTPUTS>
+            <BODY Name="ForEachLoopBody">
+              <LAYERS>
+                <LAYER Name="Create" />
+                <LAYER Name="Update" />
+                <LAYER Name="Destroy" />
+              </LAYERS>
+              <INLETS>
+                <INLET Name="Input" Layer="Update">
+                  <POSITION x="343" y="441" />
+                </INLET>
+              </INLETS>
+              <OUTLETS>
+                <OUTLET Name="Position" Layer="Update">
+                  <POSITION x="343" y="521" />
+                </OUTLET>
+              </OUTLETS>
+              <CONSTS />
+              <REGIONS />
+              <NODES>
+                <OPERATION Name="Split" Layer="Update">
+                  <POSITION x="349" y="467" />
+                  <NODEREF LastCat="VLOsmos.EmitData" LastFile="Core.vl">
+                    <OPERATIONNODE Name="Split" />
+                    <CATEGORY Name="EmitData" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Position" />
+                  </OUTPUTS>
+                </OPERATION>
+              </NODES>
+              <LINKS>
+                <Link source="Inlets/Input" sink="Nodes/Split/Inputs/Input" />
+                <Link source="Nodes/Split/Outputs/Position" sink="Outlets/Position" />
+              </LINKS>
+            </BODY>
+          </REGION>
+          <REGION Name="ForEachLoop#1" Layer="Update" Kind="ForEachLoop">
+            <POSITION x="738" y="77" />
+            <SIZE x="80" y="80" />
+            <INPUTS>
+              <INPUT Name="Inputs" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Positions" />
+            </OUTPUTS>
+            <BODY Name="ForEachLoopBody">
+              <LAYERS>
+                <LAYER Name="Create" />
+                <LAYER Name="Update" />
+                <LAYER Name="Destroy" />
+              </LAYERS>
+              <INLETS>
+                <INLET Name="Input" Layer="Update">
+                  <POSITION x="750.5" y="78.6281738" />
+                </INLET>
+              </INLETS>
+              <OUTLETS>
+                <OUTLET Name="Position" Layer="Update">
+                  <POSITION x="740.5" y="186.628174" />
+                </OUTLET>
+              </OUTLETS>
+              <CONSTS />
+              <REGIONS />
+              <NODES>
+                <OPERATION Name="Split" Layer="Update">
+                  <POSITION x="756.5" y="104.628174" />
+                  <NODEREF LastCat="VLOsmos.CollisionData" LastFile="Core.vl">
+                    <OPERATIONNODE Name="Split" />
+                    <CATEGORY Name="CollisionData" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Position" />
+                  </OUTPUTS>
+                </OPERATION>
+                <OPERATION Name="Create" Layer="Update">
+                  <POSITION x="754" y="149" />
+                  <NODEREF LastCat="VVVV.VLOsmos.CollisionEffect" LastFile="Display.vl">
+                    <OPERATIONNODE Name="Create" />
+                    <CATEGORY Name="CollisionEffect" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Position" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Output" />
+                  </OUTPUTS>
+                </OPERATION>
+              </NODES>
+              <LINKS>
+                <Link source="Inlets/Input" sink="Nodes/Split/Inputs/Input" />
+                <Link source="Nodes/Create/Outputs/Output" sink="Outlets/Position" />
+                <Link source="Nodes/Split/Outputs/Position" sink="Nodes/Create/Inputs/Position" />
+              </LINKS>
+            </BODY>
+          </REGION>
+          <REGION Name="ForEachLoop#3" Layer="Update" Kind="ForEachLoop">
+            <POSITION x="660.5" y="292.371826" />
+            <SIZE x="80" y="80" />
+            <INPUTS>
+              <INPUT Name="Inputs" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Outputs" />
+              <OUPUT Name="Positions" />
+            </OUTPUTS>
+            <BODY Name="ForEachLoopBody">
+              <LAYERS>
+                <LAYER Name="Create" />
+                <LAYER Name="Update" />
+                <LAYER Name="Destroy" />
+              </LAYERS>
+              <INLETS>
+                <INLET Name="Input" Layer="Update">
+                  <POSITION x="663" y="294" />
+                </INLET>
+              </INLETS>
+              <OUTLETS>
+                <OUTLET Name="Output" Layer="Update">
+                  <POSITION x="632" y="405" />
+                </OUTLET>
+                <OUTLET Name="Alive" Layer="Update" PadType="Alive">
+                  <POSITION x="809" y="392" />
+                </OUTLET>
+                <OUTLET Name="Position" Layer="Update">
+                  <POSITION x="722" y="405" />
+                </OUTLET>
+              </OUTLETS>
+              <CONSTS />
+              <REGIONS />
+              <NODES>
+                <OPERATION Name="Update" Layer="Update">
+                  <POSITION x="681" y="334" />
+                  <NODEREF LastCat="VVVV.VLOsmos.CollisionEffect" LastFile="Display.vl">
+                    <OPERATIONNODE Name="Update" />
+                    <CATEGORY Name="CollisionEffect" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Output" />
+                    <OUPUT Name="Position" />
+                    <OUPUT Name="Alive" />
+                  </OUTPUTS>
+                </OPERATION>
+              </NODES>
+              <LINKS>
+                <Link source="Inlets/Input" sink="Nodes/Update/Inputs/Input" />
+                <Link source="Nodes/Update/Outputs/Output" sink="Outlets/Output" />
+                <Link source="Nodes/Update/Outputs/Alive" sink="Outlets/Alive" />
+                <Link source="Nodes/Update/Outputs/Position" sink="Outlets/Position" />
+              </LINKS>
+            </BODY>
+          </REGION>
         </REGIONS>
         <NODES>
           <OPERATION Name="Split#1" Layer="Update">
-            <POSITION x="199.150818" y="203" />
+            <POSITION x="175.150818" y="74" />
             <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
               <OPERATIONNODE Name="Split" />
               <CATEGORY Name="World" IsDirectParent="true" />
@@ -123,8 +304,26 @@
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Bubbles" />
+              <OUPUT Name="Emitters" />
+              <OUPUT Name="Collisions" />
               <OUPUT Name="WorldSize" />
               <OUPUT Name="GameOver" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Concat" Layer="Update">
+            <POSITION x="602" y="232" />
+            <NODEREF LastCat="Collections.Spread" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <CATEGORY Name="Spread" IsDirectParent="true" />
+              <OPERATIONNODE Name="Concat" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+              <INPUT Name="Input 3" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
         </NODES>
@@ -136,6 +335,95 @@
           <Link source="Regions/ForEachLoop#2/Outputs/Names" sink="Outlets/Names" />
           <Link source="Regions/ForEachLoop#2/Outputs/IDs" sink="Outlets/IDs" />
           <Link source="Regions/ForEachLoop#2/Outputs/Ages" sink="Outlets/Ages" />
+          <Link source="Nodes/Split#1/Outputs/Emitters" sink="Regions/ForEachLoop/Inputs/Inputs" />
+          <Link source="Regions/ForEachLoop/Outputs/Positions" sink="Outlets/Emit Positions" />
+          <Link source="Nodes/Split#1/Outputs/Collisions" sink="Regions/ForEachLoop#1/Inputs/Inputs" />
+          <Link source="Inlets/Collision Effects" sink="Nodes/Concat/Inputs/Input" />
+          <Link source="Regions/ForEachLoop#1/Outputs/Positions" sink="Nodes/Concat/Inputs/Input 2" />
+          <Link source="Nodes/Concat/Outputs/Output" sink="Regions/ForEachLoop#3/Inputs/Inputs" />
+          <Link source="Regions/ForEachLoop#3/Outputs/Outputs" sink="Outlets/Collision Effects" />
+          <Link source="Regions/ForEachLoop#3/Outputs/Positions" sink="Outlets/Collision Positions" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="CollisionEffect" Category="VVVV.VLOsmos" IsDatatype="true">
+      <BODY Name="UtilsBody">
+        <LAYERS>
+          <LAYER Name="Create" />
+          <LAYER Name="Update" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="Position" Layer="Create">
+            <POSITION x="382" y="176" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="Position" Layer="Update">
+            <POSITION x="381" y="412" />
+          </OUTLET>
+          <OUTLET Name="Alive" Layer="Update">
+            <POSITION x="557" y="412" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS>
+          <CONST Name="Enabled" Layer="Update">
+            <POSITION x="608" y="146" />
+            <VALUE><![CDATA[true]]></VALUE>
+          </CONST>
+          <CONST Name="Reset Enabled" Layer="Update">
+            <POSITION x="697" y="199" />
+            <VALUE><![CDATA[false]]></VALUE>
+          </CONST>
+          <CONST Name="Input 2" Layer="Update">
+            <POSITION x="627" y="294" />
+            <VALUE><![CDATA[1.45999932]]></VALUE>
+          </CONST>
+        </CONSTS>
+        <REGIONS />
+        <NODES>
+          <PROCESS Name="Stopwatch">
+            <POSITION x="573" y="238" />
+            <NODEREF LastCat="Animation" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
+              <PROCESSNODE Name="Stopwatch" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Enabled" FragmentId="Step" />
+              <INPUT Name="Time" FragmentId="Step" />
+              <INPUT Name="Step Enabled" FragmentId="Step" IsEnabled="true" />
+              <INPUT Name="Reset Enabled" FragmentId="Reset" IsEnabled="true" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Time" FragmentId="GetValue" />
+            </OUTPUTS>
+            <FRAGMENTS>
+              <FRAGMENT Name="Create" />
+              <FRAGMENT Name="Step" />
+              <FRAGMENT Name="Reset" />
+              <FRAGMENT Name="GetValue" />
+            </FRAGMENTS>
+          </PROCESS>
+          <OPERATION Name="&lt;" Layer="Update">
+            <POSITION x="562" y="309" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+              <OPERATIONNODE Name="&lt;" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+        </NODES>
+        <LINKS>
+          <Link source="Constants/Enabled" sink="Nodes/Stopwatch/Inputs/Enabled" />
+          <Link source="Constants/Reset Enabled" sink="Nodes/Stopwatch/Inputs/Reset Enabled" />
+          <Link source="Nodes/Stopwatch/Outputs/Time" sink="Nodes/&lt;/Inputs/Input" />
+          <Link source="Constants/Input 2" sink="Nodes/&lt;/Inputs/Input 2" />
+          <Link source="Nodes/&lt;/Outputs/Result" sink="Outlets/Alive" />
+          <Link source="Inlets/Position" sink="Outlets/Position" />
         </LINKS>
       </BODY>
     </PATCH>

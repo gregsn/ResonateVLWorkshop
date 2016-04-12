@@ -145,8 +145,8 @@
                   </NODEREF>
                   <INPUTS>
                     <INPUT Name="Input" />
-                    <INPUT Name="WorldRange" />
                     <INPUT Name="Other Bubbles" />
+                    <INPUT Name="WorldRange" />
                     <INPUT Name="Enabled" IsEnabled="true" />
                   </INPUTS>
                   <OUTPUTS>
@@ -216,8 +216,16 @@
               </OUTLETS>
               <CONSTS>
                 <CONST Name="Mass" Layer="Update">
-                  <POSITION x="167" y="233" />
+                  <POSITION x="237.399979" y="369.799957" />
                   <VALUE><![CDATA[1.0]]></VALUE>
+                </CONST>
+                <CONST Name="Constant" Layer="Update" Type="Float32">
+                  <POSITION x="299.2001" y="319.999939" />
+                  <VALUE><![CDATA[2.49999833]]></VALUE>
+                </CONST>
+                <CONST Name="Constant#1" Layer="Update" Type="Float32">
+                  <POSITION x="224.000137" y="313.599945" />
+                  <VALUE><![CDATA[0.499999821]]></VALUE>
                 </CONST>
               </CONSTS>
               <REGIONS />
@@ -267,12 +275,28 @@
                     <OUPUT Name="Output" />
                   </OUTPUTS>
                 </OPERATION>
+                <OPERATION Name="Random#2" Layer="Update">
+                  <POSITION x="242.999969" y="344.000031" />
+                  <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+                    <OPERATIONNODE Name="Random" />
+                    <CATEGORY Name="Adaptive" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="From" />
+                    <INPUT Name="To" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Output" />
+                  </OUTPUTS>
+                </OPERATION>
               </NODES>
               <LINKS>
                 <Link source="Nodes/Create/Outputs/Output" sink="Outlets/Bubble" />
                 <Link source="Nodes/Random/Outputs/Output" sink="Nodes/Create/Inputs/Position" />
-                <Link source="Constants/Mass" sink="Nodes/Create/Inputs/Mass" />
                 <Link source="Nodes/Random#1/Outputs/Output" sink="Nodes/Create/Inputs/Velocity" />
+                <Link source="Nodes/Random#2/Outputs/Output" sink="Nodes/Create/Inputs/Mass" />
+                <Link source="Constants/Constant" sink="Nodes/Random#2/Inputs/To" />
+                <Link source="Constants/Constant#1" sink="Nodes/Random#2/Inputs/From" />
               </LINKS>
             </BODY>
           </REGION>
@@ -442,9 +466,6 @@
           </INLET>
           <INLET Name="WorldRange" Layer="Update">
             <POSITION x="478" y="208" />
-          </INLET>
-          <INLET Name="Other Bubbles" Layer="Update">
-            <POSITION x="598" y="208" />
           </INLET>
           <INLET Name="Position#1" Layer="Create" Type="Vector2">
             <POSITION x="849" y="-93" />

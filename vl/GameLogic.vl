@@ -18,7 +18,7 @@
             <POSITION x="176.946869" y="-251.081909" />
           </INLET>
           <INLET Name="Bubbles" Layer="Update" PadType="Field">
-            <POSITION x="444.635559" y="-249.567169" />
+            <POSITION x="441.551453" y="-249.567169" />
           </INLET>
           <INLET Name="WorldSize" Layer="Update" PadType="Field">
             <POSITION x="651.638367" y="-272.070953" />
@@ -105,7 +105,7 @@
               </INLETS>
               <OUTLETS>
                 <OUTLET Name="LogicBubble" Layer="Update">
-                  <POSITION x="189.307281" y="366.995239" />
+                  <POSITION x="204.728058" y="398.864868" />
                 </OUTLET>
               </OUTLETS>
               <CONSTS />
@@ -123,12 +123,12 @@
                   <OUTPUTS>
                     <OUPUT Name="DoEmit" />
                     <OUPUT Name="Angle" />
-                    <OUPUT Name="ID" />
                     <OUPUT Name="Name" />
+                    <OUPUT Name="ID" />
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="TryGetValue" Layer="Update">
-                  <POSITION x="208.422943" y="219.993469" />
+                  <POSITION x="144.683655" y="213.825165" />
                   <NODEREF LastCat="Collections.Dictionary" LastFile="System.Collections.Immutable.dll" LastPackage="System.Collections.Immutable">
                     <CATEGORY Name="Collections" />
                     <CATEGORY Name="Dictionary" />
@@ -143,11 +143,44 @@
                     <OUPUT Name="Value" />
                   </OUTPUTS>
                 </OPERATION>
+                <OPERATION Name="SwitchInput" Layer="Update">
+                  <POSITION x="113.361282" y="337.3063" />
+                  <NODEREF LastCat="Control" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+                    <OPERATIONNODE Name="SwitchInput" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Condition" />
+                    <INPUT Name="False" />
+                    <INPUT Name="True" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Output" />
+                  </OUTPUTS>
+                </OPERATION>
+                <OPERATION Name="EmitAndAccelerate" Layer="Update">
+                  <POSITION x="177.10202" y="290.0198" />
+                  <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
+                    <CATEGORY Name="LogicBubble" />
+                    <OPERATIONNODE Name="EmitAndAccelerate" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                    <INPUT Name="ActorControlData" />
+                    <INPUT Name="Enabled" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Output" />
+                  </OUTPUTS>
+                </OPERATION>
               </NODES>
               <LINKS>
                 <Link source="Inlets/ActorControlData" sink="Nodes/Split/Inputs/Input" />
                 <Link source="Nodes/Split/Outputs/ID" sink="Nodes/TryGetValue/Inputs/Key" />
-                <Link source="Nodes/TryGetValue/Outputs/Value" sink="Outlets/LogicBubble" />
+                <Link source="Nodes/TryGetValue/Outputs/Result" sink="Nodes/SwitchInput/Inputs/Condition" />
+                <Link source="Nodes/SwitchInput/Outputs/Output" sink="Outlets/LogicBubble" />
+                <Link source="Nodes/TryGetValue/Outputs/Value" sink="Nodes/EmitAndAccelerate/Inputs/Input" />
+                <Link source="Inlets/ActorControlData" sink="Nodes/EmitAndAccelerate/Inputs/ActorControlData" />
+                <Link source="Nodes/EmitAndAccelerate/Outputs/Output" sink="Nodes/SwitchInput/Inputs/True" />
               </LINKS>
             </BODY>
           </REGION>
@@ -193,6 +226,7 @@
                     <INPUT Name="Input" />
                     <INPUT Name="Position" />
                     <INPUT Name="Velocity" />
+                    <INPUT Name="Radius" />
                     <INPUT Name="Mass" />
                     <INPUT Name="Name" />
                     <INPUT Name="ID" />
@@ -387,8 +421,8 @@
                   <OUTPUTS>
                     <OUPUT Name="DoEmit" />
                     <OUPUT Name="Angle" />
-                    <OUPUT Name="ID" />
                     <OUPUT Name="Name" />
+                    <OUPUT Name="ID" />
                   </OUTPUTS>
                 </OPERATION>
               </NODES>
@@ -476,6 +510,8 @@
             <INPUTS>
               <INPUT Name="Input" />
               <INPUT Name="Bubbles" />
+              <INPUT Name="Emitters" />
+              <INPUT Name="Collisions" />
               <INPUT Name="Enabled" />
             </INPUTS>
             <OUTPUTS>
@@ -969,8 +1005,8 @@
             <OUTPUTS>
               <OUPUT Name="DoEmit" />
               <OUPUT Name="Angle" />
-              <OUPUT Name="ID" />
               <OUPUT Name="Name" />
+              <OUPUT Name="ID" />
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="SwitchOutput" Layer="EmitAndAccelerate">

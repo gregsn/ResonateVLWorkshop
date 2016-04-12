@@ -24,12 +24,12 @@
    <PIN pinname="Descriptive Name" slicecount="1" values="ControlData">
    </PIN>
    </NODE>
-   <NODE systemname="GameLogic (VLOsmos)" filename="vl\GameLogic.vl" nodename="GameLogic (VLOsmos)" componentmode="Hidden" id="43">
+   <NODE systemname="GameLogic (VLOsmos)" filename="vl\GameLogic.vl" nodename="GameLogic (VLOsmos)" componentmode="Hidden" id="53">
    <BOUNDS type="Node" left="3045" top="1890" width="100" height="100">
    </BOUNDS>
    </NODE>
-   <LINK srcnodeid="43" srcpinname="World" dstnodeid="1" dstpinname="Input Node">
+   <LINK srcnodeid="53" srcpinname="World" dstnodeid="1" dstpinname="Input Node">
    </LINK>
-   <LINK srcnodeid="2" srcpinname="Output Node" dstnodeid="43" dstpinname="ControlData">
+   <LINK srcnodeid="2" srcpinname="Output Node" dstnodeid="53" dstpinname="ControlData">
    </LINK>
    </PATCH>

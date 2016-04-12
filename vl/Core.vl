@@ -34,17 +34,23 @@
           <INLET Name="Angle#1" Layer="Split" PadType="Field">
             <POSITION x="313" y="245" />
           </INLET>
+          <INLET Name="Name" Layer="Join" Type="String">
+            <POSITION x="439" y="90" />
+          </INLET>
+          <INLET Name="Name#1" Layer="Split" PadType="Field">
+            <POSITION x="441" y="244" />
+          </INLET>
+          <INLET Name="ID" Layer="Join" Type="Integer32">
+            <POSITION x="552" y="90" />
+          </INLET>
           <INLET Name="Angle#2" Layer="SetAngle">
             <POSITION x="668" y="113" />
           </INLET>
           <INLET Name="DoEmit#2" Layer="SetDoEmit">
             <POSITION x="678" y="272" />
           </INLET>
-          <INLET Name="Name" Layer="Join" Type="String">
-            <POSITION x="439" y="90" />
-          </INLET>
-          <INLET Name="Name#1" Layer="Split" PadType="Field">
-            <POSITION x="441" y="244" />
+          <INLET Name="ID#1" Layer="Split" PadType="Field">
+            <POSITION x="544" y="229" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -72,6 +78,12 @@
           <OUTLET Name="Name#1" Layer="Split">
             <POSITION x="444" y="310" />
           </OUTLET>
+          <OUTLET Name="ID" Layer="Join" PadType="Field">
+            <POSITION x="554" y="152" />
+          </OUTLET>
+          <OUTLET Name="ID#1" Layer="Split">
+            <POSITION x="551" y="310" />
+          </OUTLET>
         </OUTLETS>
         <CONSTS />
         <REGIONS />
@@ -85,6 +97,8 @@
           <Link source="Inlets/DoEmit#2" sink="Outlets/DoEmit#2" />
           <Link source="Inlets/Name" sink="Outlets/Name" />
           <Link source="Inlets/Name#1" sink="Outlets/Name#1" />
+          <Link source="Inlets/ID" sink="Outlets/ID" />
+          <Link source="Inlets/ID#1" sink="Outlets/ID#1" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -230,6 +244,7 @@
                     <OUPUT Name="DoEmit" />
                     <OUPUT Name="Angle" />
                     <OUPUT Name="Name" />
+                    <OUPUT Name="ID" />
                   </OUTPUTS>
                 </OPERATION>
               </NODES>
@@ -271,6 +286,7 @@
                   <INPUTS>
                     <INPUT Name="Input" />
                     <INPUT Name="Position" />
+                    <INPUT Name="Velocity" />
                     <INPUT Name="Radius" />
                     <INPUT Name="Mass" />
                     <INPUT Name="Name" />
@@ -360,7 +376,8 @@
               <INPUT Name="DoEmit" />
               <INPUT Name="Angle" />
               <INPUT Name="Name" />
-              <INPUT Name="Enabled" />
+              <INPUT Name="ID" />
+              <INPUT Name="Enabled" IsEnabled="true" />
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Output" />
@@ -390,7 +407,8 @@
               <INPUT Name="DoEmit" />
               <INPUT Name="Angle" />
               <INPUT Name="Name" />
-              <INPUT Name="Enabled" />
+              <INPUT Name="ID" />
+              <INPUT Name="Enabled" IsEnabled="true" />
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Output" />
@@ -546,6 +564,12 @@
           <INLET Name="Age#1" Layer="Split" PadType="Field">
             <POSITION x="704" y="251" />
           </INLET>
+          <INLET Name="Velocity" Layer="Join" Type="Vector2">
+            <POSITION x="235" y="64" />
+          </INLET>
+          <INLET Name="Velocity#1" Layer="Split" PadType="Field">
+            <POSITION x="238" y="253" />
+          </INLET>
         </INLETS>
         <OUTLETS>
           <OUTLET Name="Position#1" Layer="Join" PadType="Field">
@@ -584,6 +608,12 @@
           <OUTLET Name="Age#1" Layer="Split">
             <POSITION x="702" y="320" />
           </OUTLET>
+          <OUTLET Name="Velocity" Layer="Join" PadType="Field">
+            <POSITION x="242" y="115" />
+          </OUTLET>
+          <OUTLET Name="Velocity#1" Layer="Split">
+            <POSITION x="244" y="320" />
+          </OUTLET>
         </OUTLETS>
         <CONSTS />
         <REGIONS />
@@ -601,6 +631,8 @@
           <Link source="Inlets/Age#1" sink="Outlets/Age#1" />
           <Link source="Inlets/Radius" sink="Outlets/Radius" />
           <Link source="Inlets/Radius#1" sink="Outlets/Radius#1" />
+          <Link source="Inlets/Velocity" sink="Outlets/Velocity" />
+          <Link source="Inlets/Velocity#1" sink="Outlets/Velocity#1" />
         </LINKS>
       </BODY>
     </PATCH>

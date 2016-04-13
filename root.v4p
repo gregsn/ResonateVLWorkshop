@@ -1,44 +1,46 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="D:\-(-[-!-12.15-!-]-)-\Wrkshps\Vvvv_gl\Ver-3\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="1512" top="348" width="12756" height="11244">
+   <PATCH nodename="C:\dev\ResonateVLWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
+   <NODE systemname="Display" filename="Display.v4p" componentmode="InAWindow" id="12" nodename="Display.v4p">
+   <BOUNDS type="Node" left="2430" top="3000" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2430" top="3000" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
+   </BOUNDS>
+   <PIN pinname="World" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE systemname="GameLogic" filename="GameLogic.v4p" componentmode="InAWindow" id="22" nodename="GameLogic.v4p">
+   <BOUNDS type="Node" left="2430" top="2100" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2430" top="2100" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
+   </BOUNDS>
+   <PIN pinname="ControlData" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="22" srcpinname="World" dstnodeid="12" dstpinname="World">
+   </LINK>
    <NODE systemname="Control" filename="Control.v4p" componentmode="InAWindow" id="10" nodename="Control.v4p">
    <BOUNDS type="Node" left="2445" top="915" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="2445" top="915" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="1512" top="348" width="12756" height="11244">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
    <PIN pinname="ControlData" visible="1">
    </PIN>
    <PIN pinname="World" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <NODE systemname="Display" filename="Display.v4p" componentmode="InAWindow" id="12" nodename="Display.v4p">
-   <BOUNDS type="Node" left="2430" top="3000" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="2430" top="3000" width="4800" height="3600">
-   </BOUNDS>
-   <BOUNDS type="Window" left="1512" top="348" width="12756" height="11244">
-   </BOUNDS>
-   <PIN pinname="World" visible="1" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <NODE systemname="GameLogic" filename="GameLogic.v4p" componentmode="InAWindow" id="20" nodename="GameLogic.v4p">
-   <BOUNDS type="Node" left="2430" top="2100" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="2430" top="2100" width="4800" height="3600">
-   </BOUNDS>
-   <BOUNDS type="Window" left="1512" top="348" width="12756" height="11244">
-   </BOUNDS>
-   </NODE>
-   <LINK srcnodeid="10" srcpinname="ControlData" dstnodeid="20" dstpinname="ControlData">
+   <LINK srcnodeid="10" srcpinname="ControlData" dstnodeid="22" dstpinname="ControlData">
    </LINK>
-   <LINK srcnodeid="20" srcpinname="World" dstnodeid="12" dstpinname="World">
-   </LINK>
-   <LINK srcnodeid="20" srcpinname="World" dstnodeid="10" dstpinname="World">
+   <LINK srcnodeid="22" srcpinname="World" dstnodeid="10" dstpinname="World">
    <LINKPOINT x="2010" y="2505">
    </LINKPOINT>
    <LINKPOINT x="1395" y="2070">
@@ -48,6 +50,4 @@
    <LINKPOINT x="2010" y="660">
    </LINKPOINT>
    </LINK>
-   <PACK Name="dx11-vvvv-girlpower" Version="33.0">
-   </PACK>
    </PATCH>

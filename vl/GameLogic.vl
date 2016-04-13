@@ -6,6 +6,7 @@
     <PACKAGE Name="VL.CoreLib.VVVV" Version="0.38.92-g16f7ca3554" />
     <FILE Name="Core.vl" Location="./Core.vl" />
     <FILE Name="Game.vl" Location="./Game.vl" />
+    <FILE Name="Display.vl" Location="./Display.vl" />
   </DEPENDENCIES>
   <PATCHES>
     <PATCH Name="GameLogic" Category="VVVV.VLOsmos" IsDatatype="true" IsClosed="true" IsMutable="true">
@@ -17,7 +18,7 @@
         </LAYERS>
         <INLETS>
           <INLET Name="ControlData" Layer="Update">
-            <POSITION x="175.346863" y="-167.081909" />
+            <POSITION x="250.546875" y="-124.6819" />
           </INLET>
           <INLET Name="Bubbles" Layer="Update" PadType="Field">
             <POSITION x="439.951447" y="-165.567169" />
@@ -337,10 +338,24 @@
                     <INPUT Name="Name" />
                     <INPUT Name="ID" />
                     <INPUT Name="Age" />
+                    <INPUT Name="IsControlled" />
                     <INPUT Name="Enabled" IsEnabled="true" />
                   </INPUTS>
                   <OUTPUTS>
                     <OUPUT Name="Output" />
+                  </OUTPUTS>
+                </OPERATION>
+                <OPERATION Name="IsControlled" Layer="Update">
+                  <POSITION x="472.799957" y="484.800018" />
+                  <NODEREF LastCat="VVVV.VLOsmos" LastFile="Display.vl">
+                    <OPERATIONNODE Name="IsControlled" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="BubbleID" />
+                    <INPUT Name="ActorControlData" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Result" />
                   </OUTPUTS>
                 </OPERATION>
               </NODES>
@@ -354,13 +369,15 @@
                 <Link source="Nodes/Split/Outputs/Age" sink="Nodes/Join#4/Inputs/Age" />
                 <Link source="Nodes/Join#4/Outputs/Output" sink="Outlets/Output" />
                 <Link source="Inlets/Input" sink="Nodes/Split/Inputs/Input" />
+                <Link source="Nodes/Split/Outputs/ID" sink="Nodes/IsControlled/Inputs/BubbleID" />
+                <Link source="Nodes/IsControlled/Outputs/Result" sink="Nodes/Join#4/Inputs/IsControlled" />
               </LINKS>
             </BODY>
           </REGION>
         </REGIONS>
         <NODES>
           <OPERATION Name="Split" Layer="Update">
-            <POSITION x="177.346863" y="-143.08194" />
+            <POSITION x="252.546875" y="-100.681931" />
             <NODEREF LastCat="VLOsmos.ControlData" LastFile="Core.vl">
               <OPERATIONNODE Name="Split" />
               <CATEGORY Name="ControlData" IsDirectParent="true" />
@@ -585,6 +602,11 @@
           <Link source="Nodes/Create#2/Outputs/Output" sink="Regions/ForEachLoop#1/Inputs/IDFactory">
             <SEGMENTS>
               <Point x="1053.1311" y="-108.335983" />
+            </SEGMENTS>
+          </Link>
+          <Link source="Nodes/Split/Outputs/ActorsControlData" sink="Regions/ForEachLoop/ForEachLoopBody/Nodes/IsControlled/Inputs/ActorControlData">
+            <SEGMENTS>
+              <Point x="293.7533" y="118.774582" />
             </SEGMENTS>
           </Link>
         </LINKS>

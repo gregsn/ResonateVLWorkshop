@@ -104,6 +104,7 @@
                   </INPUTS>
                   <OUTPUTS>
                     <OUPUT Name="Position" />
+                    <OUPUT Name="Velocity" />
                     <OUPUT Name="Radius" />
                     <OUPUT Name="Mass" />
                     <OUPUT Name="Name" />

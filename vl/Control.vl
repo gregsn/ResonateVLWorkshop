@@ -214,6 +214,7 @@
                     <OUPUT Name="Name" />
                     <OUPUT Name="ID" />
                     <OUPUT Name="Age" />
+                    <OUPUT Name="IsControlled" />
                   </OUTPUTS>
                 </OPERATION>
               </NODES>
@@ -1366,6 +1367,7 @@
                     <OUPUT Name="Name" />
                     <OUPUT Name="ID" />
                     <OUPUT Name="Age" />
+                    <OUPUT Name="IsControlled" />
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="=" Layer="Predicate">
@@ -1453,6 +1455,7 @@
                     <OUPUT Name="Name" />
                     <OUPUT Name="ID" />
                     <OUPUT Name="Age" />
+                    <OUPUT Name="IsControlled" />
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Random" Layer="True">
@@ -1579,6 +1582,7 @@
               <OUPUT Name="Name" />
               <OUPUT Name="ID" />
               <OUPUT Name="Age" />
+              <OUPUT Name="IsControlled" />
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Join#1" Layer="Update">
@@ -1716,7 +1720,7 @@
           </CONST>
           <CONST Name="Period" Layer="Update">
             <POSITION x="241.937469" y="830.3742" />
-            <VALUE><![CDATA[{"type":"Float64 [Primitive]","value":0.05000000074505806}]]></VALUE>
+            <VALUE><![CDATA[{"type":"Float64 [Primitive]","value":0.30000030994415283}]]></VALUE>
           </CONST>
           <CONST Name="True" Layer="Update">
             <POSITION x="504.831848" y="942.994263" />
@@ -1776,6 +1780,7 @@
                     <OUPUT Name="Name" />
                     <OUPUT Name="ID" />
                     <OUPUT Name="Age" />
+                    <OUPUT Name="IsControlled" />
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="=" Layer="Predicate">
@@ -1831,7 +1836,7 @@
               <CONSTS>
                 <CONST Name="Input 2" Layer="Update">
                   <POSITION x="428.96698" y="338.5979" />
-                  <VALUE><![CDATA[0.5099999]]></VALUE>
+                  <VALUE><![CDATA[0.249999866]]></VALUE>
                 </CONST>
               </CONSTS>
               <REGIONS />
@@ -1867,6 +1872,7 @@
                     <OUPUT Name="Name" />
                     <OUPUT Name="ID" />
                     <OUPUT Name="Age" />
+                    <OUPUT Name="IsControlled" />
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="&lt;" Layer="Update">
@@ -1956,6 +1962,7 @@
                     <OUPUT Name="Name" />
                     <OUPUT Name="ID" />
                     <OUPUT Name="Age" />
+                    <OUPUT Name="IsControlled" />
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Outbox" Layer="Update">
@@ -2033,6 +2040,7 @@
                     <OUPUT Name="Name" />
                     <OUPUT Name="ID" />
                     <OUPUT Name="Age" />
+                    <OUPUT Name="IsControlled" />
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="!=" Layer="Predicate">
@@ -2104,6 +2112,7 @@
                     <OUPUT Name="Name" />
                     <OUPUT Name="ID" />
                     <OUPUT Name="Age" />
+                    <OUPUT Name="IsControlled" />
                   </OUTPUTS>
                 </OPERATION>
               </NODES>
@@ -2175,6 +2184,7 @@
                     <OUPUT Name="Name" />
                     <OUPUT Name="ID" />
                     <OUPUT Name="Age" />
+                    <OUPUT Name="IsControlled" />
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Outbox" Layer="Update">
@@ -2280,6 +2290,7 @@
               <OUPUT Name="Name" />
               <OUPUT Name="ID" />
               <OUPUT Name="Age" />
+              <OUPUT Name="IsControlled" />
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Join#1" Layer="Update">
@@ -2380,6 +2391,7 @@
               <OUPUT Name="Name" />
               <OUPUT Name="ID" />
               <OUPUT Name="Age" />
+              <OUPUT Name="IsControlled" />
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="-#1" Layer="Update">
@@ -2691,6 +2703,7 @@
               <OUPUT Name="Name" />
               <OUPUT Name="ID" />
               <OUPUT Name="Age" />
+              <OUPUT Name="IsControlled" />
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Split#1" Layer="&gt;">
@@ -2710,6 +2723,7 @@
               <OUPUT Name="Name" />
               <OUPUT Name="ID" />
               <OUPUT Name="Age" />
+              <OUPUT Name="IsControlled" />
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="&gt;" Layer="&gt;">

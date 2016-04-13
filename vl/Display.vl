@@ -43,17 +43,17 @@
           <OUTLET Name="Particle Position" Layer="Update">
             <POSITION x="540.964844" y="538.364136" />
           </OUTLET>
+          <OUTLET Name="Radiuss" Layer="Update">
+            <POSITION x="704.8041" y="538.364136" />
+          </OUTLET>
         </OUTLETS>
         <CONSTS>
-          <CONST Name="Constant" Layer="Update" Type="Float32">
-            <POSITION x="173.600037" y="27.9999924" />
-          </CONST>
           <CONST Name="Constant#4" Layer="Update" Type="Float32">
-            <POSITION x="884.5105" y="103.039764" />
+            <POSITION x="897.3105" y="96.63977" />
             <VALUE><![CDATA[3.0]]></VALUE>
           </CONST>
           <CONST Name="Constant#5" Layer="Update" Type="Float32">
-            <POSITION x="817.7216" y="83.5801849" />
+            <POSITION x="800.921631" y="96.38017" />
             <VALUE><![CDATA[3.0]]></VALUE>
           </CONST>
         </CONSTS>
@@ -139,6 +139,7 @@
             <OUTPUTS>
               <OUPUT Name="Outputs" />
               <OUPUT Name="Positions" />
+              <OUPUT Name="Radiuss" />
             </OUTPUTS>
             <BODY Name="ForEachLoopBody">
               <LAYERS>
@@ -161,6 +162,9 @@
                 <OUTLET Name="Alive" Layer="Update" PadType="Alive">
                   <POSITION x="749.725952" y="253.57251" />
                 </OUTLET>
+                <OUTLET Name="Radius" Layer="Update">
+                  <POSITION x="802.4041" y="479.685669" />
+                </OUTLET>
               </OUTLETS>
               <CONSTS>
                 <CONST Name="Constant" Layer="Update" Type="Float32">
@@ -169,12 +173,12 @@
                   <VALUE><![CDATA[0.1200001]]></VALUE>
                 </CONST>
                 <CONST Name="Constant#1" Layer="Update" Type="Float32">
-                  <POSITION x="814.4364" y="312.434875" />
+                  <POSITION x="800.836365" y="304.4349" />
                   <SIZE width="53.8748779" height="15.50846" />
                   <VALUE><![CDATA[0.0300000813]]></VALUE>
                 </CONST>
                 <CONST Name="Constant#2" Layer="Update" Type="Float32">
-                  <POSITION x="830.9185" y="270.1572" />
+                  <POSITION x="793.318542" y="256.55722" />
                   <VALUE><![CDATA[-0.0300000068]]></VALUE>
                 </CONST>
               </CONSTS>
@@ -193,6 +197,7 @@
                   <OUTPUTS>
                     <OUPUT Name="Output" />
                     <OUPUT Name="Position" />
+                    <OUPUT Name="Radius" />
                     <OUPUT Name="Is Alive" />
                   </OUTPUTS>
                 </OPERATION>
@@ -316,8 +321,13 @@
                 <Link source="Constants/Constant#1" sink="Nodes/Random#1/Inputs/To" />
                 <Link source="Nodes/Vector/Outputs/Y" sink="Nodes/Vector#2/Inputs/Y" />
                 <Link source="Nodes/Vector/Outputs/X" sink="Nodes/Vector#2/Inputs/X" />
-                <Link source="Nodes/Vector#2/Outputs/Output" sink="Outlets/Position" />
                 <Link source="Constants/Constant#2" sink="Nodes/Random#1/Inputs/From" />
+                <Link source="Nodes/Vector#2/Outputs/Output" sink="Outlets/Position" />
+                <Link source="Nodes/Update/Outputs/Radius" sink="Outlets/Radius">
+                  <SEGMENTS>
+                    <Point x="179.4809" y="251.148056" />
+                  </SEGMENTS>
+                </Link>
               </LINKS>
             </BODY>
           </REGION>
@@ -338,7 +348,7 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Input" Layer="Update">
-                  <POSITION x="568.800232" y="-68.79976" />
+                  <POSITION x="598.4002" y="-152.799744" />
                 </INLET>
               </INLETS>
               <OUTLETS>
@@ -348,26 +358,22 @@
               </OUTLETS>
               <CONSTS>
                 <CONST Name="Constant" Layer="Update" Type="Float32">
-                  <POSITION x="861.45105" y="-176.892334" />
+                  <POSITION x="721.45105" y="-136.892334" />
                   <VALUE><![CDATA[-0.24999997]]></VALUE>
                 </CONST>
                 <CONST Name="Constant#1" Layer="Update" Type="Float32">
-                  <POSITION x="928.2399" y="-157.43277" />
+                  <POSITION x="788.2399" y="-117.43277" />
                   <VALUE><![CDATA[0.2500006]]></VALUE>
                 </CONST>
                 <CONST Name="Constant#2" Layer="Update" Type="Float32">
-                  <POSITION x="679.2861" y="-170.867081" />
-                  <VALUE><![CDATA[-0.05999992]]></VALUE>
-                </CONST>
-                <CONST Name="Constant#3" Layer="Update" Type="Float32">
-                  <POSITION x="768.4814" y="-172.8492" />
-                  <VALUE><![CDATA[0.03000002]]></VALUE>
+                  <POSITION x="832.8041" y="-50.394455" />
+                  <VALUE><![CDATA[4.0]]></VALUE>
                 </CONST>
               </CONSTS>
               <REGIONS />
               <NODES>
                 <OPERATION Name="Split#1" Layer="Update">
-                  <POSITION x="583.532349" y="-40.7771759" />
+                  <POSITION x="609.1324" y="-119.977173" />
                   <NODEREF LastCat="VLOsmos.Bubble" LastFile="Core.vl">
                     <OPERATIONNODE Name="Split" />
                     <CATEGORY Name="Bubble" IsDirectParent="true" />
@@ -384,7 +390,7 @@
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Create" Layer="Update">
-                  <POSITION x="582.532349" y="8.222771" />
+                  <POSITION x="591.3324" y="2.62276459" />
                   <NODEREF LastCat="VVVV.VLOsmos.Particle" LastFile="Display.vl">
                     <CATEGORY Name="Particle" />
                     <OPERATIONNODE Name="Create" />
@@ -392,13 +398,14 @@
                   <INPUTS>
                     <INPUT Name="Initial Position" />
                     <INPUT Name="Initial Velocity" />
+                    <INPUT Name="Radius" />
                   </INPUTS>
                   <OUTPUTS>
                     <OUPUT Name="Output" />
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Vector" Layer="Update">
-                  <POSITION x="871.3083" y="-126.842567" />
+                  <POSITION x="731.3083" y="-86.84257" />
                   <NODEREF LastCat="2D.Vector2" LastFile="SharpDX.Mathematics.dll" LastPackage="SharpDX.Mathematics">
                     <OPERATIONNODE Name="Vector" Version="Join" />
                     <CATEGORY Name="Vector2" IsDirectParent="true" />
@@ -411,8 +418,8 @@
                     <OUPUT Name="Output" />
                   </OUTPUTS>
                 </OPERATION>
-                <OPERATION Name="Random#1" Layer="Update">
-                  <POSITION x="704.3115" y="-126.840637" />
+                <OPERATION Name="Random#2" Layer="Update">
+                  <POSITION x="690.523132" y="-38.64798" />
                   <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
                     <OPERATIONNODE Name="Random" />
                     <CATEGORY Name="Adaptive" IsDirectParent="true" />
@@ -425,15 +432,17 @@
                     <OUPUT Name="Output" />
                   </OUTPUTS>
                 </OPERATION>
-                <OPERATION Name="Random#2" Layer="Update">
-                  <POSITION x="741.7231" y="-61.84796" />
+                <OPERATION Name="/" Layer="Update">
+                  <POSITION x="792.0041" y="-17.5944519" />
                   <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
-                    <OPERATIONNODE Name="Random" />
+                    <OPERATIONNODE Name="/" />
                     <CATEGORY Name="Adaptive" IsDirectParent="true" />
                   </NODEREF>
                   <INPUTS>
-                    <INPUT Name="From" />
-                    <INPUT Name="To" />
+                    <INPUT Name="Input" />
+                    <INPUT Name="Input 2" />
+                    <INPUT Name="Input 3" />
+                    <INPUT Name="Enabled" />
                   </INPUTS>
                   <OUTPUTS>
                     <OUPUT Name="Output" />
@@ -446,10 +455,11 @@
                 <Link source="Nodes/Create/Outputs/Output" sink="Outlets/Output" />
                 <Link source="Constants/Constant" sink="Nodes/Vector/Inputs/X" />
                 <Link source="Constants/Constant#1" sink="Nodes/Vector/Inputs/Y" />
-                <Link source="Constants/Constant#2" sink="Nodes/Random#1/Inputs/From" />
-                <Link source="Constants/Constant#3" sink="Nodes/Random#1/Inputs/To" />
                 <Link source="Nodes/Vector/Outputs/Output" sink="Nodes/Random#2/Inputs/To" />
                 <Link source="Nodes/Random#2/Outputs/Output" sink="Nodes/Create/Inputs/Initial Velocity" />
+                <Link source="Nodes/Split#1/Outputs/Mass" sink="Nodes/&amp;#47;/Inputs/Input" />
+                <Link source="Constants/Constant#2" sink="Nodes/&amp;#47;/Inputs/Input 2" />
+                <Link source="Nodes/&amp;#47;/Outputs/Output" sink="Nodes/Create/Inputs/Radius" />
               </LINKS>
             </BODY>
           </REGION>
@@ -553,6 +563,11 @@
           <Link source="Constants/Constant#4" sink="Nodes/Vector#2/Inputs/Y" />
           <Link source="Constants/Constant#5" sink="Nodes/Vector#2/Inputs/X" />
           <Link source="Nodes/Vector#2/Outputs/Output" sink="Nodes/FromCenterWidth/Inputs/Width" />
+          <Link source="Regions/ForEachLoop/Outputs/Radiuss" sink="Outlets/Radiuss">
+            <SEGMENTS>
+              <Point x="-168.799988" y="56.0916138" />
+            </SEGMENTS>
+          </Link>
         </LINKS>
       </BODY>
     </PATCH>
@@ -569,14 +584,20 @@
           <INLET Name="Initial Velocity" Layer="Create">
             <POSITION x="179.199966" y="71.99999" />
           </INLET>
+          <INLET Name="Radius" Layer="Create" Type="Float32">
+            <POSITION x="270.399963" y="71.99999" />
+          </INLET>
           <INLET Name="Position" Layer="Update" PadType="Field">
-            <POSITION x="267.2" y="140.4" />
+            <POSITION x="312.000031" y="126.799988" />
           </INLET>
           <INLET Name="Velocity#1" Layer="Update" PadType="Field">
             <POSITION x="427.2" y="136.4" />
           </INLET>
           <INLET Name="WorldRange" Layer="Update">
-            <POSITION x="508.600037" y="142.4" />
+            <POSITION x="467.800049" y="183.2" />
+          </INLET>
+          <INLET Name="Radius#1" Layer="Update" PadType="Field">
+            <POSITION x="507.999939" y="399.199951" />
           </INLET>
           <INLET Name="Age" Layer="Update" PadType="Field">
             <POSITION x="613.5999" y="245.599991" />
@@ -589,6 +610,9 @@
           <OUTLET Name="Velocity" Layer="Create" PadType="Field">
             <POSITION x="135.999985" y="151.999985" />
           </OUTLET>
+          <OUTLET Name="Radius" Layer="Create" PadType="Field">
+            <POSITION x="195.999985" y="152.799973" />
+          </OUTLET>
           <OUTLET Name="Position#2" Layer="Update" PadType="Field">
             <POSITION x="294.2" y="371.399963" />
           </OUTLET>
@@ -597,6 +621,9 @@
           </OUTLET>
           <OUTLET Name="Velocity#2" Layer="Update" PadType="Field">
             <POSITION x="428.2" y="368.399963" />
+          </OUTLET>
+          <OUTLET Name="Radius#1" Layer="Update">
+            <POSITION x="507.999969" y="456.799957" />
           </OUTLET>
           <OUTLET Name="Age" Layer="Update" PadType="Field">
             <POSITION x="611.999939" y="354.399963" />
@@ -607,8 +634,8 @@
         </OUTLETS>
         <CONSTS>
           <CONST Name="Max Age" Layer="Update">
-            <POSITION x="706.3999" y="208.799973" />
-            <VALUE><![CDATA[80]]></VALUE>
+            <POSITION x="676.799866" y="237.599976" />
+            <VALUE><![CDATA[120]]></VALUE>
           </CONST>
         </CONSTS>
         <REGIONS />
@@ -676,7 +703,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Split" Layer="Update">
-            <POSITION x="510.2" y="172.4" />
+            <POSITION x="469.400024" y="213.2" />
             <NODEREF LastCat="Math.Ranges.Range" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="Split" />
               <CATEGORY Name="Range" IsDirectParent="true" />
@@ -704,7 +731,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="&lt;" Layer="Update">
-            <POSITION x="669.5999" y="393.599976" />
+            <POSITION x="651.999939" y="395.199982" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="&lt;" />
               <CATEGORY Name="Adaptive" IsDirectParent="true" />
@@ -742,6 +769,8 @@
           <Link source="Nodes/Inc/Outputs/Output" sink="Nodes/&lt;/Inputs/Input" />
           <Link source="Constants/Max Age" sink="Nodes/&lt;/Inputs/Input 2" />
           <Link source="Nodes/&lt;/Outputs/Result" sink="Outlets/Is Alive" />
+          <Link source="Inlets/Radius" sink="Outlets/Radius" />
+          <Link source="Inlets/Radius#1" sink="Outlets/Radius#1" />
         </LINKS>
       </BODY>
     </PATCH>

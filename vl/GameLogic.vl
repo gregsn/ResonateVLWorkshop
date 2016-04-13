@@ -277,7 +277,7 @@
             </BODY>
           </REGION>
           <REGION Name="ForEachLoop" Layer="Update" Kind="ForEachLoop">
-            <POSITION x="301.55658" y="421.145447" />
+            <POSITION x="393.55658" y="446.745453" />
             <SIZE x="80" y="80" />
             <INPUTS>
               <INPUT Name="Inputs" />
@@ -293,19 +293,19 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Input" Layer="Update">
-                  <POSITION x="314.797119" y="422.773621" />
+                  <POSITION x="406.797119" y="448.373627" />
                 </INLET>
               </INLETS>
               <OUTLETS>
                 <OUTLET Name="Output" Layer="Update">
-                  <POSITION x="304.05658" y="558.266541" />
+                  <POSITION x="396.05658" y="583.866455" />
                 </OUTLET>
               </OUTLETS>
               <CONSTS />
               <REGIONS />
               <NODES>
                 <OPERATION Name="Split" Layer="Update">
-                  <POSITION x="355.6156" y="460.9623" />
+                  <POSITION x="447.6156" y="486.562317" />
                   <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
                     <OPERATIONNODE Name="Split" />
                     <CATEGORY Name="LogicBubble" IsDirectParent="true" />
@@ -324,7 +324,7 @@
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Join#4" Layer="Update">
-                  <POSITION x="347.61554" y="509.96228" />
+                  <POSITION x="439.61554" y="535.562256" />
                   <NODEREF LastCat="VLOsmos.Bubble" LastFile="Core.vl">
                     <OPERATIONNODE Name="Join" />
                     <CATEGORY Name="Bubble" IsDirectParent="true" />
@@ -346,7 +346,7 @@
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="IsControlled" Layer="Update">
-                  <POSITION x="472.799957" y="484.800018" />
+                  <POSITION x="564.7999" y="510.400024" />
                   <NODEREF LastCat="VVVV.VLOsmos" LastFile="Display.vl">
                     <OPERATIONNODE Name="IsControlled" />
                   </NODEREF>
@@ -609,6 +609,7 @@
               <Point x="293.7533" y="118.774582" />
             </SEGMENTS>
           </Link>
+          <Link source="Nodes/BubblesTransfer/Outputs/Collisions" sink="Nodes/Join#3/Inputs/Collisions" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -1027,7 +1028,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="+#2" Layer="IntersectsVL">
-            <POSITION x="2311.6" y="329.999969" />
+            <POSITION x="2318.8" y="339.599976" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="+" />
               <CATEGORY Name="Adaptive" IsDirectParent="true" />

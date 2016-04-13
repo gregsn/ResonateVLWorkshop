@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\[w]\vl\logic paert\ResonateVLWorkshop\root.v4p" systemname="root" filename="C:\[w]\vl\logic paert\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="15">
-   <BOUNDS type="Window" left="1920" top="735" width="11370" height="11820">
+   <PATCH nodename="C:\[w]\vl\logic paert\ResonateVLWorkshop\root.v4p" systemname="root" filename="C:\[w]\vl\logic paert\ResonateVLWorkshop\root.v4p" scrollx="1935" scrolly="0">
+   <BOUNDS type="Window" left="1980" top="2685" width="11310" height="11820">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -9,7 +9,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="3105" top="7365" width="2400" height="1800">
    </BOUNDS>
-   <BOUNDS type="Window" left="18285" top="6450" width="8415" height="8115">
+   <BOUNDS type="Window" left="19635" top="6960" width="8685" height="8295">
    </BOUNDS>
    <PIN pinname="Layers" visible="1" slicecount="1" values="||">
    </PIN>
@@ -20,6 +20,8 @@
    <PIN pinname="Aspect Ratio" visible="1">
    </PIN>
    <PIN pinname="Background Color" slicecount="1" values="|0.12284,0.14947,0.16167,1.00000|">
+   </PIN>
+   <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="4">
    </PIN>
    </NODE>
    <NODE systemname="AspectRatio (Transform)" nodename="AspectRatio (Transform)" componentmode="Hidden" id="23" hiddenwhenlocked="1">
@@ -89,7 +91,7 @@
    </BOUNDS>
    </NODE>
    <NODE id="30" systemname="Segment (DX9)" nodename="Segment (DX9)" componentmode="Hidden" hiddenwhenlocked="1" managers="">
-   <BOUNDS type="Node" left="3165" top="6555" width="100" height="100">
+   <BOUNDS type="Node" left="3225" top="6300" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Resolution X" visible="1" pintype="Input" slicecount="1" values="6">
    </PIN>
@@ -132,12 +134,10 @@
    </NODE>
    <LINK srcnodeid="39" srcpinname="Output" dstnodeid="30" dstpinname="Color" hiddenwhenlocked="1">
    </LINK>
-   <LINK srcnodeid="30" srcpinname="Layer" dstnodeid="31" dstpinname="Layers" hiddenwhenlocked="1">
-   </LINK>
    <NODE systemname="Transform (Transform 2d Vector)" nodename="Transform (Transform 2d Vector)" componentmode="Hidden" id="135" hiddenwhenlocked="1">
    <BOUNDS type="Node" left="3105" top="5355" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="TranslateXY" visible="1" slicecount="2" values="0.142481029033661,-0.604024946689606">
+   <PIN pinname="TranslateXY" visible="1" slicecount="22" values="-0.817837655544281,0.412417441606522,-0.154853731393814,-0.880130648612976,0.631478250026703,0.528546333312988,0.643985271453857,0.00856350176036358,0.286928564310074,0.283426016569138,-0.336287140846252,-0.232716724276543,0.36850717663765,-0.123009599745274,-0.677751123905182,-0.851281702518463,-0.993360936641693,0.539253950119019,-0.904223203659058,-0.948228299617767,-0.683291435241699,-0.584722578525543">
    </PIN>
    <PIN pinname="ScaleXY" visible="1" slicecount="1" values="0.905791223049164">
    </PIN>
@@ -159,29 +159,107 @@
    <LINK srcnodeid="137" srcpinname="Output" dstnodeid="135" dstpinname="ScaleXY" hiddenwhenlocked="1">
    </LINK>
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="169" hiddenwhenlocked="1">
-   <BOUNDS type="Node" left="3855" top="2985" width="100" height="100">
+   <BOUNDS type="Node" left="3750" top="3060" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 2" slicecount="1" values="2">
    </PIN>
-   <PIN pinname="Input 1" visible="1" slicecount="1" values="0.680119216442108">
+   <PIN pinname="Input 1" visible="1" slicecount="11" values="0.0775396004319191,0.01668113283813,0.0433236993849278,0.0341734811663628,0.0266956817358732,0.047844223678112,0.107771083712578,0.0816982239484787,0.0673334747552872,0.0815518572926521,0.0324531346559525">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="169" srcpinname="Output" dstnodeid="137" dstpinname="Input" hiddenwhenlocked="1">
    </LINK>
-   <NODE id="200" systemname="GameLogic (VLOsmos)" filename="vl\GameLogic.vl" nodename="GameLogic (VLOsmos)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
-   <BOUNDS type="Node" left="3150" top="2310" width="100" height="100">
+   <NODE systemname="Group (EX9)" nodename="Group (EX9)" componentmode="Hidden" id="205">
+   <BOUNDS type="Node" left="5685" top="6885" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="0" top="0" width="2400" height="1800">
+   <PIN pinname="Layer 2" visible="1">
+   </PIN>
+   <PIN pinname="Layer 1" visible="1">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Arrow (EX9)" filename="%VVVV%\lib\nodes\modules\EX9\Arrow (EX9).v4p" nodename="Arrow (EX9)" componentmode="Hidden" id="206">
+   <BOUNDS type="Node" left="6015" top="6390" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Transform" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="206" srcpinname="Layer" dstnodeid="205" dstpinname="Layer 2">
+   </LINK>
+   <LINK srcnodeid="30" srcpinname="Layer" dstnodeid="205" dstpinname="Layer 1">
+   </LINK>
+   <LINK srcnodeid="205" srcpinname="Layer" dstnodeid="31" dstpinname="Layers">
+   </LINK>
+   <NODE systemname="Transform (Transform 2d Vector)" nodename="Transform (Transform 2d Vector)" componentmode="Hidden" id="207">
+   <BOUNDS type="Node" left="5925" top="5475" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="TranslateXY" visible="1" slicecount="22" values="-0.817837655544281,0.412417441606522,-0.154853731393814,-0.880130648612976,0.631478250026703,0.528546333312988,0.643985271453857,0.00856350176036358,0.286928564310074,0.283426016569138,-0.336287140846252,-0.232716724276543,0.36850717663765,-0.123009599745274,-0.677751123905182,-0.851281702518463,-0.993360936641693,0.539253950119019,-0.904223203659058,-0.948228299617767,-0.683291435241699,-0.584722578525543">
+   </PIN>
+   <PIN pinname="Rotate" visible="1">
+   </PIN>
+   <PIN pinname="ScaleXY" visible="1" slicecount="18" values="0.227787375450134,0.227787375450134,0.24924524128437,0.24924524128437,0.14036126434803,0.14036126434803,0.0309515185654163,0.0309515185654163,0.0504916869103909,0.0504916869103909,0.111852139234543,0.111852139234543,0.0713783949613571,0.0713783949613571,0.0320945866405964,0.0320945866405964,0.0493391528725624,0.0493391528725624">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="207" srcpinname="Transform Out" dstnodeid="206" dstpinname="Transform">
+   </LINK>
+   <NODE systemname="Points2Vector (2d)" nodename="Points2Vector (2d)" componentmode="Hidden" id="208">
+   <BOUNDS type="Node" left="5895" top="3510" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="X2" visible="1">
+   </PIN>
+   <PIN pinname="Y2" visible="1">
+   </PIN>
+   <PIN pinname="Angle" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Vector (2d Split)" nodename="Vector (2d Split)" componentmode="Hidden" id="209">
+   <BOUNDS type="Node" left="6255" top="2925" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="X" visible="1">
+   </PIN>
+   <PIN pinname="Y" visible="1">
+   </PIN>
+   <PIN pinname="XY" visible="1" slicecount="22" values="-0.0903830155730248,0.0438717864453793,-0.0742300003767014,-0.0783390924334526,-0.0301858671009541,-0.0324188992381096,0.0280229821801186,-0.0118368081748486,-0.0231810100376606,-0.0692625194787979,0.0358354821801186,-0.000882856547832489,0.0224261209368706,-0.0591677092015743,-0.0660567134618759,0.0012454375391826,-0.0204497836530209,-0.0277526937425137,-0.0722871422767639,-0.0551350526511669,0.0357557274401188,0.0448223277926445">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="209" srcpinname="X" dstnodeid="208" dstpinname="X2">
+   </LINK>
+   <LINK srcnodeid="209" srcpinname="Y" dstnodeid="208" dstpinname="Y2">
+   </LINK>
+   <LINK srcnodeid="208" srcpinname="Angle" dstnodeid="207" dstpinname="Rotate">
+   </LINK>
+   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="211">
+   <BOUNDS type="Node" left="6180" top="4245" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6180" top="4245" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="1" values="0.08">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="211" srcpinname="Y Output Value" dstnodeid="207" dstpinname="ScaleXY">
+   </LINK>
+   <NODE id="226" systemname="GameLogic (VLOsmos)" filename="vl\GameLogic.vl" nodename="GameLogic (VLOsmos)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
+   <BOUNDS type="Node" left="3210" top="2160" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="60" top="0" width="2400" height="1800">
    </BOUNDS>
    <BOUNDS type="Window" left="0" top="0" width="6000" height="4500">
    </BOUNDS>
    </NODE>
-   <LINK srcnodeid="200" srcpinname="PositionsXY" dstnodeid="135" dstpinname="TranslateXY" hiddenwhenlocked="1">
+   <LINK srcnodeid="226" srcpinname="PositionsXY" dstnodeid="135" dstpinname="TranslateXY" hiddenwhenlocked="1">
    </LINK>
-   <LINK srcnodeid="85" srcpinname="ControlData" dstnodeid="200" dstpinname="ControlData">
+   <LINK srcnodeid="226" srcpinname="Radiuss" dstnodeid="169" dstpinname="Input 1" hiddenwhenlocked="1">
    </LINK>
-   <LINK srcnodeid="200" srcpinname="Radiuss" dstnodeid="169" dstpinname="Input 1" hiddenwhenlocked="1">
+   <LINK srcnodeid="226" srcpinname="PositionsXY" dstnodeid="207" dstpinname="TranslateXY">
+   </LINK>
+   <LINK srcnodeid="226" srcpinname="VelocitysXY" dstnodeid="209" dstpinname="XY">
    </LINK>
    </PATCH>

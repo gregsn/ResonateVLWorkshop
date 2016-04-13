@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="D:\VL\ResonateVLWorkshop\ResonateVLWorkshop\Display.v4p" systemname="Display" filename="C:\dev\ResonateVLWorkshop\Display.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="0" top="0" width="13080" height="10920">
+   <PATCH nodename="C:\dev\ResonateVLWorkshop\Display.v4p" systemname="Display" filename="C:\dev\ResonateVLWorkshop\Display.v4p" scrollx="732" scrolly="708">
+   <BOUNDS type="Window" left="0" top="0" width="8688" height="11028">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -19,7 +19,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="2670" top="8985" width="2400" height="1800">
    </BOUNDS>
-   <BOUNDS type="Window" left="13890" top="0" width="6600" height="7200">
+   <BOUNDS type="Window" left="8760" top="0" width="6600" height="7200">
    </BOUNDS>
    <PIN pinname="Layers" visible="1" slicecount="1" values="||">
    </PIN>
@@ -47,7 +47,7 @@
    </PIN>
    <PIN pinname="Render State" visible="1">
    </PIN>
-   <PIN pinname="Color" slicecount="1" values="|0.00000,0.60271,0.99753,1.00000|" visible="1">
+   <PIN pinname="Color" slicecount="1" visible="1" values="|0.00000,0.60271,0.99753,1.00000|">
    </PIN>
    </NODE>
    <NODE systemname="Translate (Transform)" nodename="Translate (Transform)" componentmode="Hidden" id="5">
@@ -271,9 +271,9 @@
    <LINK srcnodeid="31" srcpinname="Output" dstnodeid="30" dstpinname="Z">
    </LINK>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="32">
-   <BOUNDS type="Node" left="9375" top="3600" width="100" height="100">
+   <BOUNDS type="Node" left="10707" top="3432" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="9375" top="3600" width="465" height="315">
+   <BOUNDS type="Box" left="10707" top="3432" width="465" height="315">
    </BOUNDS>
    <PIN pinname="Value Type" slicecount="1" values="Integer">
    </PIN>
@@ -567,7 +567,7 @@
    </PIN>
    <PIN pinname="Input 2" visible="1">
    </PIN>
-   <PIN pinname="Switch" visible="1">
+   <PIN pinname="Switch" visible="1" slicecount="1" values="0">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -629,7 +629,7 @@
    </BOUNDS>
    <PIN pinname="Input" visible="1" slicecount="10" values="-0.96475338935852,0.896133422851562,-0.654020309448242,0.145781368017197,0.932913661003113,0.816455721855164,0.889142990112305,-0.561679005622864,0.0426095351576805,-0.532099425792694">
    </PIN>
-   <PIN pinname="Select" visible="1">
+   <PIN pinname="Select" visible="1" slicecount="1" values="1">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -689,8 +689,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="56" srcpinname="Transform Out" dstnodeid="62" dstpinname="Source">
-   </LINK>
-   <LINK srcnodeid="62" srcpinname="Transform Out" dstnodeid="2" dstpinname="View">
    </LINK>
    <LINK srcnodeid="52" srcpinname="PositionsXY" dstnodeid="61" dstpinname="Y Input Value">
    </LINK>

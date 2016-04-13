@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\Workshop VL\Project\GameLogic.v4p" systemname="GameLogic" filename="C:\dev\ResonateVLWorkshop\GameLogic.v4p" scrollx="0" scrolly="14">
-   <BOUNDS type="Window" left="1078" top="3997" width="7196" height="6958">
+   <PATCH nodename="C:\dev\ResonateVLWorkshop\GameLogic.v4p" systemname="GameLogic" filename="C:\dev\ResonateVLWorkshop\GameLogic.v4p" scrollx="0" scrolly="14">
+   <BOUNDS type="Window" left="0" top="0" width="8688" height="11028">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -11,7 +11,7 @@
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="World">
    </PIN>
-   <PIN pinname="Input Node" slicecount="1" values="||" visible="1">
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="2" systemname="IOBox (Node)">
@@ -27,9 +27,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="110" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="2373" top="1750" width="480" height="480">
+   <BOUNDS type="Box" left="1941" top="2374" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="2373" top="1750" width="0" height="0">
+   <BOUNDS type="Node" left="1941" top="2374" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -54,4 +54,48 @@
    </LINK>
    <LINK srcnodeid="110" srcpinname="Y Output Value" dstnodeid="112" dstpinname="Reset">
    </LINK>
+   <NODE systemname="Keyboard (Devices Desktop)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Keyboard (Devices Desktop)" componentmode="Hidden" id="113">
+   <BOUNDS type="Node" left="1212" top="528" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Device" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="KeyMatch (Keyboard)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="KeyMatch (Keyboard)" componentmode="Hidden" id="114">
+   <BOUNDS type="Node" left="1284" top="1044" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Keyboard" visible="1">
+   </PIN>
+   <PIN pinname="Key Match" slicecount="1" values="r">
+   </PIN>
+   <PIN pinname="R" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="113" srcpinname="Device" dstnodeid="114" dstpinname="Keyboard">
+   </LINK>
+   <NODE systemname="TogEdge (Animation)" nodename="TogEdge (Animation)" componentmode="Hidden" id="115">
+   <BOUNDS type="Node" left="1356" top="1680" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Up Edge" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="114" srcpinname="R" dstnodeid="115" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="115" srcpinname="Up Edge" dstnodeid="110" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="116" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="1128" top="2916" width="1140" height="240">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1128" top="2916" width="1476" height="336">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|press r to reset|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
    </PATCH>

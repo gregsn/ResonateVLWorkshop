@@ -23,28 +23,31 @@
         </INLETS>
         <OUTLETS>
           <OUTLET Name="Positions" Layer="Update">
-            <POSITION x="-74" y="574" />
+            <POSITION x="-74" y="570" />
           </OUTLET>
           <OUTLET Name="Radii" Layer="Update">
-            <POSITION x="29" y="574" />
+            <POSITION x="29" y="570" />
           </OUTLET>
           <OUTLET Name="Names" Layer="Update">
-            <POSITION x="111" y="574" />
+            <POSITION x="111" y="570" />
           </OUTLET>
           <OUTLET Name="IDs" Layer="Update">
-            <POSITION x="198" y="574" />
+            <POSITION x="198" y="570" />
           </OUTLET>
           <OUTLET Name="Ages" Layer="Update">
-            <POSITION x="274" y="574" />
+            <POSITION x="274" y="570" />
           </OUTLET>
           <OUTLET Name="Emit Positions" Layer="Update">
-            <POSITION x="386" y="574" />
+            <POSITION x="470" y="570" />
           </OUTLET>
           <OUTLET Name="Collision Effects" Layer="Update" PadType="Field">
             <POSITION x="544" y="452" />
           </OUTLET>
           <OUTLET Name="Collision Positions" Layer="Update">
-            <POSITION x="675" y="574" />
+            <POSITION x="675" y="570" />
+          </OUTLET>
+          <OUTLET Name="IsControleds" Layer="Update">
+            <POSITION x="352.80014" y="570" />
           </OUTLET>
         </OUTLETS>
         <CONSTS />
@@ -146,19 +149,19 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Input" Layer="Update">
-                  <POSITION x="343" y="441" />
+                  <POSITION x="427" y="437" />
                 </INLET>
               </INLETS>
               <OUTLETS>
                 <OUTLET Name="Position" Layer="Update">
-                  <POSITION x="343" y="521" />
+                  <POSITION x="427" y="517" />
                 </OUTLET>
               </OUTLETS>
               <CONSTS />
               <REGIONS />
               <NODES>
                 <OPERATION Name="Split" Layer="Update">
-                  <POSITION x="349" y="467" />
+                  <POSITION x="433" y="463" />
                   <NODEREF LastCat="VLOsmos.EmitData" LastFile="Core.vl">
                     <OPERATIONNODE Name="Split" />
                     <CATEGORY Name="EmitData" IsDirectParent="true" />
@@ -178,7 +181,7 @@
             </BODY>
           </REGION>
           <REGION Name="ForEachLoop#1" Layer="Update" Kind="ForEachLoop">
-            <POSITION x="738" y="77" />
+            <POSITION x="653.2" y="101.8" />
             <SIZE x="80" y="80" />
             <INPUTS>
               <INPUT Name="Inputs" />
@@ -194,19 +197,19 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Input" Layer="Update">
-                  <POSITION x="750.5" y="78.6281738" />
+                  <POSITION x="665.7" y="103.428177" />
                 </INLET>
               </INLETS>
               <OUTLETS>
                 <OUTLET Name="Position" Layer="Update">
-                  <POSITION x="740.5" y="186.628174" />
+                  <POSITION x="655.7" y="211.428177" />
                 </OUTLET>
               </OUTLETS>
               <CONSTS />
               <REGIONS />
               <NODES>
                 <OPERATION Name="Split" Layer="Update">
-                  <POSITION x="756.5" y="104.628174" />
+                  <POSITION x="671.7" y="129.428177" />
                   <NODEREF LastCat="VLOsmos.CollisionData" LastFile="Core.vl">
                     <OPERATIONNODE Name="Split" />
                     <CATEGORY Name="CollisionData" IsDirectParent="true" />
@@ -219,7 +222,7 @@
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Create" Layer="Update">
-                  <POSITION x="754" y="149" />
+                  <POSITION x="669.2" y="173.8" />
                   <NODEREF LastCat="VVVV.VLOsmos.CollisionEffect" LastFile="Display.vl">
                     <OPERATIONNODE Name="Create" />
                     <CATEGORY Name="CollisionEffect" IsDirectParent="true" />
@@ -350,6 +353,7 @@
           <Link source="Nodes/Concat/Outputs/Output" sink="Regions/ForEachLoop#3/Inputs/Inputs" />
           <Link source="Regions/ForEachLoop#3/Outputs/Outputs" sink="Outlets/Collision Effects" />
           <Link source="Regions/ForEachLoop#3/Outputs/Positions" sink="Outlets/Collision Positions" />
+          <Link source="Regions/ForEachLoop#2/Outputs/IsControleds" sink="Outlets/IsControleds" />
         </LINKS>
       </BODY>
     </PATCH>

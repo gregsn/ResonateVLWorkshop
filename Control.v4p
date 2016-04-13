@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
    <PATCH nodename="C:\vvvv\git\ResonateWorkshop\Control.v4p" systemname="Control" filename="C:\dev\ResonateVLWorkshop\Control.v4p" scrollx="0" scrolly="825">
-   <BOUNDS type="Window" left="1170" top="3045" width="8805" height="7635">
+   <BOUNDS type="Window" left="630" top="1155" width="6795" height="5715">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -258,7 +258,7 @@
    </LINK>
    <LINK srcnodeid="48" srcpinname="Output" dstnodeid="51" dstpinname="WorldAvailable">
    </LINK>
-   <NODE systemname="FrameDelay (World)" filename="subpatch\FrameDelay (World).v4p" componentmode="InAWindow" id="52" nodename="subpatch\FrameDelay (World).v4p">
+   <NODE systemname="FrameDelay (World)" filename="subpatch\FrameDelay (World).v4p" componentmode="Hidden" id="52" nodename="subpatch\FrameDelay (World).v4p">
    <BOUNDS type="Node" left="2565" top="2220" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="2565" top="2220" width="4800" height="3600">
@@ -324,20 +324,6 @@
    <BOUNDS type="Box" left="0" top="0" width="360" height="270">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="def">
-   </PIN>
-   <PIN pinname="Output String" visible="0">
-   </PIN>
-   <PIN pinname="Show Grid" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="String Type" slicecount="1" values="MultiLine">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="62" systemname="IOBox (String)">
-   <BOUNDS type="Node" left="5595" top="1725" width="660" height="270">
-   </BOUNDS>
-   <BOUNDS type="Box" left="5595" top="1725" width="660" height="270">
-   </BOUNDS>
-   <PIN pinname="Input String" visible="0" slicecount="1" values="serializ">
    </PIN>
    <PIN pinname="Output String" visible="0">
    </PIN>

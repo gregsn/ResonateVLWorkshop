@@ -43,7 +43,7 @@
           <CONST Name="Iteration Count" Layer="Create">
             <POSITION x="-476.741852" y="-63.2979736" />
             <SIZE width="40" height="15.50846" />
-            <VALUE><![CDATA[5]]></VALUE>
+            <VALUE><![CDATA[30]]></VALUE>
           </CONST>
           <CONST Name="Width" Layer="Create">
             <POSITION x="-177.1167" y="-23.0229187" />
@@ -188,7 +188,7 @@
                   <CONFIGURATION>
                     <PRECISION><![CDATA[4]]></PRECISION>
                   </CONFIGURATION>
-                  <VALUE><![CDATA[0.05]]></VALUE>
+                  <VALUE><![CDATA[0.01]]></VALUE>
                 </CONST>
               </CONSTS>
               <REGIONS />

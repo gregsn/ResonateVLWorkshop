@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\dev\ResonateVLWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
+   <PATCH nodename="C:\vvvv\git\ResonateWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="510" top="435" width="7590" height="7635">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -9,7 +9,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="2430" top="3000" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
+   <BOUNDS type="Window" left="510" top="435" width="7590" height="7635">
    </BOUNDS>
    <PIN pinname="World" visible="1" slicecount="1" values="||">
    </PIN>
@@ -19,9 +19,11 @@
    </BOUNDS>
    <BOUNDS type="Box" left="2430" top="2100" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
+   <BOUNDS type="Window" left="510" top="435" width="7590" height="7635">
    </BOUNDS>
-   <PIN pinname="ControlData" slicecount="1" values="||">
+   <PIN pinname="ControlData" slicecount="1" values="||" visible="1">
+   </PIN>
+   <PIN pinname="World" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="22" srcpinname="World" dstnodeid="12" dstpinname="World">
@@ -31,23 +33,11 @@
    </BOUNDS>
    <BOUNDS type="Box" left="2445" top="915" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
+   <BOUNDS type="Window" left="510" top="435" width="7590" height="7635">
    </BOUNDS>
    <PIN pinname="ControlData" visible="1">
    </PIN>
    <PIN pinname="World" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <LINK srcnodeid="10" srcpinname="ControlData" dstnodeid="22" dstpinname="ControlData">
-   </LINK>
-   <LINK srcnodeid="22" srcpinname="World" dstnodeid="10" dstpinname="World">
-   <LINKPOINT x="2010" y="2505">
-   </LINKPOINT>
-   <LINKPOINT x="1395" y="2070">
-   </LINKPOINT>
-   <LINKPOINT x="1410" y="900">
-   </LINKPOINT>
-   <LINKPOINT x="2010" y="660">
-   </LINKPOINT>
-   </LINK>
    </PATCH>

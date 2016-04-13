@@ -15,22 +15,25 @@
         </LAYERS>
         <INLETS>
           <INLET Name="MouseIn" Layer="Update" Type="Sequence&lt;MouseDevice&gt;">
-            <POSITION x="322.865417" y="9.411556" />
+            <POSITION x="322.865417" y="-19.5884438" />
           </INLET>
           <INLET Name="NewID" Layer="Update" Type="Sequence&lt;Boolean&gt;">
-            <POSITION x="453.435547" y="9.411556" />
+            <POSITION x="453.435547" y="-19.5884438" />
+          </INLET>
+          <INLET Name="Name" Layer="Update" Type="Sequence&lt;String&gt;">
+            <POSITION x="535" y="-19.5884438" />
           </INLET>
           <INLET Name="AddAI" Layer="Update" Type="Boolean">
-            <POSITION x="584.000854" y="9.411556" />
+            <POSITION x="584.000854" y="-19.5884438" />
+          </INLET>
+          <INLET Name="World" Layer="Update">
+            <POSITION x="679" y="-19.5884438" />
           </INLET>
           <INLET Name="MouseID" Layer="Update" PadType="Field" Type="Spread&lt;Integer32&gt;">
             <POSITION x="985.0902" y="258.2588" />
           </INLET>
           <INLET Name="AIID" Layer="Update" PadType="Field" Type="Spread&lt;Integer32&gt;">
             <POSITION x="1045.90125" y="264.490723" />
-          </INLET>
-          <INLET Name="World" Layer="Update">
-            <POSITION x="679" y="9.411556" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -44,13 +47,23 @@
             <POSITION x="578.348755" y="699.9509" />
           </OUTLET>
         </OUTLETS>
-        <CONSTS />
+        <CONSTS>
+          <CONST Name="Index" Layer="Update" Type="Boolean">
+            <POSITION x="346.786774" y="82.92113" />
+            <VALUE><![CDATA[0]]></VALUE>
+          </CONST>
+          <CONST Name="Item" Layer="Update" Type="String">
+            <POSITION x="435.3151" y="76.3903656" />
+            <VALUE><![CDATA["Unnamed Player"]]></VALUE>
+          </CONST>
+        </CONSTS>
         <REGIONS>
           <REGION Name="ForEachLoop" Layer="Update" Kind="ForEachLoop">
             <POSITION x="279.016449" y="945.7137" />
             <SIZE x="80" y="80" />
             <INPUTS>
               <INPUT Name="Inputs" />
+              <INPUT Name="Input 2s" />
               <INPUT Name="IDs" />
               <INPUT Name="__Input__" />
             </INPUTS>
@@ -66,10 +79,13 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Input" Layer="Update">
-                  <POSITION x="283.301056" y="947.341858" />
+                  <POSITION x="283.301056" y="946.06" />
+                </INLET>
+                <INLET Name="Input 2" Layer="Update">
+                  <POSITION x="342.2761" y="946.06" />
                 </INLET>
                 <INLET Name="ID" Layer="Update">
-                  <POSITION x="379.487885" y="947.341858" />
+                  <POSITION x="379.487885" y="946.06" />
                 </INLET>
               </INLETS>
               <OUTLETS>
@@ -88,6 +104,7 @@
                   <INPUTS>
                     <INPUT Name="Mouse Device" FragmentId="Update" />
                     <INPUT Name="World" FragmentId="Update" />
+                    <INPUT Name="Name" FragmentId="Update" />
                     <INPUT Name="ID" FragmentId="Update" />
                   </INPUTS>
                   <OUTPUTS>
@@ -103,6 +120,7 @@
                 <Link source="Inlets/Input" sink="Nodes/MouseController/Inputs/Mouse Device" />
                 <Link source="Nodes/MouseController/Outputs/ActorControlData" sink="Outlets/Output" />
                 <Link source="Inlets/ID" sink="Nodes/MouseController/Inputs/ID" />
+                <Link source="Inlets/Input 2" sink="Nodes/MouseController/Inputs/Name" />
               </LINKS>
             </BODY>
           </REGION>
@@ -419,7 +437,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="ToSpread" Layer="Update">
-            <POSITION x="325.625427" y="34.9862442" />
+            <POSITION x="325.625427" y="10.3821335" />
             <NODEREF LastCat="Collections.Sequence" LastFile="VL.Core.dll" LastPackage="VL.Core">
               <OPERATIONNODE Name="ToSpread" />
               <CATEGORY Name="Sequence" IsDirectParent="true" />
@@ -432,7 +450,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="ToSpread#1" Layer="Update">
-            <POSITION x="453.018982" y="36.91459" />
+            <POSITION x="452.897644" y="8.378944" />
             <NODEREF LastCat="Collections.Sequence" LastFile="VL.Core.dll" LastPackage="VL.Core">
               <OPERATIONNODE Name="ToSpread" />
               <CATEGORY Name="Sequence" IsDirectParent="true" />
@@ -595,6 +613,92 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
+          <OPERATION Name="ToSpread#2" Layer="Update">
+            <POSITION x="534.6854" y="8.135712" />
+            <NODEREF LastCat="Collections.Sequence" LastFile="VL.Core.dll" LastPackage="VL.Core">
+              <OPERATIONNODE Name="ToSpread" />
+              <CATEGORY Name="Sequence" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Count#1" Layer="Update">
+            <POSITION x="338.079132" y="45.9134369" />
+            <NODEREF LastCat="Collections.Spread" LastFile="VL.Core.dll" LastPackage="VL.Core">
+              <OPERATIONNODE Name="Count" />
+              <CATEGORY Name="Spread" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Count" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Add" Layer="Update">
+            <POSITION x="346.0612" y="114.84935" />
+            <NODEREF LastCat="Collections.Spread" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Add" />
+              <CATEGORY Name="Spread" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Item" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="GetSpread" Layer="Update">
+            <POSITION x="347.5125" y="154.034042" />
+            <NODEREF LastCat="Collections.Spread" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="GetSpread" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Index" />
+              <INPUT Name="Count" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="GetSpread#1" Layer="Update">
+            <POSITION x="421.21" y="154.4417" />
+            <NODEREF LastCat="Collections.Spread" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="GetSpread" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Index" />
+              <INPUT Name="Count" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Add#2" Layer="Update">
+            <POSITION x="419.758667" y="115.257" />
+            <NODEREF LastCat="Collections.Spread" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Add" />
+              <CATEGORY Name="Spread" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Item" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
         </NODES>
         <LINKS>
           <Link source="Nodes/Join/Outputs/Output" sink="Outlets/ControlData" />
@@ -626,7 +730,7 @@
           <Link source="Inlets/World" sink="Nodes/Split#1/Inputs/Input" />
           <Link source="Inlets/World" sink="Regions/ForEachLoop/ForEachLoopBody/Nodes/MouseController/Inputs/World">
             <SEGMENTS>
-              <Point x="-319.722076" y="214.760529" />
+              <Point x="-319.722076" y="243.760529" />
             </SEGMENTS>
           </Link>
           <Link source="Nodes/Concat/Outputs/Output" sink="Regions/Where/Inputs/Input" />
@@ -642,7 +746,7 @@
           </Link>
           <Link source="Inlets/World" sink="Regions/ForEachLoop#1/ForEachLoopBody/Nodes/AIController/Inputs/World">
             <SEGMENTS>
-              <Point x="-139.5069" y="173.883362" />
+              <Point x="-139.5069" y="202.883362" />
             </SEGMENTS>
           </Link>
           <Link source="Inlets/AIID" sink="Nodes/Add#1/Inputs/Input">
@@ -663,6 +767,15 @@
               <Point x="-415.710083" y="492.872437" />
             </SEGMENTS>
           </Link>
+          <Link source="Inlets/Name" sink="Nodes/ToSpread#2/Inputs/Input" />
+          <Link source="Nodes/ToSpread#2/Outputs/Result" sink="Regions/ForEachLoop/Inputs/Input 2s" />
+          <Link source="Nodes/ToSpread/Outputs/Result" sink="Nodes/Count#1/Inputs/Input" />
+          <Link source="Constants/Index" sink="Nodes/Add/Inputs/Item" />
+          <Link source="Nodes/Add/Outputs/Output" sink="Nodes/GetSpread/Inputs/Input" />
+          <Link source="Nodes/Count#1/Outputs/Count" sink="Nodes/GetSpread/Inputs/Count" />
+          <Link source="Nodes/Add#2/Outputs/Output" sink="Nodes/GetSpread#1/Inputs/Input" />
+          <Link source="Constants/Item" sink="Nodes/Add#2/Inputs/Item" />
+          <Link source="Nodes/Count#1/Outputs/Count" sink="Nodes/GetSpread#1/Inputs/Count" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -1042,6 +1155,7 @@
             <INPUTS>
               <INPUT Name="MouseIn" FragmentId="Update" />
               <INPUT Name="NewID" FragmentId="Update" />
+              <INPUT Name="Name" FragmentId="Update" />
               <INPUT Name="AddAI" FragmentId="Update" />
               <INPUT Name="World" FragmentId="Update" />
             </INPUTS>
@@ -1078,6 +1192,7 @@
               <INPUT Name="Input" />
               <INPUT Name="MouseIn" />
               <INPUT Name="NewID" />
+              <INPUT Name="Name" />
               <INPUT Name="AddAI" />
               <INPUT Name="World" />
             </INPUTS>
@@ -1198,16 +1313,19 @@
         </LAYERS>
         <INLETS>
           <INLET Name="Mouse Device" Layer="Update">
-            <POSITION x="465.838379" y="113.406433" />
+            <POSITION x="465.838379" y="111.406433" />
           </INLET>
           <INLET Name="World" Layer="Update">
-            <POSITION x="626.8384" y="113.406433" />
+            <POSITION x="626.8384" y="111.406433" />
+          </INLET>
+          <INLET Name="Name" Layer="Update">
+            <POSITION x="726" y="111.406433" />
+          </INLET>
+          <INLET Name="ID" Layer="Update">
+            <POSITION x="785.8084" y="111.406433" />
           </INLET>
           <INLET Name="CurrentID" Layer="Update" PadType="Field">
             <POSITION x="809.9867" y="175.353073" />
-          </INLET>
-          <INLET Name="ID" Layer="Update">
-            <POSITION x="785.8084" y="113.406433" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -1584,7 +1702,6 @@
           <Link source="Nodes/Split#2/Outputs/Bubbles" sink="Regions/IfElse/IfElseBody/Nodes/GetSlice#1/Inputs/Input" />
           <Link source="Nodes/GetSlice/Outputs/Result" sink="Nodes/Split/Inputs/Input" />
           <Link source="Nodes/Split/Outputs/Position" sink="Nodes/-/Inputs/Input 2" />
-          <Link source="Nodes/Split/Outputs/Name" sink="Nodes/Join#1/Inputs/Name" />
           <Link source="Inlets/Mouse Device" sink="Nodes/MouseState/Inputs/Mouse Device" />
           <Link source="Nodes/Join#1/Outputs/Output" sink="Outlets/ActorControlData" />
           <Link source="Inlets/World" sink="Nodes/Split#2/Inputs/Input" />
@@ -1596,6 +1713,7 @@
           <Link source="Nodes/Split#2/Outputs/Bubbles" sink="Nodes/GetSlice#1/Inputs/Input" />
           <Link source="Nodes/GetSlice#1/Outputs/Result" sink="Nodes/Outbox#1/Inputs/Input" />
           <Link source="Constants/Index#1" sink="Nodes/GetSlice#1/Inputs/Index" />
+          <Link source="Inlets/Name" sink="Nodes/Join#1/Inputs/Name" />
         </LINKS>
       </BODY>
     </PATCH>

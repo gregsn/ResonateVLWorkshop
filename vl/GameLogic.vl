@@ -34,8 +34,14 @@
           <OUTLET Name="Bubbles#1" Layer="Update" PadType="Field">
             <POSITION x="231.161285" y="349.1603" />
           </OUTLET>
+          <OUTLET Name="Bubbles#2" Layer="Update">
+            <POSITION x="359.051361" y="558.257" />
+          </OUTLET>
           <OUTLET Name="World" Layer="Update">
-            <POSITION x="498.26593" y="335.169525" />
+            <POSITION x="498.26593" y="558.257" />
+          </OUTLET>
+          <OUTLET Name="Velocitys" Layer="Update">
+            <POSITION x="455.020325" y="558.257" />
           </OUTLET>
         </OUTLETS>
         <CONSTS>
@@ -80,6 +86,10 @@
           <CONST Name="Mass#1" Layer="Create">
             <POSITION x="-261.9292" y="295.063" />
             <VALUE><![CDATA[5.0]]></VALUE>
+          </CONST>
+          <CONST Name="WorldSize#1" Layer="Create" Type="Vector2">
+            <POSITION x="-283.0055" y="-123.3642" />
+            <VALUE><![CDATA[2.0]]></VALUE>
           </CONST>
         </CONSTS>
         <REGIONS>
@@ -321,6 +331,64 @@
               </LINKS>
             </BODY>
           </REGION>
+          <REGION Name="ForEachLoop" Layer="Update" Kind="ForEachLoop">
+            <POSITION x="313.96637" y="363.077942" />
+            <SIZE x="80" y="80" />
+            <INPUTS>
+              <INPUT Name="Inputs" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Outputs" />
+              <OUPUT Name="Velocitys" />
+            </OUTPUTS>
+            <BODY Name="ForEachLoopBody">
+              <LAYERS>
+                <LAYER Name="Create" />
+                <LAYER Name="Update" />
+                <LAYER Name="Destroy" />
+              </LAYERS>
+              <INLETS>
+                <INLET Name="Input" Layer="Update">
+                  <POSITION x="316.46637" y="364.706116" />
+                </INLET>
+              </INLETS>
+              <OUTLETS>
+                <OUTLET Name="Output" Layer="Update">
+                  <POSITION x="316.46637" y="444.706116" />
+                </OUTLET>
+                <OUTLET Name="Velocity" Layer="Update">
+                  <POSITION x="383.4715" y="444.706116" />
+                </OUTLET>
+              </OUTLETS>
+              <CONSTS />
+              <REGIONS />
+              <NODES>
+                <OPERATION Name="Split" Layer="Update">
+                  <POSITION x="342.121429" y="395.938354" />
+                  <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
+                    <CATEGORY Name="LogicBubble" />
+                    <OPERATIONNODE Name="Split" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Position" />
+                    <OUPUT Name="Velocity" />
+                    <OUPUT Name="Mass" />
+                    <OUPUT Name="Name" />
+                    <OUPUT Name="ID" />
+                    <OUPUT Name="Age" />
+                  </OUTPUTS>
+                </OPERATION>
+              </NODES>
+              <LINKS>
+                <Link source="Inlets/Input" sink="Nodes/Split/Inputs/Input" />
+                <Link source="Nodes/Split/Outputs/Position" sink="Outlets/Output" />
+                <Link source="Nodes/Split/Outputs/Velocity" sink="Outlets/Velocity" />
+              </LINKS>
+            </BODY>
+          </REGION>
         </REGIONS>
         <NODES>
           <OPERATION Name="Split" Layer="Update">
@@ -355,8 +423,9 @@
           </OPERATION>
           <OPERATION Name="GetWorldSize" Layer="Create">
             <POSITION x="-328.6683" y="-43.37564" />
-            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
+            <NODEREF LastFile="Core.vl">
               <OPERATIONNODE Name="GetWorldSize" />
+              <CATEGORYPATH Name="VLOsmos.World" />
             </NODEREF>
             <INPUTS>
               <INPUT Name="Input" />
@@ -544,7 +613,6 @@
           <Link source="Inlets/ControlData" sink="Nodes/Split/Inputs/Input" />
           <Link source="Nodes/Join#3/Outputs/Output" sink="Outlets/World" />
           <Link source="Constants/Iteration Count" sink="Regions/ForLoop/Inputs/Iteration Count" />
-          <Link source="Nodes/GetWorldSize/Outputs/WorldSize" sink="Nodes/FromCenterWidth/Inputs/Width" />
           <Link source="Nodes/FromCenterWidth/Outputs/Output" sink="Nodes/Split#2/Inputs/Input" />
           <Link source="Nodes/Split#2/Outputs/From" sink="Regions/ForLoop/ForLoopBody/Nodes/Random/Inputs/From" />
           <Link source="Nodes/Split#2/Outputs/To" sink="Regions/ForLoop/ForLoopBody/Nodes/Random/Inputs/To" />
@@ -585,6 +653,10 @@
           <Link source="Regions/ForEachLoop#1/Outputs/New LogicBubbles" sink="Nodes/Concat#1/Inputs/Input" />
           <Link source="Regions/ForEachLoop#1/Outputs/New Bubbles" sink="Nodes/Concat#1/Inputs/Input 2" />
           <Link source="Nodes/Concat#1/Outputs/Output" sink="Outlets/Bubbles#1" />
+          <Link source="Constants/WorldSize#1" sink="Nodes/FromCenterWidth/Inputs/Width" />
+          <Link source="Regions/ForEachLoop/Outputs/Outputs" sink="Outlets/Bubbles#2" />
+          <Link source="Regions/ForEachLoop/Outputs/Velocitys" sink="Outlets/Velocitys" />
+          <Link source="Inlets/Bubbles" sink="Regions/ForEachLoop/Inputs/Inputs" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -951,13 +1023,11 @@
           <Link source="Nodes/DeltaTime/Outputs/Result" sink="Nodes/*/Inputs/Scalar" />
           <Link source="Nodes/*/Outputs/Output" sink="Nodes/+/Inputs/Input 2" />
           <Link source="Nodes/+/Outputs/Output" sink="Nodes/Reflect/Inputs/Input" />
-          <Link source="Nodes/Reflect/Outputs/Output" sink="Outlets/Position#2" />
           <Link source="Inlets/Velocity#1" sink="Nodes/Reflect/Inputs/Velocity">
             <SEGMENTS>
               <Point x="-23.8150024" y="160.581848" />
             </SEGMENTS>
           </Link>
-          <Link source="Nodes/Reflect/Outputs/Velocity" sink="Outlets/Velocity#2" />
           <Link source="Inlets/WorldRange" sink="Nodes/Split/Inputs/Input" />
           <Link source="Nodes/Split/Outputs/From" sink="Nodes/Reflect/Inputs/Min" />
           <Link source="Nodes/Split/Outputs/To" sink="Nodes/Reflect/Inputs/Max" />
@@ -979,6 +1049,8 @@
           <Link source="Nodes/*#2/Outputs/Output" sink="Nodes/+#1/Inputs/Input 2" />
           <Link source="Nodes/DeltaTime#1/Outputs/Result" sink="Nodes/*#2/Inputs/Scalar" />
           <Link source="Nodes/*#1/Outputs/Output" sink="Outlets/Mass Loss" />
+          <Link source="Nodes/+/Outputs/Output" sink="Outlets/Position#2" />
+          <Link source="Inlets/Velocity#1" sink="Outlets/Velocity#2" />
         </LINKS>
       </BODY>
     </PATCH>

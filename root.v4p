@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\vvvv\git\ResonateWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="-720">
-   <BOUNDS type="Window" left="0" top="0" width="5760" height="9330">
+   <PATCH nodename="C:\dev\ResonateVLWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -9,53 +9,45 @@
    </BOUNDS>
    <BOUNDS type="Box" left="2430" top="3000" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="0" top="0" width="5760" height="9330">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
    <PIN pinname="World" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <NODE systemname="GameLogic" filename="GameLogic.v4p" componentmode="InAWindow" id="20" nodename="GameLogic.v4p">
+   <NODE systemname="GameLogic" filename="GameLogic.v4p" componentmode="InAWindow" id="22" nodename="GameLogic.v4p">
    <BOUNDS type="Node" left="2430" top="2100" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="2430" top="2100" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="0" top="0" width="5760" height="9330">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
-   <PIN pinname="WorldSerialized" visible="1">
-   </PIN>
    <PIN pinname="ControlData" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <LINK srcnodeid="20" srcpinname="World" dstnodeid="12" dstpinname="World">
+   <LINK srcnodeid="22" srcpinname="World" dstnodeid="12" dstpinname="World">
    </LINK>
    <NODE systemname="Control" filename="Control.v4p" componentmode="InAWindow" id="10" nodename="Control.v4p">
    <BOUNDS type="Node" left="2445" top="915" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="2445" top="915" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="0" top="0" width="5760" height="9330">
+   <BOUNDS type="Window" left="1170" top="3045" width="6795" height="7635">
    </BOUNDS>
    <PIN pinname="ControlData" visible="1">
    </PIN>
    <PIN pinname="World" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <LINK srcnodeid="10" srcpinname="ControlData" dstnodeid="20" dstpinname="ControlData">
+   <LINK srcnodeid="10" srcpinname="ControlData" dstnodeid="22" dstpinname="ControlData">
    </LINK>
-   <LINK srcnodeid="20" srcpinname="WorldSerialized" dstnodeid="10" dstpinname="World">
-   <LINKPOINT x="3825" y="2580">
+   <LINK srcnodeid="22" srcpinname="World" dstnodeid="10" dstpinname="World">
+   <LINKPOINT x="2010" y="2505">
    </LINKPOINT>
-   <LINKPOINT x="4320" y="2040">
+   <LINKPOINT x="1395" y="2070">
    </LINKPOINT>
-   <LINKPOINT x="4470" y="1290">
+   <LINKPOINT x="1410" y="900">
    </LINKPOINT>
-   <LINKPOINT x="4140" y="645">
-   </LINKPOINT>
-   <LINKPOINT x="3240" y="330">
-   </LINKPOINT>
-   <LINKPOINT x="2760" y="450">
-   </LINKPOINT>
-   <LINKPOINT x="2445" y="870">
+   <LINKPOINT x="2010" y="660">
    </LINKPOINT>
    </LINK>
    </PATCH>

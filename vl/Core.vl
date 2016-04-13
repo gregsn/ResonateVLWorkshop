@@ -26,25 +26,22 @@
             <POSITION x="186" y="247" />
           </INLET>
           <INLET Name="DoEmit" Layer="Join" Type="Boolean">
-            <POSITION x="189" y="87" />
+            <POSITION x="189" y="90" />
           </INLET>
           <INLET Name="Angle" Layer="Join" Type="Float32">
-            <POSITION x="308" y="87" />
+            <POSITION x="308" y="90" />
           </INLET>
           <INLET Name="Angle#1" Layer="Split" PadType="Field">
             <POSITION x="313" y="245" />
           </INLET>
           <INLET Name="Name" Layer="Join" Type="String">
-            <POSITION x="439" y="87" />
+            <POSITION x="439" y="90" />
           </INLET>
           <INLET Name="Name#1" Layer="Split" PadType="Field">
             <POSITION x="441" y="244" />
           </INLET>
-          <INLET Name="ID#1" Layer="Join" Type="Integer32">
-            <POSITION x="503" y="87" />
-          </INLET>
-          <INLET Name="ID" Layer="Split" PadType="Field">
-            <POSITION x="508" y="244" />
+          <INLET Name="ID" Layer="Join" Type="Integer32">
+            <POSITION x="552" y="90" />
           </INLET>
           <INLET Name="Angle#2" Layer="SetAngle">
             <POSITION x="668" y="113" />
@@ -52,10 +49,13 @@
           <INLET Name="DoEmit#2" Layer="SetDoEmit">
             <POSITION x="678" y="272" />
           </INLET>
+          <INLET Name="ID#1" Layer="Split" PadType="Field">
+            <POSITION x="544" y="229" />
+          </INLET>
         </INLETS>
         <OUTLETS>
           <OUTLET Name="DoEmit#1" Layer="Split">
-            <POSITION x="186" y="308" />
+            <POSITION x="186" y="310" />
           </OUTLET>
           <OUTLET Name="DoEmit" Layer="Join" PadType="Field">
             <POSITION x="190" y="132" />
@@ -64,25 +64,25 @@
             <POSITION x="308" y="133" />
           </OUTLET>
           <OUTLET Name="Angle#1" Layer="Split">
-            <POSITION x="313" y="308" />
+            <POSITION x="313" y="310" />
           </OUTLET>
           <OUTLET Name="Name" Layer="Join" PadType="Field">
             <POSITION x="439" y="141" />
-          </OUTLET>
-          <OUTLET Name="Name#1" Layer="Split">
-            <POSITION x="439" y="308" />
-          </OUTLET>
-          <OUTLET Name="ID" Layer="Join" PadType="Field">
-            <POSITION x="507" y="143" />
-          </OUTLET>
-          <OUTLET Name="ID#1" Layer="Split">
-            <POSITION x="507" y="308" />
           </OUTLET>
           <OUTLET Name="Angle#2" Layer="SetAngle" PadType="Field">
             <POSITION x="669" y="143" />
           </OUTLET>
           <OUTLET Name="DoEmit#2" Layer="SetDoEmit" PadType="Field">
             <POSITION x="679" y="302" />
+          </OUTLET>
+          <OUTLET Name="Name#1" Layer="Split">
+            <POSITION x="444" y="310" />
+          </OUTLET>
+          <OUTLET Name="ID" Layer="Join" PadType="Field">
+            <POSITION x="554" y="152" />
+          </OUTLET>
+          <OUTLET Name="ID#1" Layer="Split">
+            <POSITION x="551" y="310" />
           </OUTLET>
         </OUTLETS>
         <CONSTS />
@@ -97,12 +97,12 @@
           <Link source="Inlets/DoEmit#2" sink="Outlets/DoEmit#2" />
           <Link source="Inlets/Name" sink="Outlets/Name" />
           <Link source="Inlets/Name#1" sink="Outlets/Name#1" />
-          <Link source="Inlets/ID#1" sink="Outlets/ID" />
-          <Link source="Inlets/ID" sink="Outlets/ID#1" />
+          <Link source="Inlets/ID" sink="Outlets/ID" />
+          <Link source="Inlets/ID#1" sink="Outlets/ID#1" />
         </LINKS>
       </BODY>
     </PATCH>
-    <PATCH Name="World" Category="VVVV.VLOsmos" IsDatatype="true">
+    <PATCH Name="World" Category="VLOsmos" IsDatatype="true">
       <BODY Name="UtilsBody">
         <LAYERS>
           <LAYER Name="Join" />
@@ -112,27 +112,51 @@
         </LAYERS>
         <INLETS>
           <INLET Name="Bubbles" Layer="Split" PadType="Field">
-            <POSITION x="266" y="377" />
+            <POSITION x="36.00003" y="402.555542" />
+          </INLET>
+          <INLET Name="Emitters" Layer="Split" PadType="Field" Type="Spread&lt;EmitData&gt;">
+            <POSITION x="131.555588" y="404.000031" />
+          </INLET>
+          <INLET Name="Collisions" Layer="Split" PadType="Field">
+            <POSITION x="232.4444" y="402.3333" />
           </INLET>
           <INLET Name="Bubbles#1" Layer="Join" Type="Spread&lt;Bubble&gt;">
-            <POSITION x="293" y="147" />
+            <POSITION x="293" y="140.983261" />
+          </INLET>
+          <INLET Name="Emitters#1" Layer="Join">
+            <POSITION x="406.050171" y="140.983261" />
           </INLET>
           <INLET Name="GameOver" Layer="Split" PadType="Field" Type="Boolean">
-            <POSITION x="525" y="373" />
+            <POSITION x="458.3334" y="391.888916" />
+          </INLET>
+          <INLET Name="Collisions#1" Layer="Join" Type="Spread&lt;CollisionData&gt;">
+            <POSITION x="525.7777" y="140.983261" />
           </INLET>
         </INLETS>
         <OUTLETS>
           <OUTLET Name="Bubbles" Layer="Split">
-            <POSITION x="265" y="436" />
+            <POSITION x="35.00003" y="454.888916" />
+          </OUTLET>
+          <OUTLET Name="Emitters" Layer="Split">
+            <POSITION x="129.444489" y="454.888916" />
+          </OUTLET>
+          <OUTLET Name="Collisions" Layer="Split">
+            <POSITION x="229.111053" y="454.888916" />
           </OUTLET>
           <OUTLET Name="Bubbles#1" Layer="Join" PadType="Field">
-            <POSITION x="293" y="177" />
+            <POSITION x="297" y="222" />
           </OUTLET>
           <OUTLET Name="WorldSize" Layer="Split">
-            <POSITION x="381" y="436" />
+            <POSITION x="314.333374" y="454.888916" />
+          </OUTLET>
+          <OUTLET Name="Emitters#1" Layer="Join" PadType="Field">
+            <POSITION x="412.88028" y="219.486435" />
           </OUTLET>
           <OUTLET Name="GameOver" Layer="Split">
-            <POSITION x="525" y="436" />
+            <POSITION x="458.3334" y="454.888916" />
+          </OUTLET>
+          <OUTLET Name="Collisions#1" Layer="Join" PadType="Field">
+            <POSITION x="521.333252" y="220.111115" />
           </OUTLET>
           <OUTLET Name="WorldSize#1" Layer="GetWorldSize">
             <POSITION x="663" y="436" />
@@ -140,7 +164,7 @@
         </OUTLETS>
         <CONSTS>
           <CONST Name="WorldSize" Layer="Split" Type="Vector2">
-            <POSITION x="381" y="346" />
+            <POSITION x="314.333374" y="364.888916" />
             <VALUE><![CDATA[2.0]]></VALUE>
           </CONST>
           <CONST Name="WorldSize#1" Layer="GetWorldSize" Type="Vector2">
@@ -156,6 +180,10 @@
           <Link source="Constants/WorldSize" sink="Outlets/WorldSize" />
           <Link source="Inlets/GameOver" sink="Outlets/GameOver" />
           <Link source="Constants/WorldSize#1" sink="Outlets/WorldSize#1" />
+          <Link source="Inlets/Emitters" sink="Outlets/Emitters" />
+          <Link source="Inlets/Emitters#1" sink="Outlets/Emitters#1" />
+          <Link source="Inlets/Collisions" sink="Outlets/Collisions" />
+          <Link source="Inlets/Collisions#1" sink="Outlets/Collisions#1" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -258,11 +286,13 @@
                   <INPUTS>
                     <INPUT Name="Input" />
                     <INPUT Name="Position" />
+                    <INPUT Name="Velocity" />
+                    <INPUT Name="Radius" />
                     <INPUT Name="Mass" />
                     <INPUT Name="Name" />
                     <INPUT Name="ID" />
                     <INPUT Name="Age" />
-                    <INPUT Name="Enabled" />
+                    <INPUT Name="Enabled" IsEnabled="true" />
                   </INPUTS>
                   <OUTPUTS>
                     <OUPUT Name="Output" />
@@ -386,13 +416,15 @@
           </OPERATION>
           <OPERATION Name="Join#3" Layer="GameLogic">
             <POSITION x="551" y="444" />
-            <NODEREF LastCat="VVVV.VLOsmos.World" LastFile="Core.vl">
+            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
               <OPERATIONNODE Name="Join" />
               <CATEGORY Name="World" IsDirectParent="true" />
             </NODEREF>
             <INPUTS>
               <INPUT Name="Input" />
               <INPUT Name="Bubbles" />
+              <INPUT Name="Emitters" />
+              <INPUT Name="Collisions" />
               <INPUT Name="Enabled" />
             </INPUTS>
             <OUTPUTS>
@@ -401,7 +433,7 @@
           </OPERATION>
           <OPERATION Name="Split#1" Layer="Display">
             <POSITION x="447" y="539" />
-            <NODEREF LastCat="VVVV.VLOsmos.World" LastFile="Core.vl">
+            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
               <OPERATIONNODE Name="Split" />
               <CATEGORY Name="World" IsDirectParent="true" />
             </NODEREF>
@@ -410,13 +442,15 @@
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Bubbles" />
+              <OUPUT Name="Emitters" />
+              <OUPUT Name="Collisions" />
               <OUPUT Name="WorldSize" />
               <OUPUT Name="GameOver" />
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Split#2" Layer="Control">
             <POSITION x="599" y="133" />
-            <NODEREF LastCat="VVVV.VLOsmos.World" LastFile="Core.vl">
+            <NODEREF LastCat="VLOsmos.World" LastFile="Core.vl">
               <OPERATIONNODE Name="Split" />
               <CATEGORY Name="World" IsDirectParent="true" />
             </NODEREF>
@@ -425,6 +459,8 @@
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Bubbles" />
+              <OUPUT Name="Emitters" />
+              <OUPUT Name="Collisions" />
               <OUPUT Name="WorldSize" />
               <OUPUT Name="GameOver" />
             </OUTPUTS>
@@ -493,66 +529,90 @@
         </LAYERS>
         <INLETS>
           <INLET Name="Position#1" Layer="Join" Type="Vector2">
-            <POSITION x="200" y="66" />
+            <POSITION x="132" y="64" />
           </INLET>
           <INLET Name="Position" Layer="Split" PadType="Field">
-            <POSITION x="206" y="259" />
+            <POSITION x="138" y="261" />
+          </INLET>
+          <INLET Name="Radius" Layer="Join" Type="Float64">
+            <POSITION x="318" y="64" />
+          </INLET>
+          <INLET Name="Radius#1" Layer="Split" PadType="Field">
+            <POSITION x="318" y="251" />
           </INLET>
           <INLET Name="Mass" Layer="Split" PadType="Field">
-            <POSITION x="326" y="259" />
+            <POSITION x="398" y="255" />
           </INLET>
           <INLET Name="Mass#1" Layer="Join" Type="Float32">
-            <POSITION x="331" y="66" />
+            <POSITION x="403" y="64" />
           </INLET>
           <INLET Name="Name#1" Layer="Split" PadType="Field">
-            <POSITION x="434" y="259" />
+            <POSITION x="506" y="255" />
           </INLET>
           <INLET Name="Name" Layer="Join" Type="String">
-            <POSITION x="437" y="66" />
+            <POSITION x="509" y="64" />
           </INLET>
           <INLET Name="ID#1" Layer="Split" PadType="Field">
-            <POSITION x="521" y="256" />
+            <POSITION x="593" y="252" />
           </INLET>
           <INLET Name="ID" Layer="Join" Type="Integer32">
-            <POSITION x="526" y="66" />
+            <POSITION x="598" y="64" />
           </INLET>
           <INLET Name="Age" Layer="Join" Type="Float64">
-            <POSITION x="626" y="66" />
+            <POSITION x="698" y="64" />
           </INLET>
           <INLET Name="Age#1" Layer="Split" PadType="Field">
-            <POSITION x="632" y="255" />
+            <POSITION x="704" y="251" />
+          </INLET>
+          <INLET Name="Velocity" Layer="Join" Type="Vector2">
+            <POSITION x="235" y="64" />
+          </INLET>
+          <INLET Name="Velocity#1" Layer="Split" PadType="Field">
+            <POSITION x="238" y="253" />
           </INLET>
         </INLETS>
         <OUTLETS>
           <OUTLET Name="Position#1" Layer="Join" PadType="Field">
-            <POSITION x="205" y="110" />
+            <POSITION x="137" y="112" />
           </OUTLET>
           <OUTLET Name="Position" Layer="Split">
-            <POSITION x="211" y="322" />
+            <POSITION x="143" y="320" />
+          </OUTLET>
+          <OUTLET Name="Radius" Layer="Join" PadType="Field">
+            <POSITION x="323" y="107" />
+          </OUTLET>
+          <OUTLET Name="Radius#1" Layer="Split">
+            <POSITION x="325" y="320" />
           </OUTLET>
           <OUTLET Name="Mass" Layer="Split">
-            <POSITION x="329" y="322" />
+            <POSITION x="401" y="320" />
           </OUTLET>
           <OUTLET Name="Mass#1" Layer="Join" PadType="Field">
-            <POSITION x="330" y="108" />
+            <POSITION x="402" y="104" />
           </OUTLET>
           <OUTLET Name="Name#1" Layer="Split">
-            <POSITION x="437" y="322" />
+            <POSITION x="509" y="320" />
           </OUTLET>
           <OUTLET Name="Name" Layer="Join" PadType="Field">
-            <POSITION x="439" y="104" />
+            <POSITION x="511" y="100" />
           </OUTLET>
           <OUTLET Name="ID#1" Layer="Split">
-            <POSITION x="520" y="322" />
+            <POSITION x="592" y="320" />
           </OUTLET>
           <OUTLET Name="ID" Layer="Join" PadType="Field">
-            <POSITION x="527" y="106" />
+            <POSITION x="599" y="102" />
           </OUTLET>
           <OUTLET Name="Age" Layer="Join" PadType="Field">
-            <POSITION x="629" y="115" />
+            <POSITION x="701" y="111" />
           </OUTLET>
           <OUTLET Name="Age#1" Layer="Split">
-            <POSITION x="630" y="322" />
+            <POSITION x="702" y="320" />
+          </OUTLET>
+          <OUTLET Name="Velocity" Layer="Join" PadType="Field">
+            <POSITION x="242" y="115" />
+          </OUTLET>
+          <OUTLET Name="Velocity#1" Layer="Split">
+            <POSITION x="244" y="320" />
           </OUTLET>
         </OUTLETS>
         <CONSTS />
@@ -569,65 +629,180 @@
           <Link source="Inlets/ID#1" sink="Outlets/ID#1" />
           <Link source="Inlets/Age" sink="Outlets/Age" />
           <Link source="Inlets/Age#1" sink="Outlets/Age#1" />
+          <Link source="Inlets/Radius" sink="Outlets/Radius" />
+          <Link source="Inlets/Radius#1" sink="Outlets/Radius#1" />
+          <Link source="Inlets/Velocity" sink="Outlets/Velocity" />
+          <Link source="Inlets/Velocity#1" sink="Outlets/Velocity#1" />
         </LINKS>
       </BODY>
     </PATCH>
     <PATCH Name="Utils" Category="VVVV.VLOsmos">
       <BODY Name="UtilsBody">
-        <LAYERS />
-        <INLETS />
-        <OUTLETS />
-        <CONSTS />
-        <REGIONS />
-        <NODES />
-        <LINKS />
-      </BODY>
-    </PATCH>
-    <PATCH Name="WorldSplit" Category="VVVV.VLOsmos" IsClosed="true">
-      <BODY Name="Utils2Body">
         <LAYERS>
-          <LAYER Name="Split" Version="World" />
+          <LAYER Name="GetEmitterData" />
         </LAYERS>
         <INLETS>
-          <INLET Name="World" Layer="Split (World)">
-            <POSITION x="451" y="197" />
+          <INLET Name="Radius" Layer="GetEmitterData">
+            <POSITION x="787" y="141" />
+          </INLET>
+          <INLET Name="Position" Layer="GetEmitterData">
+            <POSITION x="571" y="141" />
+          </INLET>
+          <INLET Name="Velocity" Layer="GetEmitterData" Type="Vector2">
+            <POSITION x="681" y="141" />
           </INLET>
         </INLETS>
         <OUTLETS>
-          <OUTLET Name="Bubbles" Layer="Split (World)">
-            <POSITION x="417" y="407" />
-          </OUTLET>
-          <OUTLET Name="WorldSize" Layer="Split (World)">
-            <POSITION x="476" y="407" />
-          </OUTLET>
-          <OUTLET Name="GameOver" Layer="Split (World)">
-            <POSITION x="560" y="407" />
+          <OUTLET Name="Output" Layer="GetEmitterData">
+            <POSITION x="643" y="436" />
           </OUTLET>
         </OUTLETS>
-        <CONSTS />
+        <CONSTS>
+          <CONST Name="Constant" Layer="GetEmitterData" Type="Float32">
+            <POSITION x="686" y="219" />
+            <VALUE><![CDATA[-1.0]]></VALUE>
+          </CONST>
+        </CONSTS>
         <REGIONS />
         <NODES>
-          <OPERATION Name="Split" Layer="Split (World)">
-            <POSITION x="453" y="226" />
-            <NODEREF LastCat="VVVV.VLOsmos.World" LastFile="Core.vl">
-              <CATEGORY Name="World" />
-              <OPERATIONNODE Name="Split" />
+          <OPERATION Name="Normalize" Layer="GetEmitterData">
+            <POSITION x="627" y="181" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Normalize" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
             </NODEREF>
             <INPUTS>
               <INPUT Name="Input" />
+              <INPUT Name="Enabled" />
             </INPUTS>
             <OUTPUTS>
-              <OUPUT Name="Bubbles" />
-              <OUPUT Name="WorldSize" />
-              <OUPUT Name="GameOver" />
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="*" Layer="GetEmitterData">
+            <POSITION x="629" y="255" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="*" Version="Scale" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Scalar" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="*#1" Layer="GetEmitterData">
+            <POSITION x="651" y="306" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="*" Version="Scale" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Scalar" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="+" Layer="GetEmitterData">
+            <POSITION x="639" y="376" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="+" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+              <INPUT Name="Input 3" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
         </NODES>
         <LINKS>
-          <Link source="Inlets/World" sink="Nodes/Split/Inputs/Input" />
-          <Link source="Nodes/Split/Outputs/Bubbles" sink="Outlets/Bubbles" />
-          <Link source="Nodes/Split/Outputs/WorldSize" sink="Outlets/WorldSize" />
-          <Link source="Nodes/Split/Outputs/GameOver" sink="Outlets/GameOver" />
+          <Link source="Nodes/Normalize/Outputs/Output" sink="Nodes/*/Inputs/Input" />
+          <Link source="Constants/Constant" sink="Nodes/*/Inputs/Scalar" />
+          <Link source="Inlets/Velocity" sink="Nodes/Normalize/Inputs/Input" />
+          <Link source="Nodes/*/Outputs/Output" sink="Nodes/*#1/Inputs/Input" />
+          <Link source="Inlets/Radius" sink="Nodes/*#1/Inputs/Scalar">
+            <SEGMENTS>
+              <Point x="-4" y="97.5" />
+            </SEGMENTS>
+          </Link>
+          <Link source="Nodes/*#1/Outputs/Output" sink="Nodes/+/Inputs/Input 2" />
+          <Link source="Inlets/Position" sink="Nodes/+/Inputs/Input" />
+          <Link source="Nodes/+/Outputs/Output" sink="Outlets/Output" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="EmitData" Category="VLOsmos" IsDatatype="true" IsClosed="true">
+      <BODY Name="Utils2Body">
+        <LAYERS>
+          <LAYER Name="Join" />
+          <LAYER Name="Split" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="Position" Layer="Join" Type="Vector2">
+            <POSITION x="275" y="93" />
+          </INLET>
+          <INLET Name="Position#1" Layer="Split" PadType="Field">
+            <POSITION x="293" y="232" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="Position" Layer="Join" PadType="Field">
+            <POSITION x="283" y="140" />
+          </OUTLET>
+          <OUTLET Name="Position#1" Layer="Split">
+            <POSITION x="298" y="282" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS />
+        <REGIONS />
+        <NODES />
+        <LINKS>
+          <Link source="Inlets/Position" sink="Outlets/Position" />
+          <Link source="Inlets/Position#1" sink="Outlets/Position#1" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="CollisionData" Category="VLOsmos" IsDatatype="true" IsClosed="true">
+      <BODY Name="Utils2Body">
+        <LAYERS>
+          <LAYER Name="Create" />
+          <LAYER Name="Update" />
+          <LAYER Name="Join" />
+          <LAYER Name="Split" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="Position" Layer="Join" Type="Vector2">
+            <POSITION x="571" y="135" />
+          </INLET>
+          <INLET Name="Position#1" Layer="Split" PadType="Field">
+            <POSITION x="589" y="274" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="Position" Layer="Join" PadType="Field">
+            <POSITION x="579" y="182" />
+          </OUTLET>
+          <OUTLET Name="Position#1" Layer="Split">
+            <POSITION x="594" y="324" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS />
+        <REGIONS />
+        <NODES />
+        <LINKS>
+          <Link source="Inlets/Position" sink="Outlets/Position" />
+          <Link source="Inlets/Position#1" sink="Outlets/Position#1" />
         </LINKS>
       </BODY>
     </PATCH>

@@ -13,6 +13,7 @@
         <LAYERS>
           <LAYER Name="Create" />
           <LAYER Name="Update" />
+          <LAYER Name="GetWorld" />
         </LAYERS>
         <INLETS>
           <INLET Name="ControlData" Layer="Update">
@@ -36,7 +37,10 @@
             <POSITION x="142.455887" y="528.0813" />
           </OUTLET>
           <OUTLET Name="World" Layer="Update">
-            <POSITION x="261.973358" y="653.209656" />
+            <POSITION x="234.281708" y="693.4073" />
+          </OUTLET>
+          <OUTLET Name="World 2" Layer="GetWorld">
+            <POSITION x="409.994476" y="693.4073" />
           </OUTLET>
         </OUTLETS>
         <CONSTS>
@@ -55,10 +59,12 @@
             <POSITION x="234.201874" y="14.3111649" />
             <SIZE x="146" y="72" />
             <INPUTS>
+              <INPUT Name="IDFactory" IsAccumulator="true" />
               <INPUT Name="New Bubbles" IsAccumulator="true" />
               <INPUT Name="Old LogicBubbles" />
             </INPUTS>
             <OUTPUTS>
+              <OUPUT Name="IDFactory" IsAccumulator="true" />
               <OUPUT Name="New Bubbles" IsAccumulator="true" />
               <OUPUT Name="New LogicBubbles" />
             </OUTPUTS>
@@ -69,6 +75,9 @@
                 <LAYER Name="Destroy" />
               </LAYERS>
               <INLETS>
+                <INLET Name="IDFactory" Layer="Update" PadType="Accumulator">
+                  <POSITION x="137.665222" y="0.07727051" />
+                </INLET>
                 <INLET Name="New Bubbles" Layer="Update" PadType="Accumulator">
                   <POSITION x="298.401" y="161.603485" />
                 </INLET>
@@ -110,6 +119,7 @@
                   </NODEREF>
                   <INPUTS>
                     <INPUT Name="Bubble" />
+                    <INPUT Name="IDFactory" />
                     <INPUT Name="ActorControlDatas" />
                   </INPUTS>
                   <OUTPUTS>
@@ -136,11 +146,12 @@
               </NODES>
               <LINKS>
                 <Link source="Inlets/Old LogicBubble" sink="Nodes/Update/Inputs/Input" />
-                <Link source="Nodes/Update/Outputs/Output" sink="Nodes/EmitIfPlayerBubble/Inputs/Bubble" />
                 <Link source="Nodes/EmitIfPlayerBubble/Outputs/Bubble" sink="Outlets/New LogicBubble" />
                 <Link source="Nodes/EmitIfPlayerBubble/Outputs/New Bubbles" sink="Nodes/Concat/Inputs/Input 2" />
                 <Link source="Inlets/New Bubbles" sink="Nodes/Concat/Inputs/Input" />
                 <Link source="Nodes/Concat/Outputs/Output" sink="Outlets/New Bubbles" />
+                <Link source="Inlets/IDFactory" sink="Nodes/EmitIfPlayerBubble/Inputs/IDFactory" />
+                <Link source="Nodes/Update/Outputs/Output" sink="Nodes/EmitIfPlayerBubble/Inputs/Bubble" />
               </LINKS>
             </BODY>
           </REGION>
@@ -511,6 +522,7 @@
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Bubbles" />
+              <OUPUT Name="Collisions" />
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Outbox#3" Layer="Update">
@@ -569,6 +581,12 @@
           <Link source="Nodes/BubblesTransfer/Outputs/Bubbles" sink="Nodes/Count#1/Inputs/Input" />
           <Link source="Nodes/BubblesTransfer/Outputs/Bubbles" sink="Regions/ForEachLoop/Inputs/Inputs" />
           <Link source="Regions/ForEachLoop/Outputs/Outputs" sink="Nodes/Join#3/Inputs/Bubbles" />
+          <Link source="Nodes/Join#3/Outputs/Output" sink="Outlets/World 2" />
+          <Link source="Nodes/Create#2/Outputs/Output" sink="Regions/ForEachLoop#1/Inputs/IDFactory">
+            <SEGMENTS>
+              <Point x="1053.1311" y="-108.335983" />
+            </SEGMENTS>
+          </Link>
         </LINKS>
       </BODY>
     </PATCH>
@@ -685,8 +703,14 @@
           <OUTLET Name="Mass#2" Layer="EmitAndAccelerate" PadType="Field">
             <POSITION x="603.6752" y="562.875854" />
           </OUTLET>
+          <OUTLET Name="Mass Loss" Layer="EmitAndAccelerate">
+            <POSITION x="701.602539" y="579.2003" />
+          </OUTLET>
           <OUTLET Name="Position#1" Layer="Create" PadType="Field">
             <POSITION x="854" y="-25" />
+          </OUTLET>
+          <OUTLET Name="Position" Layer="Split">
+            <POSITION x="879.2001" y="159.199982" />
           </OUTLET>
           <OUTLET Name="Velocity#3" Layer="EmitAndAccelerate" PadType="Field">
             <POSITION x="885.6009" y="571.2001" />
@@ -694,20 +718,38 @@
           <OUTLET Name="Velocity" Layer="Create" PadType="Field">
             <POSITION x="970" y="-20" />
           </OUTLET>
+          <OUTLET Name="Velocity#1" Layer="Split">
+            <POSITION x="979.2001" y="159.199982" />
+          </OUTLET>
+          <OUTLET Name="Mass" Layer="Split">
+            <POSITION x="1056.20007" y="159.199982" />
+          </OUTLET>
           <OUTLET Name="Mass#1" Layer="Create" PadType="Field">
             <POSITION x="1096" y="-26" />
+          </OUTLET>
+          <OUTLET Name="Radius" Layer="Split">
+            <POSITION x="1136.20007" y="159.199982" />
           </OUTLET>
           <OUTLET Name="Name" Layer="Create" PadType="Field">
             <POSITION x="1205" y="-30" />
           </OUTLET>
+          <OUTLET Name="Name#1" Layer="Split">
+            <POSITION x="1238.20007" y="159.199982" />
+          </OUTLET>
+          <OUTLET Name="Mass#4" Layer="Grow" PadType="Field">
+            <POSITION x="1283.6" y="397.999969" />
+          </OUTLET>
           <OUTLET Name="ID" Layer="Create" PadType="Field">
             <POSITION x="1293" y="-28" />
           </OUTLET>
-          <OUTLET Name="Mass Loss" Layer="EmitAndAccelerate">
-            <POSITION x="701.602539" y="579.2003" />
+          <OUTLET Name="ID#1" Layer="Split">
+            <POSITION x="1321.20007" y="159.199982" />
           </OUTLET>
-          <OUTLET Name="intersects" Layer="IntersectsVL">
-            <POSITION x="2234.6" y="422.999969" />
+          <OUTLET Name="Age#1" Layer="Split" Type="Float64">
+            <POSITION x="1381.20007" y="159.199982" />
+          </OUTLET>
+          <OUTLET Name="Velocity#5" Layer="Grow" PadType="Field">
+            <POSITION x="1399.6" y="401.999969" />
           </OUTLET>
           <OUTLET Name="Mass#3" Layer="Shrink" PadType="Field">
             <POSITION x="1783.6" y="394.999969" />
@@ -715,32 +757,11 @@
           <OUTLET Name="Velocity#4" Layer="Shrink" PadType="Field">
             <POSITION x="1867.6" y="389.999969" />
           </OUTLET>
-          <OUTLET Name="Velocity#5" Layer="Grow" PadType="Field">
-            <POSITION x="1399.6" y="401.999969" />
+          <OUTLET Name="intersects" Layer="IntersectsVL">
+            <POSITION x="2218.91284" y="524.9671" />
           </OUTLET>
-          <OUTLET Name="Mass#4" Layer="Grow" PadType="Field">
-            <POSITION x="1283.6" y="397.999969" />
-          </OUTLET>
-          <OUTLET Name="Position" Layer="Split">
-            <POSITION x="879.2001" y="159.199982" />
-          </OUTLET>
-          <OUTLET Name="Velocity#1" Layer="Split">
-            <POSITION x="979.2001" y="159.199982" />
-          </OUTLET>
-          <OUTLET Name="Mass" Layer="Split">
-            <POSITION x="1056.20007" y="159.199982" />
-          </OUTLET>
-          <OUTLET Name="Radius" Layer="Split">
-            <POSITION x="1136.20007" y="159.199982" />
-          </OUTLET>
-          <OUTLET Name="Name#1" Layer="Split">
-            <POSITION x="1238.20007" y="159.199982" />
-          </OUTLET>
-          <OUTLET Name="ID#1" Layer="Split">
-            <POSITION x="1321.20007" y="159.199982" />
-          </OUTLET>
-          <OUTLET Name="Age#1" Layer="Split" Type="Float64">
-            <POSITION x="1381.20007" y="159.199982" />
+          <OUTLET Name="intersect pos" Layer="IntersectsVL">
+            <POSITION x="2296.92041" y="524.9671" />
           </OUTLET>
         </OUTLETS>
         <CONSTS>
@@ -1148,6 +1169,64 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
+          <OPERATION Name="-#3" Layer="IntersectsVL">
+            <POSITION x="2449.31079" y="366.1956" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="-" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+              <INPUT Name="Input 3" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Angle" Layer="IntersectsVL">
+            <POSITION x="2449.871" y="416.6189" />
+            <NODEREF LastCat="2D" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Angle" />
+              <CATEGORY Name="2D" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="FromPolar#1" Layer="IntersectsVL">
+            <POSITION x="2386.56177" y="466.481934" />
+            <NODEREF LastCat="2D" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="FromPolar" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Angle" />
+              <INPUT Name="Radius" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="+#5" Layer="IntersectsVL">
+            <POSITION x="2369.75415" y="496.735962" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="+" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+              <INPUT Name="Input 3" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
         </NODES>
         <LINKS>
           <Link source="Inlets/Position#1" sink="Outlets/Position#1" />
@@ -1222,6 +1301,14 @@
               <Point x="-87.4230347" y="25.3040771" />
             </SEGMENTS>
           </Link>
+          <Link source="Inlets/pos1" sink="Nodes/-#3/Inputs/Input" />
+          <Link source="Inlets/pos2" sink="Nodes/-#3/Inputs/Input 2" />
+          <Link source="Nodes/Angle/Outputs/Result" sink="Nodes/FromPolar#1/Inputs/Angle" />
+          <Link source="Inlets/r1" sink="Nodes/FromPolar#1/Inputs/Radius" />
+          <Link source="Nodes/FromPolar#1/Outputs/Output" sink="Nodes/+#5/Inputs/Input" />
+          <Link source="Inlets/pos1" sink="Nodes/+#5/Inputs/Input 2" />
+          <Link source="Nodes/+#5/Outputs/Output" sink="Outlets/intersect pos" />
+          <Link source="Nodes/-#3/Outputs/Output" sink="Nodes/Angle/Inputs/Input" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -1285,10 +1372,13 @@
         </LAYERS>
         <INLETS>
           <INLET Name="Bubble" Layer="EmitIfPlayerBubble">
-            <POSITION x="287.199951" y="83.2000046" />
+            <POSITION x="287.199951" y="77.3978043" />
+          </INLET>
+          <INLET Name="IDFactory" Layer="EmitIfPlayerBubble">
+            <POSITION x="482.637543" y="77.3978043" />
           </INLET>
           <INLET Name="ActorControlDatas" Layer="EmitIfPlayerBubble" Type="Spread&lt;ActorControlData&gt;">
-            <POSITION x="576.7999" y="83.2000046" />
+            <POSITION x="576.7999" y="77.3978043" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -1537,7 +1627,7 @@
         </REGIONS>
         <NODES>
           <OPERATION Name="Split" Layer="EmitIfPlayerBubble">
-            <POSITION x="320.799957" y="175.999985" />
+            <POSITION x="316.0527" y="181.2747" />
             <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
               <OPERATIONNODE Name="Split" />
               <CATEGORY Name="LogicBubble" IsDirectParent="true" />
@@ -1643,6 +1733,7 @@
           <Link source="Nodes/Split/Outputs/ID" sink="Nodes/Outbox#2/Inputs/Input" />
           <Link source="Nodes/Split/Outputs/Radius" sink="Regions/IfElse/IfElseBody/Nodes/*/Inputs/Input" />
           <Link source="Constants/Radius" sink="Regions/IfElse/IfElseBody/Nodes/*/Inputs/Scalar" />
+          <Link source="Inlets/IDFactory" sink="Regions/IfElse/IfElseBody/Nodes/Create/Inputs/IDFactory" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -1653,22 +1744,25 @@
           <LAYER Name="Create" />
         </LAYERS>
         <INLETS>
-          <INLET Name="Reset" Layer="Update">
-            <POSITION x="425.449524" y="120.929893" />
+          <INLET Name="Step" Layer="Update">
+            <POSITION x="315.956" y="118.820007" />
           </INLET>
           <INLET Name="GameLogic" Layer="Update" PadType="Field">
-            <POSITION x="462.24054" y="230.546875" />
+            <POSITION x="367.2955" y="209.975449" />
+          </INLET>
+          <INLET Name="Reset" Layer="Update">
+            <POSITION x="425.449524" y="118.820007" />
           </INLET>
           <INLET Name="ControlData" Layer="Update" Type="ControlData">
-            <POSITION x="545.4121" y="120.929893" />
+            <POSITION x="545.4121" y="118.820007" />
           </INLET>
         </INLETS>
         <OUTLETS>
-          <OUTLET Name="World" Layer="Update">
-            <POSITION x="404.777466" y="503.1914" />
-          </OUTLET>
           <OUTLET Name="GameLogic" Layer="Update" PadType="Field">
-            <POSITION x="477.299774" y="447.313354" />
+            <POSITION x="435.629456" y="564.9397" />
+          </OUTLET>
+          <OUTLET Name="World" Layer="Update">
+            <POSITION x="522.4038" y="626.092468" />
           </OUTLET>
         </OUTLETS>
         <CONSTS />
@@ -1717,23 +1811,66 @@
               </LINKS>
             </BODY>
           </REGION>
-        </REGIONS>
-        <NODES>
-          <OPERATION Name="Update" Layer="Update">
-            <POSITION x="434.6606" y="395.71875" />
-            <NODEREF LastCat="VVVV.VLOsmos.GameLogic" LastFile="GameLogic.vl">
-              <OPERATIONNODE Name="Update" />
-              <CATEGORY Name="GameLogic" IsDirectParent="true" />
-            </NODEREF>
+          <REGION Name="IfElse#1" Layer="Update" Kind="IfElse">
+            <POSITION x="372.074463" y="419.75116" />
+            <SIZE x="152.96698" y="77.53845" />
             <INPUTS>
-              <INPUT Name="Input" />
-              <INPUT Name="ControlData" />
+              <INPUT Name="Condition" />
+              <INPUT Name="Output Default" />
+              <INPUT Name="World Default" />
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Output" />
               <OUPUT Name="World" />
             </OUTPUTS>
-          </OPERATION>
+            <BODY Name="IfElseBody">
+              <LAYERS>
+                <LAYER Name="True" />
+              </LAYERS>
+              <INLETS>
+                <INLET Name="World" Layer="True">
+                  <POSITION x="374.574463" y="421.129333" />
+                </INLET>
+                <INLET Name="Output#1" Layer="True">
+                  <POSITION x="443.737946" y="421.129333" />
+                </INLET>
+              </INLETS>
+              <OUTLETS>
+                <OUTLET Name="Output" Layer="True">
+                  <POSITION x="443.737946" y="529.408569" />
+                </OUTLET>
+                <OUTLET Name="World" Layer="True">
+                  <POSITION x="518.5744" y="529.408569" />
+                </OUTLET>
+              </OUTLETS>
+              <CONSTS />
+              <REGIONS />
+              <NODES>
+                <OPERATION Name="Update" Layer="True">
+                  <POSITION x="430.440826" y="470.619873" />
+                  <NODEREF LastCat="VVVV.VLOsmos.GameLogic" LastFile="GameLogic.vl">
+                    <OPERATIONNODE Name="Update" />
+                    <CATEGORY Name="GameLogic" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                    <INPUT Name="ControlData" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Output" />
+                    <OUPUT Name="World" />
+                  </OUTPUTS>
+                </OPERATION>
+              </NODES>
+              <LINKS>
+                <Link source="Nodes/Update/Outputs/World" sink="Outlets/World" />
+                <Link source="Nodes/Update/Outputs/Output" sink="Outlets/Output" />
+                <Link source="Inlets/Output#1" sink="Nodes/Update/Inputs/Input" />
+              </LINKS>
+            </BODY>
+          </REGION>
+        </REGIONS>
+        <NODES>
           <OPERATION Name="OR" Layer="Update">
             <POSITION x="428.684052" y="196.427032" />
             <NODEREF LastCat="Primitive.Boolean" LastFile="Builtin">
@@ -1763,17 +1900,33 @@
               <OUPUT Name="Reset" />
             </OUTPUTS>
           </OPERATION>
+          <OPERATION Name="GetWorld" Layer="Update">
+            <POSITION x="458.901" y="373.979156" />
+            <NODEREF LastCat="VVVV.VLOsmos.GameLogic" LastFile="GameLogic.vl">
+              <OPERATIONNODE Name="GetWorld" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+              <OUPUT Name="World 2" />
+            </OUTPUTS>
+          </OPERATION>
         </NODES>
         <LINKS>
           <Link source="Inlets/GameLogic" sink="Regions/IfElse/Inputs/Output Default" />
-          <Link source="Regions/IfElse/Outputs/Output" sink="Nodes/Update/Inputs/Input" />
-          <Link source="Nodes/Update/Outputs/Output" sink="Outlets/GameLogic" />
-          <Link source="Nodes/Update/Outputs/World" sink="Outlets/World" />
           <Link source="Inlets/Reset" sink="Nodes/OR/Inputs/Input" />
           <Link source="Inlets/ControlData" sink="Nodes/Split/Inputs/Input" />
           <Link source="Nodes/Split/Outputs/Reset" sink="Nodes/OR/Inputs/Input 2" />
           <Link source="Nodes/OR/Outputs/Output" sink="Regions/IfElse/Inputs/Condition" />
-          <Link source="Inlets/ControlData" sink="Nodes/Update/Inputs/ControlData" />
+          <Link source="Inlets/ControlData" sink="Regions/IfElse#1/IfElseBody/Nodes/Update/Inputs/ControlData" />
+          <Link source="Regions/IfElse#1/Outputs/World" sink="Outlets/World" />
+          <Link source="Regions/IfElse#1/Outputs/Output" sink="Outlets/GameLogic" />
+          <Link source="Regions/IfElse/Outputs/Output" sink="Regions/IfElse#1/Inputs/Output Default" />
+          <Link source="Regions/IfElse/Outputs/Output" sink="Nodes/GetWorld/Inputs/Input" />
+          <Link source="Inlets/Step" sink="Regions/IfElse#1/Inputs/Condition" />
+          <Link source="Nodes/GetWorld/Outputs/World 2" sink="Regions/IfElse#1/Inputs/World Default" />
         </LINKS>
       </BODY>
     </PATCH>

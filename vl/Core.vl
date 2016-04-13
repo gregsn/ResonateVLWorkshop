@@ -346,6 +346,7 @@
             <INPUTS>
               <INPUT Name="Input" />
               <INPUT Name="ActorsControlData" />
+              <INPUT Name="Reset" />
               <INPUT Name="Enabled" />
             </INPUTS>
             <OUTPUTS>
@@ -363,6 +364,7 @@
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="ActorsControlData" />
+              <OUPUT Name="Reset" />
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Join#1" Layer="Control">
@@ -503,6 +505,12 @@
           <INLET Name="ActorsControlData#1" Layer="Split" PadType="Field">
             <POSITION x="335" y="236" />
           </INLET>
+          <INLET Name="Reset" Layer="Join" Type="Boolean">
+            <POSITION x="431" y="126" />
+          </INLET>
+          <INLET Name="Reset#1" Layer="Split" PadType="Field">
+            <POSITION x="438" y="236" />
+          </INLET>
         </INLETS>
         <OUTLETS>
           <OUTLET Name="ActorsControlData" Layer="Join" PadType="Field">
@@ -511,6 +519,12 @@
           <OUTLET Name="ActorsControlData#1" Layer="Split">
             <POSITION x="335" y="274" />
           </OUTLET>
+          <OUTLET Name="Reset" Layer="Join" PadType="Field">
+            <POSITION x="431" y="178" />
+          </OUTLET>
+          <OUTLET Name="Reset#1" Layer="Split">
+            <POSITION x="436" y="274" />
+          </OUTLET>
         </OUTLETS>
         <CONSTS />
         <REGIONS />
@@ -518,6 +532,8 @@
         <LINKS>
           <Link source="Inlets/ActorsControlData" sink="Outlets/ActorsControlData" />
           <Link source="Inlets/ActorsControlData#1" sink="Outlets/ActorsControlData#1" />
+          <Link source="Inlets/Reset" sink="Outlets/Reset" />
+          <Link source="Inlets/Reset#1" sink="Outlets/Reset#1" />
         </LINKS>
       </BODY>
     </PATCH>

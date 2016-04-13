@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="D:\-(-[-!-12.15-!-]-)-\Wrkshps\Vvvv_gl\Ma-version\Display.v4p" systemname="Display" filename="D:\-(-[-!-12.15-!-]-)-\Wrkshps\Vvvv_gl\Ver-3\Display.v4p" scrollx="24" scrolly="0">
-   <BOUNDS type="Window" left="6072" top="1140" width="11760" height="11244">
+   <PATCH nodename="D:\-(-[-!-12.15-!-]-)-\Wrkshps\Vvvv_gl\ResonateVLWorkshop\Display.v4p" systemname="Display" filename="D:\-(-[-!-12.15-!-]-)-\Wrkshps\Vvvv_gl\Ver-3\Display.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="0" top="0" width="10644" height="10716">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -64,102 +64,12 @@
    </NODE>
    <LINK srcnodeid="9" srcpinname="Y Output Value" dstnodeid="6" dstpinname="XYZ">
    </LINK>
-   <NODE systemname="GouraudDirectional (DX11.Effect)" filename="%VVVV%\packs\dx11-vvvv-girlpower\nodes\dx11\GouraudDirectional.fx" nodename="GouraudDirectional (DX11.Effect)" componentmode="Hidden" id="13">
-   <BOUNDS type="Node" left="732" top="5676" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Geometry" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Layer" visible="1">
-   </PIN>
-   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Ambient Color" visible="1" slicecount="1" values="|0.92030,0.92030,0.92030,0.17238|">
-   </PIN>
-   <PIN pinname="Render State" visible="1">
-   </PIN>
-   <PIN pinname="Texture" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Enabled" visible="1">
-   </PIN>
-   </NODE>
-   <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="15">
-   <BOUNDS type="Node" left="2124" top="7956" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="2124" top="7956" width="4800" height="3600">
-   </BOUNDS>
-   <BOUNDS type="Window" left="13104" top="0" width="9936" height="8460">
-   </BOUNDS>
-   <PIN pinname="Layers" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="View" visible="1">
-   </PIN>
-   <PIN pinname="Projection" visible="1">
-   </PIN>
-   </NODE>
-   <NODE systemname="Camera (Transform Softimage)" filename="%VVVV%\packs\VL.EditingFramework.0.38.92-g16f7ca3554\vvvv\nodes\modules\Camera (Transform Softimage).v4p" nodename="Camera (Transform Softimage)" componentmode="Hidden" id="17">
-   <BOUNDS type="Node" left="3420" top="7428" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="View" visible="1">
-   </PIN>
-   <PIN pinname="Projection" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="17" srcpinname="View" dstnodeid="15" dstpinname="View">
-   </LINK>
-   <LINK srcnodeid="17" srcpinname="Projection" dstnodeid="15" dstpinname="Projection">
-   </LINK>
-   <NODE systemname="Rasterizer (DX11.RenderState)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Rasterizer (DX11.RenderState)" componentmode="Hidden" id="19">
-   <BOUNDS type="Node" left="900" top="4620" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Mode" slicecount="1" values="BackCullSimple">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="19" srcpinname="Render State" dstnodeid="13" dstpinname="Render State">
-   </LINK>
-   <NODE systemname="Blend (DX11.RenderState)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Blend (DX11.RenderState)" componentmode="Hidden" id="20">
-   <BOUNDS type="Node" left="900" top="4164" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Mode" slicecount="1" values="Blend">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="20" srcpinname="Render State" dstnodeid="19" dstpinname="Render State">
-   </LINK>
-   <NODE systemname="Distort-2" filename="..\..\..\WHole_Project\Some_shaders\Distort-2.v4p" nodename="..\..\..\WHole_Project\Some_shaders\Distort-2.v4p" componentmode="Hidden" id="24">
-   <BOUNDS type="Node" left="2256" top="4668" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Window" left="7248" top="5328" width="15180" height="10344">
-   </BOUNDS>
-   <PIN pinname="Texture Out" visible="1">
-   </PIN>
-   </NODE>
    <PACK Name="dx11-vvvv-girlpower" Version="33.0">
    </PACK>
-   <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="41">
-   <BOUNDS type="Node" left="2280" top="6840" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input Count" slicecount="1" values="5">
-   </PIN>
-   <PIN pinname="Layer 2" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Layer 1" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Layer Out" visible="1">
-   </PIN>
-   <PIN pinname="Layer 3" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Layer 4" visible="1" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="41" srcpinname="Layer Out" dstnodeid="15" dstpinname="Layers">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="42" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="4608" top="1656" width="780" height="492">
+   <BOUNDS type="Box" left="4104" top="1644" width="780" height="492">
    </BOUNDS>
-   <BOUNDS type="Node" left="4608" top="1656" width="0" height="0">
+   <BOUNDS type="Node" left="4104" top="1644" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -203,7 +113,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5793" top="3252" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.05">
+   <PIN pinname="Y Input Value" slicecount="2380" visible="1" values="4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25,4.70579752942513E-009,4.70579752942513E-009,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,1.25">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -213,7 +123,7 @@
    <LINK srcnodeid="43" srcpinname="Y Output Value" dstnodeid="45" dstpinname="XYZ">
    </LINK>
    <NODE systemname="Display (VLOsmos)" filename="vl\Display.vl" nodename="Display (VLOsmos)" componentmode="Hidden" id="48">
-   <BOUNDS type="Node" left="1338" top="1023" width="3648" height="276">
+   <BOUNDS type="Node" left="1326" top="987" width="3648" height="276">
    </BOUNDS>
    <PIN pinname="PositionsXY" visible="1">
    </PIN>
@@ -252,78 +162,6 @@
    </LINK>
    <LINK srcnodeid="49" srcpinname="Y Output Value" dstnodeid="7" dstpinname="XY">
    </LINK>
-   <NODE systemname="GouraudDirectional (DX11.Effect)" filename="%VVVV%\packs\dx11-vvvv-girlpower\nodes\dx11\GouraudDirectional.fx" nodename="GouraudDirectional (DX11.Effect)" componentmode="Hidden" id="53">
-   <BOUNDS type="Node" left="4044" top="5484" width="2496" height="276">
-   </BOUNDS>
-   <PIN pinname="Geometry" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Layer" visible="1">
-   </PIN>
-   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Ambient Color" visible="1" slicecount="1" values="|0.14456,0.03151,0.01503,1.00000|">
-   </PIN>
-   <PIN pinname="Render State" visible="1">
-   </PIN>
-   <PIN pinname="Texture" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Enabled" visible="1">
-   </PIN>
-   <PIN pinname="Diffuse Color" visible="1" slicecount="1" values="|0.63279,0.34227,0.99815,0.73587|">
-   </PIN>
-   </NODE>
-   <NODE systemname="Rasterizer (DX11.RenderState)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Rasterizer (DX11.RenderState)" componentmode="Hidden" id="52">
-   <BOUNDS type="Node" left="4224" top="4644" width="864" height="276">
-   </BOUNDS>
-   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Mode" slicecount="1" values="BackCullSimple">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="52" srcpinname="Render State" dstnodeid="53" dstpinname="Render State">
-   </LINK>
-   <NODE systemname="Blend (DX11.RenderState)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Blend (DX11.RenderState)" componentmode="Hidden" id="51">
-   <BOUNDS type="Node" left="4212" top="4248" width="540" height="276">
-   </BOUNDS>
-   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Mode" slicecount="1" values="Blend">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="51" srcpinname="Render State" dstnodeid="52" dstpinname="Render State">
-   </LINK>
-   <NODE systemname="IcoSphere (DX11.Geometry)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="IcoSphere (DX11.Geometry)" componentmode="Hidden" id="50">
-   <BOUNDS type="Node" left="4368" top="5064" width="828" height="276">
-   </BOUNDS>
-   <PIN pinname="Geometry Out" visible="1">
-   </PIN>
-   <PIN pinname="Radius" slicecount="1" values="0.03">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="50" srcpinname="Geometry Out" dstnodeid="53" dstpinname="Geometry">
-   </LINK>
-   <LINK srcnodeid="45" srcpinname="Transform Out" dstnodeid="53" dstpinname="Transform In">
-   </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="56" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="6792" top="5088" width="504" height="456">
-   </BOUNDS>
-   <BOUNDS type="Node" left="6792" top="5088" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Toggle">
-   </PIN>
-   <PIN pinname="X Input Value" slicecount="1" values="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="56" srcpinname="Y Output Value" dstnodeid="53" dstpinname="Enabled">
-   </LINK>
    <NODE systemname="Vector (3d Split)" nodename="Vector (3d Split)" componentmode="Hidden" id="69">
    <BOUNDS type="Node" left="4716" top="2544" width="100" height="100">
    </BOUNDS>
@@ -342,48 +180,6 @@
    </LINK>
    <LINK srcnodeid="42" srcpinname="Y Output Value" dstnodeid="69" dstpinname="XYZ">
    </LINK>
-   <LINK srcnodeid="6" srcpinname="Transform Out" dstnodeid="13" dstpinname="Transform In">
-   </LINK>
-   <LINK srcnodeid="53" srcpinname="Layer" dstnodeid="41" dstpinname="Layer 3">
-   </LINK>
-   <LINK srcnodeid="13" srcpinname="Layer" dstnodeid="41" dstpinname="Layer 4">
-   </LINK>
-   <LINK srcnodeid="24" srcpinname="Texture Out" dstnodeid="13" dstpinname="Texture">
-   </LINK>
-   <NODE systemname="Sphere (DX11.Geometry)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Sphere (DX11.Geometry)" componentmode="Hidden" id="73">
-   <BOUNDS type="Node" left="1044" top="5220" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Geometry Out" visible="1">
-   </PIN>
-   <PIN pinname="Radius" slicecount="1" visible="1" values="0.04">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="73" srcpinname="Geometry Out" dstnodeid="13" dstpinname="Geometry">
-   </LINK>
-   <NODE nodename="IOBox (Color)" componentmode="InABox" id="78" systemname="IOBox (Color)">
-   <BOUNDS type="Box" left="5424" top="4872" width="720" height="456">
-   </BOUNDS>
-   <BOUNDS type="Node" left="5424" top="4872" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Color Input" slicecount="1" visible="1" values="|0.14456,0.03151,0.01503,1.00000|">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="78" srcpinname="Color Output" dstnodeid="53" dstpinname="Ambient Color">
-   </LINK>
-   <NODE systemname="HSL (Color Join)" nodename="HSL (Color Join)" componentmode="Hidden" id="79">
-   <BOUNDS type="Node" left="5436" top="4404" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   <PIN pinname="Saturation" slicecount="1" values="0.99">
-   </PIN>
-   <PIN pinname="Hue" slicecount="1" values="0.37">
-   </PIN>
-   <PIN pinname="Lightness" slicecount="1" values="0.49">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="79" srcpinname="Output" dstnodeid="78" dstpinname="Color Input">
-   </LINK>
    <LINK srcnodeid="48" srcpinname="Masss" dstnodeid="9" dstpinname="Y Input Value">
    </LINK>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="80">
@@ -398,10 +194,142 @@
    </LINK>
    <LINK srcnodeid="48" srcpinname="Particle PositionXYZ" dstnodeid="42" dstpinname="Y Input Value">
    </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="81" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="3384" top="5256" width="480" height="480">
+   <LINK srcnodeid="48" srcpinname="Radiuss" dstnodeid="43" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="PhongDirectional (EX9.Effect)" filename="%VVVV%\lib\nodes\effects\PhongDirectional.fx" nodename="PhongDirectional (EX9.Effect)" componentmode="Hidden" id="84">
+   <BOUNDS type="Node" left="912" top="5400" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Node" left="3384" top="5256" width="0" height="0">
+   <PIN pinname="Mesh" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Transform" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Texture Transform" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Color Transform" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Alpha" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Ambient Color" visible="1">
+   </PIN>
+   <PIN pinname="Diffuse Color" slicecount="1" values="|0.01297,0.01297,0.01297,1.00000|">
+   </PIN>
+   </NODE>
+   <NODE systemname="Camera (Transform Softimage Legacy)" filename="%VVVV%\lib\nodes\modules\Transform\Camera (Transform Softimage).v4p" nodename="Camera (Transform Softimage)" componentmode="Hidden" id="83">
+   <BOUNDS type="Node" left="3822" top="6180" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="View" visible="1">
+   </PIN>
+   <PIN pinname="Projection" visible="1">
+   </PIN>
+   <PIN pinname="Initial Distance" slicecount="1" values="15">
+   </PIN>
+   </NODE>
+   <NODE systemname="Sphere (EX9.Geometry)" nodename="Sphere (EX9.Geometry)" componentmode="Hidden" id="85">
+   <BOUNDS type="Node" left="1056" top="4788" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Mesh" visible="1">
+   </PIN>
+   <PIN pinname="Radius" slicecount="1" values="0.05">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="85" srcpinname="Mesh" dstnodeid="84" dstpinname="Mesh">
+   </LINK>
+   <LINK srcnodeid="6" srcpinname="Transform Out" dstnodeid="84" dstpinname="Transform">
+   </LINK>
+   <NODE systemname="Blend (EX9.RenderState)" nodename="Blend (EX9.RenderState)" componentmode="Hidden" id="86">
+   <BOUNDS type="Node" left="912" top="4272" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Render State Out" visible="1">
+   </PIN>
+   <PIN pinname="Draw Mode" slicecount="1" values="ColorAsAlphaAdd">
+   </PIN>
+   </NODE>
+   <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="InAWindow" id="87">
+   <BOUNDS type="Node" left="2568" top="6792" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2568" top="6792" width="2400" height="1800">
+   </BOUNDS>
+   <BOUNDS type="Window" left="8712" top="0" width="14328" height="11220">
+   </BOUNDS>
+   <PIN pinname="Layers" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Windowed Depthbuffer Format" slicecount="1" values="D24S8">
+   </PIN>
+   <PIN pinname="View" visible="1">
+   </PIN>
+   <PIN pinname="Projection" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Group (EX9)" nodename="Group (EX9)" componentmode="Hidden" id="88">
+   <BOUNDS type="Node" left="2580" top="6228" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Layer 1" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Layer 2" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="88" srcpinname="Layer" dstnodeid="87" dstpinname="Layers">
+   </LINK>
+   <NODE systemname="PhongDirectional (EX9.Effect)" filename="%VVVV%\lib\nodes\effects\PhongDirectional.fx" nodename="PhongDirectional (EX9.Effect)" componentmode="Hidden" id="92">
+   <BOUNDS type="Node" left="4500" top="5424" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Mesh" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Transform" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Texture Transform" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Color Transform" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Enabled" visible="1">
+   </PIN>
+   <PIN pinname="Power" slicecount="1" values="24.63">
+   </PIN>
+   <PIN pinname="Diffuse Color" slicecount="1" values="|0.85542,0.85542,0.85542,1.00000|">
+   </PIN>
+   <PIN pinname="Ambient Color" slicecount="1" visible="1" values="|0.45399,0.16115,0.16115,0.86469|">
+   </PIN>
+   </NODE>
+   <NODE systemname="Sphere (EX9.Geometry)" nodename="Sphere (EX9.Geometry)" componentmode="Hidden" id="90">
+   <BOUNDS type="Node" left="4656" top="4872" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Mesh" visible="1">
+   </PIN>
+   <PIN pinname="Radius" slicecount="1" values="0.02">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="90" srcpinname="Mesh" dstnodeid="92" dstpinname="Mesh">
+   </LINK>
+   <NODE systemname="Blend (EX9.RenderState)" nodename="Blend (EX9.RenderState)" componentmode="Hidden" id="89">
+   <BOUNDS type="Node" left="4500" top="4392" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Render State Out" visible="1">
+   </PIN>
+   <PIN pinname="Draw Mode" slicecount="1" values="Blend">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="45" srcpinname="Transform Out" dstnodeid="92" dstpinname="Transform">
+   </LINK>
+   <LINK srcnodeid="84" srcpinname="Layer" dstnodeid="88" dstpinname="Layer 2">
+   </LINK>
+   <LINK srcnodeid="92" srcpinname="Layer" dstnodeid="88" dstpinname="Layer 1">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="93" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="7296" top="4980" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7296" top="4980" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
@@ -416,8 +344,64 @@
    <PIN pinname="X Input Value" slicecount="1" values="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="81" srcpinname="Y Output Value" dstnodeid="13" dstpinname="Enabled">
+   <LINK srcnodeid="93" srcpinname="Y Output Value" dstnodeid="92" dstpinname="Enabled">
    </LINK>
-   <LINK srcnodeid="48" srcpinname="Radiuss" dstnodeid="43" dstpinname="Y Input Value">
+   <NODE nodename="IOBox (Color)" componentmode="InABox" id="94" systemname="IOBox (Color)">
+   <BOUNDS type="Box" left="5784" top="4512" width="840" height="444">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5784" top="4512" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Color Input" slicecount="1" visible="1" values="|0.58111,0.14059,0.23146,1.00000|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="94" srcpinname="Color Output" dstnodeid="92" dstpinname="Ambient Color">
+   </LINK>
+   <NODE systemname="HSL (Color Join)" nodename="HSL (Color Join)" componentmode="Hidden" id="96">
+   <BOUNDS type="Node" left="5796" top="4080" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Hue" slicecount="1" values="0.69">
+   </PIN>
+   <PIN pinname="Saturation" slicecount="1" values="1.05">
+   </PIN>
+   <PIN pinname="Lightness" slicecount="1" values="0.2">
+   </PIN>
+   <PIN pinname="Alpha" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="96" srcpinname="Output" dstnodeid="94" dstpinname="Color Input">
+   </LINK>
+   <LINK srcnodeid="83" srcpinname="View" dstnodeid="87" dstpinname="View">
+   </LINK>
+   <LINK srcnodeid="83" srcpinname="Projection" dstnodeid="87" dstpinname="Projection">
+   </LINK>
+   <NODE nodename="IOBox (Color)" componentmode="InABox" id="98" systemname="IOBox (Color)">
+   <BOUNDS type="Box" left="2004" top="4608" width="840" height="444">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2004" top="4608" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Color Input" slicecount="1" visible="1" values="|0.58111,0.14059,0.23146,1.00000|">
+   </PIN>
+   <PIN pinname="Color Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="HSL (Color Join)" nodename="HSL (Color Join)" componentmode="Hidden" id="97">
+   <BOUNDS type="Node" left="2016" top="4176" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Hue" slicecount="1" values="0.86">
+   </PIN>
+   <PIN pinname="Saturation" slicecount="1" values="1.1">
+   </PIN>
+   <PIN pinname="Lightness" slicecount="1" values="0.2">
+   </PIN>
+   <PIN pinname="Alpha" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="97" srcpinname="Output" dstnodeid="98" dstpinname="Color Input">
+   </LINK>
+   <LINK srcnodeid="98" srcpinname="Color Output" dstnodeid="84" dstpinname="Ambient Color">
    </LINK>
    </PATCH>

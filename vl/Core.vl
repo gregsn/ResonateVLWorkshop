@@ -806,6 +806,109 @@
         </LINKS>
       </BODY>
     </PATCH>
+    <PATCH Name="Serialization" Category="VVVV.VLOsmos" IsClosed="true">
+      <BODY Name="Utils2Body">
+        <LAYERS>
+          <LAYER Name="Serialize" Version="World" />
+          <LAYER Name="Deserialize" Version="World" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="World" Layer="Serialize (World)" Type="World">
+            <POSITION x="313" y="118" />
+          </INLET>
+          <INLET Name="SerializedWorld" Layer="Deserialize (World)">
+            <POSITION x="608" y="118" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="Result" Layer="Serialize (World)">
+            <POSITION x="312" y="291" />
+          </OUTLET>
+          <OUTLET Name="Result#1" Layer="Deserialize (World)" Type="World">
+            <POSITION x="610" y="394" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS>
+          <CONST Name="Omit Header" Layer="Serialize (World)">
+            <POSITION x="374" y="193" />
+            <VALUE><![CDATA[true]]></VALUE>
+          </CONST>
+          <CONST Name="Omit Header#1" Layer="Deserialize (World)">
+            <POSITION x="683" y="275" />
+            <VALUE><![CDATA[true]]></VALUE>
+          </CONST>
+        </CONSTS>
+        <REGIONS />
+        <NODES>
+          <OPERATION Name="Serialize" Layer="Serialize (World)">
+            <POSITION x="315" y="224" />
+            <NODEREF LastCat="Runtime.Serialization" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Serialize" Version="Json" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Value" />
+              <INPUT Name="Indent" />
+              <INPUT Name="Omit Header" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Deserialize" Layer="Deserialize (World)">
+            <POSITION x="613" y="310" />
+            <NODEREF LastCat="Runtime.Serialization" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Deserialize" Version="Json" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Serialized Value" />
+              <INPUT Name="Indent" />
+              <INPUT Name="Omit Header" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="IsNullOrWhiteSpace" Layer="Deserialize (World)">
+            <POSITION x="623" y="169" />
+            <NODEREF LastCat="Primitive.String" LastFile="Builtin">
+              <CATEGORY Name="String" />
+              <OPERATIONNODE Name="IsNullOrWhiteSpace" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="SwitchInput" Layer="Deserialize (World)">
+            <POSITION x="625" y="350" />
+            <NODEREF LastCat="Control" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="SwitchInput" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Condition" />
+              <INPUT Name="False" />
+              <INPUT Name="True" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+        </NODES>
+        <LINKS>
+          <Link source="Inlets/World" sink="Nodes/Serialize/Inputs/Value" />
+          <Link source="Constants/Omit Header" sink="Nodes/Serialize/Inputs/Omit Header" />
+          <Link source="Nodes/Serialize/Outputs/Result" sink="Outlets/Result" />
+          <Link source="Inlets/SerializedWorld" sink="Nodes/Deserialize/Inputs/Serialized Value" />
+          <Link source="Constants/Omit Header#1" sink="Nodes/Deserialize/Inputs/Omit Header" />
+          <Link source="Inlets/SerializedWorld" sink="Nodes/IsNullOrWhiteSpace/Inputs/Input" />
+          <Link source="Nodes/IsNullOrWhiteSpace/Outputs/Result" sink="Nodes/SwitchInput/Inputs/Condition" />
+          <Link source="Nodes/Deserialize/Outputs/Result" sink="Nodes/SwitchInput/Inputs/False" />
+          <Link source="Nodes/SwitchInput/Outputs/Output" sink="Outlets/Result#1" />
+        </LINKS>
+      </BODY>
+    </PATCH>
   </PATCHES>
   <INFO>
     <AUTHORS>vvvv group</AUTHORS>

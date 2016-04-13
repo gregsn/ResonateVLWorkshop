@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\dev\ResonateVLWorkshop\Display.v4p" systemname="Display" filename="C:\dev\ResonateVLWorkshop\Display.v4p" scrollx="216" scrolly="0">
-   <BOUNDS type="Window" left="252" top="1416" width="9456" height="6720">
+   <PATCH nodename="C:\dev\ResonateVLWorkshop\Display.v4p" systemname="Display" filename="C:\dev\ResonateVLWorkshop\Display.v4p" scrollx="0" scrolly="3780">
+   <BOUNDS type="Window" left="264" top="492" width="7200" height="6960">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -37,7 +37,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="1755" top="7830" width="2400" height="1800">
    </BOUNDS>
-   <BOUNDS type="Window" left="5508" top="0" width="9852" height="8904">
+   <BOUNDS type="Window" left="7788" top="876" width="6600" height="7212">
    </BOUNDS>
    <PIN pinname="Layers" visible="1" slicecount="1" values="||">
    </PIN>
@@ -48,6 +48,8 @@
    <PIN pinname="Aspect Ratio" visible="1">
    </PIN>
    <PIN pinname="Background Color" slicecount="1" values="|0.07918,0.10104,0.10421,1.00000|">
+   </PIN>
+   <PIN pinname="Window Handle" visible="1" pintype="Output">
    </PIN>
    </NODE>
    <NODE systemname="Quad (DX9)" nodename="Quad (DX9)" componentmode="Hidden" id="3">
@@ -199,7 +201,7 @@
    <LINK srcnodeid="23" srcpinname="Layer" dstnodeid="2" dstpinname="Layers">
    </LINK>
    <NODE systemname="Cursor (DX9)" filename="%VVVV%\packs\VL.EditingFramework.0.38.92-g16f7ca3554\vvvv\nodes\modules\DX9\Cursor (DX9).v4p" nodename="Cursor (DX9)" componentmode="Hidden" id="24">
-   <BOUNDS type="Node" left="3105" top="6525" width="100" height="100">
+   <BOUNDS type="Node" left="2793" top="6501" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Layer" visible="1">
    </PIN>
@@ -519,7 +521,7 @@
    </BOUNDS>
    <PIN pinname="Input 2" visible="1">
    </PIN>
-   <PIN pinname="Input 1" visible="1">
+   <PIN pinname="Input 1" visible="1" slicecount="1" values="1">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -539,9 +541,19 @@
    <LINK srcnodeid="50" srcpinname="Y Output Value" dstnodeid="49" dstpinname="Input 2">
    </LINK>
    <LINK srcnodeid="0" srcpinname="Radii" dstnodeid="49" dstpinname="Input 1">
-   <LINKPOINT x="3036" y="2748">
+   <LINKPOINT x="2976" y="2700">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="49" srcpinname="Output" dstnodeid="6" dstpinname="XYZ">
+   </LINK>
+   <NODE systemname="S (Value)" nodename="S (Value)" componentmode="Hidden" id="51">
+   <BOUNDS type="Node" left="1740" top="8484" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input Value" visible="1">
+   </PIN>
+   <PIN pinname="Send String" slicecount="1" values="Rendererhandle">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Window Handle" dstnodeid="51" dstpinname="Input Value">
    </LINK>
    </PATCH>

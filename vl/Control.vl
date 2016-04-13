@@ -595,6 +595,20 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
+          <OPERATION Name="Outbox" Layer="Update">
+            <POSITION x="80.230484" y="1120.83093" />
+            <NODEREF LastCat="IO" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+              <ANYNODE Name="Outbox" />
+              <CATEGORY Name="IO" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
         </NODES>
         <LINKS>
           <Link source="Nodes/Join/Outputs/Output" sink="Outlets/ControlData" />
@@ -663,6 +677,7 @@
               <Point x="-415.710083" y="492.872437" />
             </SEGMENTS>
           </Link>
+          <Link source="Regions/ForEachLoop/Outputs/Outputs" sink="Nodes/Outbox/Inputs/Input" />
         </LINKS>
       </BODY>
     </PATCH>

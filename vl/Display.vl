@@ -25,7 +25,7 @@
           <OUTLET Name="Positions" Layer="Update">
             <POSITION x="-74" y="574" />
           </OUTLET>
-          <OUTLET Name="Masss" Layer="Update">
+          <OUTLET Name="Radii" Layer="Update">
             <POSITION x="29" y="574" />
           </OUTLET>
           <OUTLET Name="Names" Layer="Update">
@@ -57,7 +57,7 @@
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Positions" />
-              <OUPUT Name="Masss" />
+              <OUPUT Name="Radiuss" />
               <OUPUT Name="Names" />
               <OUPUT Name="IDs" />
               <OUPUT Name="Ages" />
@@ -70,14 +70,14 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Bubble" Layer="Update">
-                  <POSITION x="25.1508179" y="470" />
+                  <POSITION x="24.3508148" y="461.199982" />
                 </INLET>
               </INLETS>
               <OUTLETS>
                 <OUTLET Name="Position" Layer="Update">
                   <POSITION x="-32.8491821" y="539" />
                 </OUTLET>
-                <OUTLET Name="Mass" Layer="Update">
+                <OUTLET Name="Radius" Layer="Update">
                   <POSITION x="24" y="539" />
                 </OUTLET>
                 <OUTLET Name="Name" Layer="Update">
@@ -116,10 +116,10 @@
               <LINKS>
                 <Link source="Inlets/Bubble" sink="Nodes/Split/Inputs/Input" />
                 <Link source="Nodes/Split/Outputs/Position" sink="Outlets/Position" />
-                <Link source="Nodes/Split/Outputs/Mass" sink="Outlets/Mass" />
                 <Link source="Nodes/Split/Outputs/Name" sink="Outlets/Name" />
                 <Link source="Nodes/Split/Outputs/ID" sink="Outlets/ID" />
                 <Link source="Nodes/Split/Outputs/Age" sink="Outlets/Age" />
+                <Link source="Nodes/Split/Outputs/Radius" sink="Outlets/Radius" />
               </LINKS>
             </BODY>
           </REGION>
@@ -332,7 +332,7 @@
           <Link source="Nodes/Split#1/Outputs/Bubbles" sink="Regions/ForEachLoop#2/Inputs/Bubbles" />
           <Link source="Inlets/World" sink="Nodes/Split#1/Inputs/Input" />
           <Link source="Regions/ForEachLoop#2/Outputs/Positions" sink="Outlets/Positions" />
-          <Link source="Regions/ForEachLoop#2/Outputs/Masss" sink="Outlets/Masss" />
+          <Link source="Regions/ForEachLoop#2/Outputs/Radiuss" sink="Outlets/Radii" />
           <Link source="Regions/ForEachLoop#2/Outputs/Names" sink="Outlets/Names" />
           <Link source="Regions/ForEachLoop#2/Outputs/IDs" sink="Outlets/IDs" />
           <Link source="Regions/ForEachLoop#2/Outputs/Ages" sink="Outlets/Ages" />

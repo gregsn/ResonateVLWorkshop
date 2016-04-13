@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\dev\ResonateVLWorkshop\Control.v4p" systemname="Control" filename="C:\dev\ResonateVLWorkshop\Control.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="264" top="492" width="7200" height="6960">
+   <PATCH nodename="D:\VL\ResonateVLWorkshop\ResonateVLWorkshop\Control.v4p" systemname="Control" filename="C:\dev\ResonateVLWorkshop\Control.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="0" top="0" width="13080" height="10920">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>

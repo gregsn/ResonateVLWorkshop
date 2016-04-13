@@ -6,6 +6,7 @@
     <PACKAGE Name="VL.CoreLib.VVVV" Version="0.38.92-g16f7ca3554" />
     <FILE Name="Core.vl" Location="./Core.vl" />
     <FILE Name="Game.vl" Location="./Game.vl" />
+    <FILE Name="Display.vl" Location="./Display.vl" />
   </DEPENDENCIES>
   <PATCHES>
     <PATCH Name="GameLogic" Category="VVVV.VLOsmos" IsDatatype="true" IsClosed="true" IsMutable="true">
@@ -125,7 +126,7 @@
               <REGIONS />
               <NODES>
                 <OPERATION Name="Join#4" Layer="Update">
-                  <POSITION x="455.005371" y="149.939362" />
+                  <POSITION x="447.924316" y="181.804108" />
                   <NODEREF LastCat="VLOsmos.Bubble" LastFile="Core.vl">
                     <OPERATIONNODE Name="Join" />
                     <CATEGORY Name="Bubble" IsDirectParent="true" />
@@ -139,6 +140,7 @@
                     <INPUT Name="Name" />
                     <INPUT Name="ID" />
                     <INPUT Name="Age" />
+                    <INPUT Name="IsControlled" />
                     <INPUT Name="Enabled" IsEnabled="true" />
                   </INPUTS>
                   <OUTPUTS>
@@ -210,6 +212,19 @@
                     <OUPUT Name="Output" />
                   </OUTPUTS>
                 </OPERATION>
+                <OPERATION Name="IsControlled" Layer="Update">
+                  <POSITION x="573.0988" y="138.646545" />
+                  <NODEREF LastCat="VVVV.VLOsmos" LastFile="Display.vl">
+                    <OPERATIONNODE Name="IsControlled" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="BubbleID" />
+                    <INPUT Name="ActorControlData" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Result" />
+                  </OUTPUTS>
+                </OPERATION>
               </NODES>
               <LINKS>
                 <Link source="Nodes/Join#4/Outputs/Output" sink="Outlets/Bubble" />
@@ -227,6 +242,12 @@
                 <Link source="Inlets/New Bubbles" sink="Nodes/Concat/Inputs/Input" />
                 <Link source="Nodes/Concat/Outputs/Output" sink="Outlets/New Bubbles" />
                 <Link source="Nodes/Split/Outputs/Radius" sink="Nodes/Join#4/Inputs/Radius" />
+                <Link source="Nodes/Split/Outputs/ID" sink="Nodes/IsControlled/Inputs/BubbleID" />
+                <Link source="Nodes/IsControlled/Outputs/Result" sink="Nodes/Join#4/Inputs/IsControlled">
+                  <SEGMENTS>
+                    <Point x="-1.31982422" y="3.446289" />
+                  </SEGMENTS>
+                </Link>
               </LINKS>
             </BODY>
           </REGION>
@@ -632,6 +653,11 @@
           <Link source="Regions/ForEachLoop#1/Outputs/New Bubbles" sink="Nodes/Concat#1/Inputs/Input 2" />
           <Link source="Nodes/Concat#1/Outputs/Output" sink="Nodes/BubblesTransfer/Inputs/Bubbles" />
           <Link source="Nodes/BubblesTransfer/Outputs/Bubbles" sink="Outlets/Bubbles#1" />
+          <Link source="Nodes/Split/Outputs/ActorsControlData" sink="Regions/ForEachLoop#1/ForEachLoopBody/Nodes/IsControlled/Inputs/ActorControlData">
+            <SEGMENTS>
+              <Point x="402.693359" y="78.45392" />
+            </SEGMENTS>
+          </Link>
         </LINKS>
       </BODY>
     </PATCH>
@@ -1558,7 +1584,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Any" Layer="EmitIfPlayerBubble">
-            <POSITION x="425.5997" y="337.599976" />
+            <POSITION x="580.599731" y="322.599976" />
             <NODEREF LastCat="Collections.Sequence" LastFile="System.Core.dll">
               <OPERATIONNODE Name="Any" />
               <CATEGORY Name="Sequence" IsDirectParent="true" />

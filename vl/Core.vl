@@ -159,7 +159,7 @@
             <POSITION x="521.333252" y="220.111115" />
           </OUTLET>
           <OUTLET Name="WorldSize#1" Layer="GetWorldSize">
-            <POSITION x="663" y="436" />
+            <POSITION x="873" y="431" />
           </OUTLET>
         </OUTLETS>
         <CONSTS>
@@ -168,7 +168,7 @@
             <VALUE><![CDATA[2.0]]></VALUE>
           </CONST>
           <CONST Name="WorldSize#1" Layer="GetWorldSize" Type="Vector2">
-            <POSITION x="665" y="345" />
+            <POSITION x="875" y="340" />
             <VALUE><![CDATA[2.0]]></VALUE>
           </CONST>
         </CONSTS>
@@ -292,6 +292,7 @@
                     <INPUT Name="Name" />
                     <INPUT Name="ID" />
                     <INPUT Name="Age" />
+                    <INPUT Name="IsControlled" />
                     <INPUT Name="Enabled" IsEnabled="true" />
                   </INPUTS>
                   <OUTPUTS>
@@ -534,6 +535,12 @@
           <INLET Name="Position" Layer="Split" PadType="Field">
             <POSITION x="138" y="261" />
           </INLET>
+          <INLET Name="Velocity" Layer="Join" Type="Vector2">
+            <POSITION x="235" y="64" />
+          </INLET>
+          <INLET Name="Velocity#1" Layer="Split" PadType="Field">
+            <POSITION x="238" y="253" />
+          </INLET>
           <INLET Name="Radius" Layer="Join" Type="Float64">
             <POSITION x="318" y="64" />
           </INLET>
@@ -564,11 +571,11 @@
           <INLET Name="Age#1" Layer="Split" PadType="Field">
             <POSITION x="704" y="251" />
           </INLET>
-          <INLET Name="Velocity" Layer="Join" Type="Vector2">
-            <POSITION x="235" y="64" />
+          <INLET Name="IsControlled" Layer="Join" Type="Boolean">
+            <POSITION x="820" y="64" />
           </INLET>
-          <INLET Name="Velocity#1" Layer="Split" PadType="Field">
-            <POSITION x="238" y="253" />
+          <INLET Name="IsControlled#1" Layer="Split" PadType="Field">
+            <POSITION x="833" y="259" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -614,6 +621,12 @@
           <OUTLET Name="Velocity#1" Layer="Split">
             <POSITION x="244" y="320" />
           </OUTLET>
+          <OUTLET Name="IsControlled" Layer="Join" PadType="Field">
+            <POSITION x="825" y="114" />
+          </OUTLET>
+          <OUTLET Name="IsControlled#1" Layer="Split">
+            <POSITION x="828" y="320" />
+          </OUTLET>
         </OUTLETS>
         <CONSTS />
         <REGIONS />
@@ -633,6 +646,8 @@
           <Link source="Inlets/Radius#1" sink="Outlets/Radius#1" />
           <Link source="Inlets/Velocity" sink="Outlets/Velocity" />
           <Link source="Inlets/Velocity#1" sink="Outlets/Velocity#1" />
+          <Link source="Inlets/IsControlled" sink="Outlets/IsControlled" />
+          <Link source="Inlets/IsControlled#1" sink="Outlets/IsControlled#1" />
         </LINKS>
       </BODY>
     </PATCH>

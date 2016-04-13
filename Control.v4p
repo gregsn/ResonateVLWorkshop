@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\vvvv\git\ResonateWorkshop\Control.v4p" systemname="Control" filename="C:\dev\ResonateVLWorkshop\Control.v4p" scrollx="240" scrolly="225">
-   <BOUNDS type="Window" left="0" top="0" width="5760" height="9330">
+   <PATCH nodename="C:\vvvv\git\ResonateWorkshop\Control.v4p" systemname="Control" filename="C:\dev\ResonateVLWorkshop\Control.v4p" scrollx="0" scrolly="825">
+   <BOUNDS type="Window" left="1170" top="3045" width="8805" height="7635">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -12,16 +12,6 @@
    <PIN pinname="Descriptive Name" slicecount="1" values="ControlData">
    </PIN>
    <PIN pinname="Input Node" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <NODE systemname="IOBox (String)" nodename="IOBox (String)" componentmode="InABox" id="8">
-   <BOUNDS type="Node" left="2730" top="3360" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="2730" top="3360" width="765" height="240">
-   </BOUNDS>
-   <PIN pinname="Descriptive Name" slicecount="1" values="World">
-   </PIN>
-   <PIN pinname="Output String" visible="1">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="10" systemname="IOBox (Value Advanced)">
@@ -157,7 +147,7 @@
    <NODE systemname="R (Value)" nodename="R (Value)" componentmode="Hidden" id="37">
    <BOUNDS type="Node" left="3240" top="4845" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Receive String" slicecount="1" values="RendererHandle">
+   <PIN pinname="Receive String" slicecount="1" values="(nil)">
    </PIN>
    <PIN pinname="Input Value" visible="1">
    </PIN>
@@ -193,27 +183,23 @@
    </BOUNDS>
    <PIN pinname="Input 1" visible="1" slicecount="2" values="-0.0911256700416915,0.168732125834128">
    </PIN>
-   <PIN pinname="Input 2" visible="1">
+   <PIN pinname="Input 2" visible="1" slicecount="2" values="1723552,1">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="35" srcpinname="Y Output Value" dstnodeid="44" dstpinname="Input 2">
-   </LINK>
    <LINK srcnodeid="44" srcpinname="Output" dstnodeid="38" dstpinname="Input">
    </LINK>
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="45">
    <BOUNDS type="Node" left="3795" top="6630" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Input 1" visible="1">
+   <PIN pinname="Input 1" visible="1" slicecount="2" values="1140578.875,0">
    </PIN>
    <PIN pinname="Input 2" slicecount="1" values="0.5">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="34" srcpinname="Y Output Value" dstnodeid="45" dstpinname="Input 1">
-   </LINK>
    <LINK srcnodeid="45" srcpinname="Output" dstnodeid="38" dstpinname="Source Maximum">
    </LINK>
    <LINK srcnodeid="16" srcpinname="Y Output Value" dstnodeid="44" dstpinname="Input 1">
@@ -257,6 +243,10 @@
    <NODE systemname="Controller (VLOsmos)" filename="vl\Control.vl" nodename="Control (VLOsmos)" componentmode="Hidden" id="51">
    <BOUNDS type="Node" left="750" top="4695" width="2145" height="270">
    </BOUNDS>
+   <PIN pinname="WorldSerialized" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="World" visible="1" slicecount="1" values="||">
+   </PIN>
    </NODE>
    <LINK srcnodeid="51" srcpinname="ControlData" dstnodeid="1" dstpinname="Input Node">
    </LINK>
@@ -264,10 +254,96 @@
    </LINK>
    <LINK srcnodeid="3" srcpinname="Device" dstnodeid="51" dstpinname="MouseIn">
    </LINK>
-   <LINK srcnodeid="8" srcpinname="Output String" dstnodeid="51" dstpinname="WorldSerialized">
-   </LINK>
    <LINK srcnodeid="46" srcpinname="Y Output Value" dstnodeid="51" dstpinname="AddAI">
    </LINK>
    <LINK srcnodeid="48" srcpinname="Output" dstnodeid="51" dstpinname="WorldAvailable">
    </LINK>
+   <NODE systemname="FrameDelay (World)" filename="subpatch\FrameDelay (World).v4p" componentmode="InAWindow" id="52" nodename="subpatch\FrameDelay (World).v4p">
+   <BOUNDS type="Node" left="2565" top="2220" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2565" top="2220" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="5640" top="6570" width="9000" height="6000">
+   </BOUNDS>
+   <PIN pinname="World" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="56">
+   <BOUNDS type="Node" left="2550" top="1425" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2550" top="1425" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="World">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="56" srcpinname="Output Node" dstnodeid="52" dstpinname="World">
+   </LINK>
+   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="58">
+   <BOUNDS type="Node" left="4920" top="6000" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4920" top="6000" width="795" height="480">
+   </BOUNDS>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="2" values="0,0">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0|">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="59">
+   <BOUNDS type="Node" left="5940" top="5985" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5940" top="5985" width="795" height="480">
+   </BOUNDS>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="2" values="2,2">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0|">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="58" srcpinname="Y Output Value" dstnodeid="44" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="59" srcpinname="Y Output Value" dstnodeid="45" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="52" srcpinname="World" dstnodeid="51" dstpinname="World">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="60" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="0" top="0" width="360" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="0" top="0" width="360" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="def">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="62" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="5595" top="1725" width="660" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5595" top="1725" width="660" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="serializ">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
    </PATCH>

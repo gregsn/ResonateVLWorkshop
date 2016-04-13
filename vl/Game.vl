@@ -130,7 +130,7 @@
                         </INPUTS>
                         <OUTPUTS>
                           <OUPUT Name="intersects" />
-                          <OUPUT Name="int point" />
+                          <OUPUT Name="intersect pos" />
                         </OUTPUTS>
                       </OPERATION>
                       <OPERATION Name="&gt;" Layer="Update">
@@ -389,11 +389,11 @@
                       <Link source="Inlets/Collisions" sink="Nodes/Add/Inputs/Input" />
                       <Link source="Nodes/Join/Outputs/Output" sink="Nodes/Add/Inputs/Item" />
                       <Link source="Nodes/Add/Outputs/Output" sink="Outlets/Collisions" />
-                      <Link source="Nodes/IntersectsVL/Outputs/int point" sink="Nodes/Join/Inputs/Position" />
                       <Link source="Inlets/Index#1" sink="Nodes/&gt;#1/Inputs/Input 2" />
                       <Link source="Nodes/&gt;#1/Outputs/Result" sink="Nodes/AND#2/Inputs/Input 2" />
                       <Link source="Nodes/IntersectsVL/Outputs/intersects" sink="Nodes/AND#2/Inputs/Input" />
                       <Link source="Nodes/AND#2/Outputs/Output" sink="Nodes/Add/Inputs/Enabled" />
+                      <Link source="Nodes/IntersectsVL/Outputs/intersect pos" sink="Nodes/Join/Inputs/Position" />
                     </LINKS>
                   </BODY>
                 </REGION>

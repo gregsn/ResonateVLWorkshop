@@ -1293,8 +1293,6 @@
               <Point x="-87.4230347" y="25.3040771" />
             </SEGMENTS>
           </Link>
-          <Link source="Inlets/pos1" sink="Nodes/-#3/Inputs/Input" />
-          <Link source="Inlets/pos2" sink="Nodes/-#3/Inputs/Input 2" />
           <Link source="Nodes/Angle/Outputs/Result" sink="Nodes/FromPolar#1/Inputs/Angle" />
           <Link source="Inlets/r1" sink="Nodes/FromPolar#1/Inputs/Radius" />
           <Link source="Nodes/FromPolar#1/Outputs/Output" sink="Nodes/+#5/Inputs/Input" />
@@ -1303,6 +1301,8 @@
           <Link source="Nodes/-#3/Outputs/Output" sink="Nodes/Angle/Inputs/Input" />
           <Link source="Nodes/*#1/Outputs/Output" sink="Outlets/Mass Loss" />
           <Link source="Nodes/-/Outputs/Output" sink="Outlets/Mass#2" />
+          <Link source="Inlets/pos1" sink="Nodes/-#3/Inputs/Input 2" />
+          <Link source="Inlets/pos2" sink="Nodes/-#3/Inputs/Input" />
         </LINKS>
       </BODY>
     </PATCH>

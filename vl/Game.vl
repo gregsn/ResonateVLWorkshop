@@ -112,6 +112,10 @@
                         <POSITION x="462.9713" y="444.888672" />
                         <VALUE><![CDATA[0.2]]></VALUE>
                       </CONST>
+                      <CONST Name="velo" Layer="Update">
+                        <POSITION x="497.600525" y="568.00116" />
+                        <VALUE><![CDATA[{"type":"Vector2 [2D]","value":{"X":0.0,"Y":0.0}}]]></VALUE>
+                      </CONST>
                     </CONSTS>
                     <REGIONS />
                     <NODES>
@@ -182,7 +186,7 @@
                         </OUTPUTS>
                       </OPERATION>
                       <OPERATION Name="Grow" Layer="Update">
-                        <POSITION x="419.092651" y="642.428955" />
+                        <POSITION x="411.0927" y="663.228943" />
                         <NODEREF LastFile="GameLogic.vl">
                           <OPERATIONNODE Name="Grow" />
                           <CATEGORYPATH Name="VVVV.VLOsmos.LogicBubble" />
@@ -198,7 +202,7 @@
                         </OUTPUTS>
                       </OPERATION>
                       <OPERATION Name="Shrink" Layer="Update">
-                        <POSITION x="444.505" y="698.722534" />
+                        <POSITION x="474.105042" y="698.722534" />
                         <NODEREF LastFile="GameLogic.vl">
                           <OPERATIONNODE Name="Shrink" />
                           <CATEGORYPATH Name="VVVV.VLOsmos.LogicBubble" />
@@ -384,8 +388,6 @@
                       <Link source="Nodes/Split/Outputs/Velocity" sink="Nodes/Outbox#1/Inputs/Input" />
                       <Link source="Constants/Input 2" sink="Nodes/*#1/Inputs/Scalar" />
                       <Link source="Nodes/Outbox#1/Outputs/Output" sink="Nodes/*#1/Inputs/Input" />
-                      <Link source="Nodes/*#1/Outputs/Output" sink="Nodes/Shrink/Inputs/velo" />
-                      <Link source="Nodes/*#1/Outputs/Output" sink="Nodes/Grow/Inputs/velo" />
                       <Link source="Inlets/Collisions" sink="Nodes/Add/Inputs/Input" />
                       <Link source="Nodes/Join/Outputs/Output" sink="Nodes/Add/Inputs/Item" />
                       <Link source="Nodes/Add/Outputs/Output" sink="Outlets/Collisions" />
@@ -394,6 +396,8 @@
                       <Link source="Nodes/IntersectsVL/Outputs/intersects" sink="Nodes/AND#2/Inputs/Input" />
                       <Link source="Nodes/AND#2/Outputs/Output" sink="Nodes/Add/Inputs/Enabled" />
                       <Link source="Nodes/IntersectsVL/Outputs/intersect pos" sink="Nodes/Join/Inputs/Position" />
+                      <Link source="Constants/velo" sink="Nodes/Shrink/Inputs/velo" />
+                      <Link source="Constants/velo" sink="Nodes/Grow/Inputs/velo" />
                     </LINKS>
                   </BODY>
                 </REGION>
@@ -497,6 +501,99 @@
             </SEGMENTS>
           </Link>
           <Link source="Regions/ForEachLoop#2/Outputs/Collisions" sink="Outlets/Collisions" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="Game" Category="VVVV.VLOsmos" IsDatatype="true" IsClosed="true" IsMutable="true">
+      <BODY Name="UtilsBody">
+        <LAYERS>
+          <LAYER Name="Create" />
+          <LAYER Name="Update" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="Step" Layer="Update">
+            <POSITION x="143.199982" y="126.4" />
+          </INLET>
+          <INLET Name="Reset" Layer="Update">
+            <POSITION x="211.999985" y="126.4" />
+          </INLET>
+          <INLET Name="MouseIn" Layer="Update">
+            <POSITION x="269.6" y="126.4" />
+          </INLET>
+          <INLET Name="NewID" Layer="Update">
+            <POSITION x="347.999969" y="126.4" />
+          </INLET>
+          <INLET Name="World" Layer="Update" PadType="Field">
+            <POSITION x="412.799957" y="229.599991" />
+          </INLET>
+          <INLET Name="AddAI" Layer="Update">
+            <POSITION x="423.199951" y="126.4" />
+          </INLET>
+          <INLET Name="Reset 2" Layer="Update">
+            <POSITION x="589.5999" y="126.4" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="World" Layer="Update">
+            <POSITION x="230.399979" y="413.599945" />
+          </OUTLET>
+          <OUTLET Name="World#1" Layer="Update" PadType="Field">
+            <POSITION x="374.399963" y="413.599945" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS />
+        <REGIONS />
+        <NODES>
+          <PROCESS Name="GameLogicManager">
+            <POSITION x="229.59996" y="321.599945" />
+            <NODEREF LastCat="VVVV.VLOsmos" LastFile="GameLogic.vl">
+              <PROCESSNODE Name="GameLogicManager" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Step" FragmentId="Update" />
+              <INPUT Name="Reset" FragmentId="Update" />
+              <INPUT Name="ControlData" FragmentId="Update" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="World" FragmentId="Update" />
+            </OUTPUTS>
+            <FRAGMENTS>
+              <FRAGMENT Name="Create" />
+              <FRAGMENT Name="Update" />
+            </FRAGMENTS>
+          </PROCESS>
+          <PROCESS Name="Controller">
+            <POSITION x="330.399933" y="278.399963" />
+            <NODEREF LastCat="VVVV.VLOsmos" LastFile="Control.vl">
+              <PROCESSNODE Name="Controller" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="MouseIn" FragmentId="Update" />
+              <INPUT Name="NewID" FragmentId="Update" />
+              <INPUT Name="AddAI" FragmentId="Update" />
+              <INPUT Name="World" FragmentId="Update" />
+              <INPUT Name="Reset" FragmentId="Update" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="ControlData" FragmentId="Update" />
+            </OUTPUTS>
+            <FRAGMENTS>
+              <FRAGMENT Name="Create" />
+              <FRAGMENT Name="Update" />
+            </FRAGMENTS>
+          </PROCESS>
+        </NODES>
+        <LINKS>
+          <Link source="Inlets/Step" sink="Nodes/GameLogicManager/Inputs/Step" />
+          <Link source="Inlets/Reset" sink="Nodes/GameLogicManager/Inputs/Reset" />
+          <Link source="Nodes/GameLogicManager/Outputs/World" sink="Outlets/World" />
+          <Link source="Nodes/Controller/Outputs/ControlData" sink="Nodes/GameLogicManager/Inputs/ControlData" />
+          <Link source="Inlets/MouseIn" sink="Nodes/Controller/Inputs/MouseIn" />
+          <Link source="Inlets/NewID" sink="Nodes/Controller/Inputs/NewID" />
+          <Link source="Inlets/AddAI" sink="Nodes/Controller/Inputs/AddAI" />
+          <Link source="Inlets/Reset 2" sink="Nodes/Controller/Inputs/Reset" />
+          <Link source="Inlets/World" sink="Nodes/Controller/Inputs/World" />
+          <Link source="Nodes/GameLogicManager/Outputs/World" sink="Outlets/World#1" />
         </LINKS>
       </BODY>
     </PATCH>

@@ -670,33 +670,33 @@
     <PATCH Name="Utils" Category="VVVV.VLOsmos">
       <BODY Name="UtilsBody">
         <LAYERS>
-          <LAYER Name="GetEmitterData" />
+          <LAYER Name="GetEmitPosition" />
         </LAYERS>
         <INLETS>
-          <INLET Name="Radius" Layer="GetEmitterData">
+          <INLET Name="Radius" Layer="GetEmitPosition">
             <POSITION x="787" y="141" />
           </INLET>
-          <INLET Name="Position" Layer="GetEmitterData">
+          <INLET Name="Position" Layer="GetEmitPosition">
             <POSITION x="571" y="141" />
           </INLET>
-          <INLET Name="Velocity" Layer="GetEmitterData" Type="Vector2">
+          <INLET Name="Velocity" Layer="GetEmitPosition" Type="Vector2">
             <POSITION x="681" y="141" />
           </INLET>
         </INLETS>
         <OUTLETS>
-          <OUTLET Name="Output" Layer="GetEmitterData">
+          <OUTLET Name="Output" Layer="GetEmitPosition">
             <POSITION x="643" y="436" />
           </OUTLET>
         </OUTLETS>
         <CONSTS>
-          <CONST Name="Constant" Layer="GetEmitterData" Type="Float32">
+          <CONST Name="Constant" Layer="GetEmitPosition" Type="Float32">
             <POSITION x="686" y="219" />
             <VALUE><![CDATA[-1.0]]></VALUE>
           </CONST>
         </CONSTS>
         <REGIONS />
         <NODES>
-          <OPERATION Name="Normalize" Layer="GetEmitterData">
+          <OPERATION Name="Normalize" Layer="GetEmitPosition">
             <POSITION x="627" y="181" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="Normalize" />
@@ -710,7 +710,7 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="*" Layer="GetEmitterData">
+          <OPERATION Name="*" Layer="GetEmitPosition">
             <POSITION x="629" y="255" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="*" Version="Scale" />
@@ -725,7 +725,7 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="*#1" Layer="GetEmitterData">
+          <OPERATION Name="*#1" Layer="GetEmitPosition">
             <POSITION x="651" y="306" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="*" Version="Scale" />
@@ -740,7 +740,7 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="+" Layer="GetEmitterData">
+          <OPERATION Name="+" Layer="GetEmitPosition">
             <POSITION x="639" y="376" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="+" />

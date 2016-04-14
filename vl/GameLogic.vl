@@ -122,6 +122,7 @@
                     <INPUT Name="Bubble" />
                     <INPUT Name="IDFactory" />
                     <INPUT Name="ActorControlDatas" />
+                    <INPUT Name="Delta Time" />
                   </INPUTS>
                   <OUTPUTS>
                     <OUPUT Name="Bubble" />
@@ -542,6 +543,20 @@
               <OUPUT Name="Collisions" />
             </OUTPUTS>
           </OPERATION>
+          <PROCESS Name="DeltaTime#1">
+            <POSITION x="589.600037" y="28.00003" />
+            <NODEREF LastCat="Animation" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
+              <PROCESSNODE Name="DeltaTime" />
+            </NODEREF>
+            <INPUTS />
+            <OUTPUTS>
+              <OUPUT Name="Result" FragmentId="Update" />
+            </OUTPUTS>
+            <FRAGMENTS>
+              <FRAGMENT Name="Create" />
+              <FRAGMENT Name="Update" />
+            </FRAGMENTS>
+          </PROCESS>
         </NODES>
         <LINKS>
           <Link source="Inlets/ControlData" sink="Nodes/Split/Inputs/Input" />
@@ -581,6 +596,11 @@
             </SEGMENTS>
           </Link>
           <Link source="Nodes/BubblesTransfer/Outputs/Collisions" sink="Nodes/Join#3/Inputs/Collisions" />
+          <Link source="Nodes/DeltaTime#1/Outputs/Result" sink="Regions/ForEachLoop#1/ForEachLoopBody/Nodes/EmitIfPlayerBubble/Inputs/Delta Time">
+            <SEGMENTS>
+              <Point x="-108.100006" y="65.74365" />
+            </SEGMENTS>
+          </Link>
         </LINKS>
       </BODY>
     </PATCH>
@@ -590,7 +610,7 @@
           <LAYER Name="Create" />
           <LAYER Name="Update" />
           <LAYER Name="Split" />
-          <LAYER Name="EmitAndAccelerate" />
+          <LAYER Name="LooseMassAndAccelerate" />
           <LAYER Name="IntersectsVL" />
           <LAYER Name="Shrink" />
           <LAYER Name="Grow" />
@@ -603,25 +623,34 @@
             <POSITION x="341.124878" y="189.6861" />
           </INLET>
           <INLET Name="WorldRange" Layer="Update">
-            <POSITION x="512.150635" y="157.457" />
+            <POSITION x="512.150635" y="100.657005" />
           </INLET>
-          <INLET Name="Mass#2" Layer="EmitAndAccelerate" PadType="Field">
+          <INLET Name="Mass#2" Layer="LooseMassAndAccelerate" PadType="Field">
             <POSITION x="610.8249" y="361.063446" />
           </INLET>
           <INLET Name="Other Bubbles" Layer="Update">
-            <POSITION x="632.150635" y="157.457" />
+            <POSITION x="632.150635" y="100.657005" />
           </INLET>
           <INLET Name="Position#1" Layer="Create" Type="Vector2">
             <POSITION x="849" y="-93" />
           </INLET>
-          <INLET Name="ActorControlData" Layer="EmitAndAccelerate">
+          <INLET Name="ActorControlData" Layer="LooseMassAndAccelerate">
             <POSITION x="879.243" y="298.356934" />
           </INLET>
-          <INLET Name="Velocity#3" Layer="EmitAndAccelerate" PadType="Field">
+          <INLET Name="Position#2" Layer="Split" PadType="Field">
+            <POSITION x="882.2001" y="102.199982" />
+          </INLET>
+          <INLET Name="Velocity#3" Layer="LooseMassAndAccelerate" PadType="Field">
             <POSITION x="897.6009" y="475.2" />
           </INLET>
           <INLET Name="Velocity" Layer="Create" Type="Vector2">
             <POSITION x="969" y="-93" />
+          </INLET>
+          <INLET Name="Velocity#2" Layer="Split" PadType="Field">
+            <POSITION x="985.2001" y="99.19998" />
+          </INLET>
+          <INLET Name="Mass" Layer="Split" PadType="Field">
+            <POSITION x="1042.20007" y="74.19998" />
           </INLET>
           <INLET Name="Mass#1" Layer="Create" Type="Float32">
             <POSITION x="1097" y="-93" />
@@ -629,8 +658,41 @@
           <INLET Name="Name" Layer="Create" Type="String">
             <POSITION x="1203" y="-93" />
           </INLET>
+          <INLET Name="Mass#4" Layer="Grow" PadType="Field">
+            <POSITION x="1229.6" y="234.999969" />
+          </INLET>
+          <INLET Name="Name#1" Layer="Split" PadType="Field">
+            <POSITION x="1235.93213" y="102.222733" />
+          </INLET>
           <INLET Name="IDFactory" Layer="Create">
             <POSITION x="1292" y="-93" />
+          </INLET>
+          <INLET Name="Velocity#4" Layer="Grow" PadType="Field">
+            <POSITION x="1304.6" y="236.999969" />
+          </INLET>
+          <INLET Name="ID#1" Layer="Split" PadType="Field">
+            <POSITION x="1320.20007" y="112.199982" />
+          </INLET>
+          <INLET Name="Age#1" Layer="Split" PadType="Field">
+            <POSITION x="1381.20007" y="114.199982" />
+          </INLET>
+          <INLET Name="mas#1" Layer="Grow" Type="Float32">
+            <POSITION x="1384.6" y="236.999969" />
+          </INLET>
+          <INLET Name="velo" Layer="Grow">
+            <POSITION x="1486.6" y="236.999969" />
+          </INLET>
+          <INLET Name="Mass#3" Layer="Shrink" PadType="Field">
+            <POSITION x="1767.6" y="231.999969" />
+          </INLET>
+          <INLET Name="Velocity#5" Layer="Shrink" PadType="Field">
+            <POSITION x="1821.6" y="236.999969" />
+          </INLET>
+          <INLET Name="mas" Layer="Shrink" Type="Float32">
+            <POSITION x="1880.6" y="236.999969" />
+          </INLET>
+          <INLET Name="velo#1" Layer="Shrink">
+            <POSITION x="1935.6" y="236.999969" />
           </INLET>
           <INLET Name="pos1" Layer="IntersectsVL" Type="Vector2">
             <POSITION x="2135.905" y="266.77243" />
@@ -644,47 +706,8 @@
           <INLET Name="r2" Layer="IntersectsVL">
             <POSITION x="2358.905" y="266.77243" />
           </INLET>
-          <INLET Name="Velocity#4" Layer="Grow" PadType="Field">
-            <POSITION x="1304.6" y="236.999969" />
-          </INLET>
-          <INLET Name="mas#1" Layer="Grow" Type="Float32">
-            <POSITION x="1384.6" y="236.999969" />
-          </INLET>
-          <INLET Name="velo" Layer="Grow">
-            <POSITION x="1486.6" y="236.999969" />
-          </INLET>
-          <INLET Name="Velocity#5" Layer="Shrink" PadType="Field">
-            <POSITION x="1821.6" y="236.999969" />
-          </INLET>
-          <INLET Name="mas" Layer="Shrink" Type="Float32">
-            <POSITION x="1880.6" y="236.999969" />
-          </INLET>
-          <INLET Name="velo#1" Layer="Shrink">
-            <POSITION x="1935.6" y="236.999969" />
-          </INLET>
-          <INLET Name="Mass#3" Layer="Shrink" PadType="Field">
-            <POSITION x="1767.6" y="231.999969" />
-          </INLET>
-          <INLET Name="Mass#4" Layer="Grow" PadType="Field">
-            <POSITION x="1229.6" y="234.999969" />
-          </INLET>
-          <INLET Name="Position#2" Layer="Split" PadType="Field">
-            <POSITION x="882.2001" y="102.199982" />
-          </INLET>
-          <INLET Name="Velocity#2" Layer="Split" PadType="Field">
-            <POSITION x="985.2001" y="99.19998" />
-          </INLET>
-          <INLET Name="Mass" Layer="Split" PadType="Field">
-            <POSITION x="1042.20007" y="74.19998" />
-          </INLET>
-          <INLET Name="Name#1" Layer="Split" PadType="Field">
-            <POSITION x="1235.93213" y="102.222733" />
-          </INLET>
-          <INLET Name="ID#1" Layer="Split" PadType="Field">
-            <POSITION x="1320.20007" y="112.199982" />
-          </INLET>
-          <INLET Name="Age#1" Layer="Split" PadType="Field">
-            <POSITION x="1381.20007" y="114.199982" />
+          <INLET Name="Delta Time" Layer="LooseMassAndAccelerate">
+            <POSITION x="1119.99988" y="298.356934" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -694,10 +717,10 @@
           <OUTLET Name="Velocity#2" Layer="Update" PadType="Field">
             <POSITION x="339.309875" y="443.267944" />
           </OUTLET>
-          <OUTLET Name="Mass#2" Layer="EmitAndAccelerate" PadType="Field">
+          <OUTLET Name="Mass#2" Layer="LooseMassAndAccelerate" PadType="Field">
             <POSITION x="603.6752" y="562.875854" />
           </OUTLET>
-          <OUTLET Name="Mass Loss" Layer="EmitAndAccelerate">
+          <OUTLET Name="Mass Loss" Layer="LooseMassAndAccelerate">
             <POSITION x="701.602539" y="579.2003" />
           </OUTLET>
           <OUTLET Name="Position#1" Layer="Create" PadType="Field">
@@ -706,7 +729,7 @@
           <OUTLET Name="Position" Layer="Split">
             <POSITION x="879.2001" y="159.199982" />
           </OUTLET>
-          <OUTLET Name="Velocity#3" Layer="EmitAndAccelerate" PadType="Field">
+          <OUTLET Name="Velocity#3" Layer="LooseMassAndAccelerate" PadType="Field">
             <POSITION x="885.6009" y="571.2001" />
           </OUTLET>
           <OUTLET Name="Velocity" Layer="Create" PadType="Field">
@@ -759,15 +782,15 @@
           </OUTLET>
         </OUTLETS>
         <CONSTS>
-          <CONST Name="Mass Loss Factor" Layer="EmitAndAccelerate">
+          <CONST Name="Mass Loss Factor" Layer="LooseMassAndAccelerate">
             <POSITION x="708.0009" y="354.4001" />
             <VALUE><![CDATA[0.01]]></VALUE>
           </CONST>
-          <CONST Name="Radius" Layer="EmitAndAccelerate">
+          <CONST Name="Radius" Layer="LooseMassAndAccelerate">
             <POSITION x="1008.00085" y="356.800079" />
-            <VALUE><![CDATA[0.149999961]]></VALUE>
+            <VALUE><![CDATA[0.189999983]]></VALUE>
           </CONST>
-          <CONST Name="Scalar" Layer="EmitAndAccelerate">
+          <CONST Name="Scalar" Layer="LooseMassAndAccelerate">
             <POSITION x="1109.27441" y="355.516479" />
             <VALUE><![CDATA[-1.0]]></VALUE>
           </CONST>
@@ -851,7 +874,7 @@
               <OUPUT Name="To" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="Split#1" Layer="EmitAndAccelerate">
+          <OPERATION Name="Split#1" Layer="LooseMassAndAccelerate">
             <POSITION x="879.829651" y="335.0652" />
             <NODEREF LastCat="VLOsmos.ActorControlData" LastFile="Core.vl">
               <OPERATIONNODE Name="Split" />
@@ -867,7 +890,7 @@
               <OUPUT Name="ID" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="-" Layer="EmitAndAccelerate">
+          <OPERATION Name="-" Layer="LooseMassAndAccelerate">
             <POSITION x="622.9008" y="506.114563" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="-" />
@@ -896,7 +919,7 @@
               <OUPUT Name="ID" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="*#1" Layer="EmitAndAccelerate">
+          <OPERATION Name="*#1" Layer="LooseMassAndAccelerate">
             <POSITION x="708.000854" y="462.400024" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="*" />
@@ -912,7 +935,7 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="FromPolar" Layer="EmitAndAccelerate">
+          <OPERATION Name="FromPolar" Layer="LooseMassAndAccelerate">
             <POSITION x="943.992065" y="400.738556" />
             <NODEREF LastCat="2D" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="FromPolar" />
@@ -925,7 +948,7 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="+#1" Layer="EmitAndAccelerate">
+          <OPERATION Name="+#1" Layer="LooseMassAndAccelerate">
             <POSITION x="933.6009" y="526.4" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="+" />
@@ -941,7 +964,7 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="*#2" Layer="EmitAndAccelerate">
+          <OPERATION Name="*#2" Layer="LooseMassAndAccelerate">
             <POSITION x="999.200867" y="490.400055" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="*" Version="Scale" />
@@ -956,20 +979,6 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
-          <PROCESS Name="DeltaTime#1">
-            <POSITION x="1029.60083" y="456.800079" />
-            <NODEREF LastCat="Animation" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
-              <PROCESSNODE Name="DeltaTime" />
-            </NODEREF>
-            <INPUTS />
-            <OUTPUTS>
-              <OUPUT Name="Result" FragmentId="Update" />
-            </OUTPUTS>
-            <FRAGMENTS>
-              <FRAGMENT Name="Create" />
-              <FRAGMENT Name="Update" />
-            </FRAGMENTS>
-          </PROCESS>
           <OPERATION Name="&lt;" Layer="IntersectsVL">
             <POSITION x="2246.6" y="379.999969" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
@@ -1148,7 +1157,7 @@
               <OUPUT Name="Result" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="*#3" Layer="EmitAndAccelerate">
+          <OPERATION Name="*#3" Layer="LooseMassAndAccelerate">
             <POSITION x="1085.01074" y="406.153839" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="*" Version="Scale" />
@@ -1254,7 +1263,6 @@
           <Link source="Inlets/Velocity#3" sink="Nodes/+#1/Inputs/Input" />
           <Link source="Nodes/+#1/Outputs/Output" sink="Outlets/Velocity#3" />
           <Link source="Nodes/*#2/Outputs/Output" sink="Nodes/+#1/Inputs/Input 2" />
-          <Link source="Nodes/DeltaTime#1/Outputs/Result" sink="Nodes/*#2/Inputs/Scalar" />
           <Link source="Nodes/&lt;/Outputs/Result" sink="Outlets/intersects" />
           <Link source="Inlets/pos1" sink="Nodes/Distance/Inputs/Input" />
           <Link source="Inlets/r1" sink="Nodes/+#2/Inputs/Input" />
@@ -1303,6 +1311,11 @@
           <Link source="Nodes/-/Outputs/Output" sink="Outlets/Mass#2" />
           <Link source="Inlets/pos1" sink="Nodes/-#3/Inputs/Input 2" />
           <Link source="Inlets/pos2" sink="Nodes/-#3/Inputs/Input" />
+          <Link source="Inlets/Delta Time" sink="Nodes/*#2/Inputs/Scalar">
+            <SEGMENTS>
+              <Point x="-78.5999756" y="111.843018" />
+            </SEGMENTS>
+          </Link>
         </LINKS>
       </BODY>
     </PATCH>
@@ -1373,6 +1386,9 @@
           </INLET>
           <INLET Name="ActorControlDatas" Layer="EmitIfPlayerBubble" Type="Spread&lt;ActorControlData&gt;">
             <POSITION x="576.7999" y="77.3978043" />
+          </INLET>
+          <INLET Name="Delta Time" Layer="EmitIfPlayerBubble">
+            <POSITION x="760.001" y="77.3978043" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -1559,25 +1575,26 @@
                     </CONSTS>
                     <REGIONS />
                     <NODES>
-                      <OPERATION Name="EmitAndAccelerate" Layer="True">
-                        <POSITION x="243.117645" y="548.3676" />
+                      <OPERATION Name="LooseMassAndAccelerate" Layer="True">
+                        <POSITION x="230.317657" y="548.3676" />
                         <NODEREF LastCat="VVVV.VLOsmos.LogicBubble" LastFile="GameLogic.vl">
                           <CATEGORY Name="LogicBubble" />
-                          <OPERATIONNODE Name="EmitAndAccelerate" />
+                          <OPERATIONNODE Name="LooseMassAndAccelerate" />
                         </NODEREF>
                         <INPUTS>
                           <INPUT Name="Input" />
                           <INPUT Name="ActorControlData" />
+                          <INPUT Name="Delta Time" />
                         </INPUTS>
                         <OUTPUTS>
                           <OUPUT Name="Output" />
                           <OUPUT Name="Mass Loss" />
                         </OUTPUTS>
                       </OPERATION>
-                      <OPERATION Name="GetEmitterData" Layer="True">
+                      <OPERATION Name="GetEmitPosition" Layer="True">
                         <POSITION x="272.694031" y="605.057" />
                         <NODEREF LastCat="VVVV.VLOsmos" LastFile="Core.vl">
-                          <OPERATIONNODE Name="GetEmitterData" />
+                          <OPERATIONNODE Name="GetEmitPosition" />
                         </NODEREF>
                         <INPUTS>
                           <INPUT Name="Position" />
@@ -1678,12 +1695,12 @@
                       </OPERATION>
                     </NODES>
                     <LINKS>
-                      <Link source="Nodes/EmitAndAccelerate/Outputs/Mass Loss" sink="Nodes/Create/Inputs/Mass" />
-                      <Link source="Nodes/GetEmitterData/Outputs/Output" sink="Nodes/Create/Inputs/Position" />
+                      <Link source="Nodes/LooseMassAndAccelerate/Outputs/Mass Loss" sink="Nodes/Create/Inputs/Mass" />
+                      <Link source="Nodes/GetEmitPosition/Outputs/Output" sink="Nodes/Create/Inputs/Position" />
                       <Link source="Nodes/Create/Outputs/Output" sink="Nodes/Add/Inputs/Item" />
-                      <Link source="Nodes/*/Outputs/Output" sink="Nodes/GetEmitterData/Inputs/Radius" />
+                      <Link source="Nodes/*/Outputs/Output" sink="Nodes/GetEmitPosition/Inputs/Radius" />
                       <Link source="Nodes/Add/Outputs/Output" sink="Outlets/New Bubbles" />
-                      <Link source="Nodes/EmitAndAccelerate/Outputs/Output" sink="Outlets/Output" />
+                      <Link source="Nodes/LooseMassAndAccelerate/Outputs/Output" sink="Outlets/Output" />
                       <Link source="Nodes/Random/Outputs/Output" sink="Nodes/Create/Inputs/Velocity" />
                       <Link source="Nodes/FromCenterWidth/Outputs/Output" sink="Nodes/Split/Inputs/Input" />
                       <Link source="Nodes/Split/Outputs/From" sink="Nodes/Random/Inputs/From" />
@@ -1729,7 +1746,7 @@
                 </OPERATION>
               </NODES>
               <LINKS>
-                <Link source="Inlets/Bubble" sink="Regions/IfElse/IfElseBody/Nodes/EmitAndAccelerate/Inputs/Input" />
+                <Link source="Inlets/Bubble" sink="Regions/IfElse/IfElseBody/Nodes/LooseMassAndAccelerate/Inputs/Input" />
                 <Link source="Inlets/Bubble" sink="Nodes/Split/Inputs/Input" />
                 <Link source="Inlets/Bubble" sink="Regions/IfElse/Inputs/Output Default" />
                 <Link source="Regions/IfElse/Outputs/Output" sink="Outlets/Bubble" />
@@ -1796,16 +1813,22 @@
           <Link source="Nodes/Split/Outputs/ID" sink="Regions/FirstOrDefault/FirstOrDefaultBody/Nodes/=/Inputs/Input" />
           <Link source="Regions/FirstOrDefault/Outputs/Output" sink="Nodes/Any/Inputs/Input" />
           <Link source="Regions/FirstOrDefault/Outputs/Output" sink="Nodes/FirstOrDefault/Inputs/Input" />
-          <Link source="Nodes/FirstOrDefault/Outputs/Result" sink="Regions/IfElse/IfElseBody/Regions/IfElse/IfElseBody/Nodes/EmitAndAccelerate/Inputs/ActorControlData" />
+          <Link source="Nodes/FirstOrDefault/Outputs/Result" sink="Regions/IfElse/IfElseBody/Regions/IfElse/IfElseBody/Nodes/LooseMassAndAccelerate/Inputs/ActorControlData" />
           <Link source="Nodes/Any/Outputs/Result" sink="Regions/IfElse/Inputs/Condition" />
           <Link source="Inlets/Bubble" sink="Regions/IfElse/Inputs/Bubble Default" />
-          <Link source="Nodes/Split/Outputs/Position" sink="Regions/IfElse/IfElseBody/Regions/IfElse/IfElseBody/Nodes/GetEmitterData/Inputs/Position" />
-          <Link source="Nodes/Split/Outputs/Velocity" sink="Regions/IfElse/IfElseBody/Regions/IfElse/IfElseBody/Nodes/GetEmitterData/Inputs/Velocity" />
+          <Link source="Nodes/Split/Outputs/Position" sink="Regions/IfElse/IfElseBody/Regions/IfElse/IfElseBody/Nodes/GetEmitPosition/Inputs/Position" />
+          <Link source="Nodes/Split/Outputs/Velocity" sink="Regions/IfElse/IfElseBody/Regions/IfElse/IfElseBody/Nodes/GetEmitPosition/Inputs/Velocity" />
           <Link source="Nodes/Split/Outputs/Radius" sink="Regions/IfElse/IfElseBody/Regions/IfElse/IfElseBody/Nodes/*/Inputs/Input" />
           <Link source="Constants/Radius" sink="Regions/IfElse/IfElseBody/Regions/IfElse/IfElseBody/Nodes/*/Inputs/Scalar" />
           <Link source="Inlets/IDFactory" sink="Regions/IfElse/IfElseBody/Regions/IfElse/IfElseBody/Nodes/Create/Inputs/IDFactory" />
           <Link source="Regions/IfElse/Outputs/New Bubbles" sink="Outlets/New Bubbles" />
           <Link source="Regions/IfElse/Outputs/Bubble" sink="Outlets/Bubble" />
+          <Link source="Inlets/Delta Time" sink="Regions/IfElse/IfElseBody/Regions/IfElse/IfElseBody/Nodes/LooseMassAndAccelerate/Inputs/Delta Time">
+            <SEGMENTS>
+              <Point x="-34.4000244" y="230.899963" />
+              <Point x="-230.399963" y="280.499939" />
+            </SEGMENTS>
+          </Link>
         </LINKS>
       </BODY>
     </PATCH>

@@ -363,31 +363,25 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="Add" Layer="Update">
-            <POSITION x="1022.4" y="468.799927" />
-            <NODEREF LastCat="Collections.Spread" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
-              <OPERATIONNODE Name="Add" />
-              <CATEGORY Name="Spread" IsDirectParent="true" />
+          <OPERATION Name="Flatten" Layer="Update">
+            <POSITION x="894.399963" y="512.7999" />
+            <NODEREF LastCat="Collections.Spread" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Flatten" />
             </NODEREF>
             <INPUTS>
               <INPUT Name="Input" />
-              <INPUT Name="Item" />
-              <INPUT Name="Enabled" />
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="Add#1" Layer="Update">
-            <POSITION x="904.8001" y="457.599945" />
-            <NODEREF LastCat="Collections.Spread" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
-              <OPERATIONNODE Name="Add" />
-              <CATEGORY Name="Spread" IsDirectParent="true" />
+          <OPERATION Name="Flatten#1" Layer="Update">
+            <POSITION x="1007.99994" y="514.399963" />
+            <NODEREF LastCat="Collections.Spread" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
+              <OPERATIONNODE Name="Flatten" />
             </NODEREF>
             <INPUTS>
               <INPUT Name="Input" />
-              <INPUT Name="Item" />
-              <INPUT Name="Enabled" />
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Output" />
@@ -412,10 +406,10 @@
           <Link source="Regions/ForEachLoop#3/Outputs/Positions" sink="Outlets/Collision Positions" />
           <Link source="Regions/ForEachLoop#2/Outputs/IsControleds" sink="Outlets/IsControleds" />
           <Link source="Regions/ForEachLoop#3/Outputs/Progresss" sink="Outlets/Progresss" />
-          <Link source="Regions/ForEachLoop#3/Outputs/Scales" sink="Nodes/Add/Inputs/Input" />
-          <Link source="Nodes/Add/Outputs/Output" sink="Outlets/Scales" />
-          <Link source="Regions/ForEachLoop#3/Outputs/Rotations" sink="Nodes/Add#1/Inputs/Input" />
-          <Link source="Nodes/Add#1/Outputs/Output" sink="Outlets/Rotations" />
+          <Link source="Regions/ForEachLoop#3/Outputs/Rotations" sink="Nodes/Flatten/Inputs/Input" />
+          <Link source="Nodes/Flatten/Outputs/Output" sink="Outlets/Rotations" />
+          <Link source="Regions/ForEachLoop#3/Outputs/Scales" sink="Nodes/Flatten#1/Inputs/Input" />
+          <Link source="Nodes/Flatten#1/Outputs/Output" sink="Outlets/Scales" />
         </LINKS>
       </BODY>
     </PATCH>

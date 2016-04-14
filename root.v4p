@@ -1,55 +1,9 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\Workshop VL\Project\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="1729" top="0" width="7196" height="6958">
+   <PATCH nodename="C:\dev\ResonateVLWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="0" top="1080" width="11364" height="11028">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
-   <NODE systemname="Display" filename="Display.v4p" componentmode="InAWindow" id="12" nodename="Display.v4p">
-   <BOUNDS type="Node" left="2430" top="3000" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="2430" top="3000" width="4800" height="3600">
-   </BOUNDS>
-   <BOUNDS type="Window" left="1729" top="0" width="7196" height="6958">
-   </BOUNDS>
-   <PIN pinname="World" visible="1" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <NODE systemname="GameLogic" filename="GameLogic.v4p" componentmode="InAWindow" id="22" nodename="GameLogic.v4p">
-   <BOUNDS type="Node" left="2430" top="2100" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="2430" top="2100" width="4800" height="3600">
-   </BOUNDS>
-   <BOUNDS type="Window" left="1729" top="0" width="7196" height="6958">
-   </BOUNDS>
-   <PIN pinname="ControlData" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="22" srcpinname="World" dstnodeid="12" dstpinname="World">
-   </LINK>
-   <NODE systemname="Control" filename="Control.v4p" componentmode="InAWindow" id="10" nodename="Control.v4p">
-   <BOUNDS type="Node" left="2445" top="915" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="2445" top="915" width="4800" height="3600">
-   </BOUNDS>
-   <BOUNDS type="Window" left="1729" top="0" width="7196" height="6958">
-   </BOUNDS>
-   <PIN pinname="ControlData" visible="1">
-   </PIN>
-   <PIN pinname="World" visible="1" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="10" srcpinname="ControlData" dstnodeid="22" dstpinname="ControlData">
-   </LINK>
-   <LINK srcnodeid="22" srcpinname="World" dstnodeid="10" dstpinname="World">
-   <LINKPOINT x="2010" y="2505">
-   </LINKPOINT>
-   <LINKPOINT x="1395" y="2070">
-   </LINKPOINT>
-   <LINKPOINT x="1410" y="900">
-   </LINKPOINT>
-   <LINKPOINT x="2010" y="660">
-   </LINKPOINT>
-   </LINK>
    <NODE systemname="MainLoop (VVVV)" nodename="MainLoop (VVVV)" componentmode="Hidden" id="-6">
    <BOUNDS type="Node" left="3864" top="840" width="100" height="100">
    </BOUNDS>
@@ -69,5 +23,211 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="-6" srcpinname="Current Frame" dstnodeid="23" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="Display" filename="Display.v4p" componentmode="InAWindow" id="24" nodename="Display.v4p">
+   <BOUNDS type="Node" left="2922" top="6444" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2922" top="6444" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="0" top="1080" width="11364" height="11028">
+   </BOUNDS>
+   <PIN pinname="World" slicecount="1" visible="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="37" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="5277" top="2376" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5277" top="2376" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="SliceCount Mode" slicecount="1" values="ColsRowsPages">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Assign New Bubble|">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="36">
+   <BOUNDS type="Node" left="3180" top="2730" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3180" top="2730" width="795" height="960">
+   </BOUNDS>
+   <PIN pinname="Rows" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="4" visible="1" values="-0.729476153244722,0.00312825860271115,-0.729476153244722,0.00312825860271115">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0, 0, 1|">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="35" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="4632" top="2376" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4632" top="2376" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="AddAI">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Mouse (Devices Window)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Mouse (Devices Window)" componentmode="Hidden" id="32">
+   <BOUNDS type="Node" left="2931" top="2352" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Device" visible="1">
+   </PIN>
+   <PIN pinname="PositionXY" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="32" srcpinname="PositionXY" dstnodeid="36" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="OnOpen (VVVV)" nodename="OnOpen (VVVV)" componentmode="Hidden" id="31">
+   <BOUNDS type="Node" left="5553" top="3195" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Bang" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="FrameDelay (Value)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="FrameDelay (Value)" componentmode="Hidden" id="30">
+   <BOUNDS type="Node" left="5565" top="3795" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output 1" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="31" srcpinname="Bang" dstnodeid="30" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="OR (Boolean)" nodename="OR (Boolean)" componentmode="Hidden" id="29">
+   <BOUNDS type="Node" left="5256" top="4347" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Input Count" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Input 3" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Keyboard (Devices Window)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Keyboard (Devices Window)" componentmode="Hidden" id="28">
+   <BOUNDS type="Node" left="1812" top="2391" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Device" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="KeyMatch (Keyboard)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="KeyMatch (Keyboard)" componentmode="Hidden" id="27">
+   <BOUNDS type="Node" left="1752" top="2931" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Keyboard" visible="1">
+   </PIN>
+   <PIN pinname="Key Match" slicecount="1" values="|space, a, p|">
+   </PIN>
+   <PIN pinname="Key Mode" slicecount="1" values="UpOnly">
+   </PIN>
+   <PIN pinname="Space" visible="1">
+   </PIN>
+   <PIN pinname="A" visible="1">
+   </PIN>
+   <PIN pinname="P" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="28" srcpinname="Device" dstnodeid="27" dstpinname="Keyboard">
+   </LINK>
+   <NODE systemname="OR (Boolean)" nodename="OR (Boolean)" componentmode="Hidden" id="26">
+   <BOUNDS type="Node" left="4332" top="4251" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="35" srcpinname="Y Output Value" dstnodeid="26" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="27" srcpinname="A" dstnodeid="26" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="30" srcpinname="Output 1" dstnodeid="29" dstpinname="Input 3">
+   </LINK>
+   <LINK srcnodeid="37" srcpinname="Y Output Value" dstnodeid="29" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="27" srcpinname="P" dstnodeid="29" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="Game (VLOsmos)" filename="vl\Game.vl" nodename="Game (VLOsmos)" componentmode="Hidden" id="25">
+   <BOUNDS type="Node" left="2925" top="5499" width="2145" height="270">
+   </BOUNDS>
+   <PIN pinname="WorldSerialized" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="World" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="MouseIn" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="NewID" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Reset" visible="1">
+   </PIN>
+   <PIN pinname="AddAI" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Step" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="32" srcpinname="Device" dstnodeid="25" dstpinname="MouseIn">
+   </LINK>
+   <LINK srcnodeid="29" srcpinname="Output" dstnodeid="25" dstpinname="NewID">
+   </LINK>
+   <LINK srcnodeid="27" srcpinname="Space" dstnodeid="25" dstpinname="Reset">
+   </LINK>
+   <LINK srcnodeid="26" srcpinname="Output" dstnodeid="25" dstpinname="AddAI">
+   </LINK>
+   <LINK srcnodeid="25" srcpinname="World" dstnodeid="24" dstpinname="World">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="38" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="1536" top="4416" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1536" top="4416" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="38" srcpinname="Y Output Value" dstnodeid="25" dstpinname="Step">
    </LINK>
    </PATCH>

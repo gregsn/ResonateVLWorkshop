@@ -110,11 +110,7 @@
                     <CONSTS>
                       <CONST Name="Input 2" Layer="Update">
                         <POSITION x="462.9713" y="444.888672" />
-                        <VALUE><![CDATA[0.2]]></VALUE>
-                      </CONST>
-                      <CONST Name="velo" Layer="Update">
-                        <POSITION x="497.600525" y="568.00116" />
-                        <VALUE><![CDATA[{"type":"Vector2 [2D]","value":{"X":0.0,"Y":0.0}}]]></VALUE>
+                        <VALUE><![CDATA[0.07000002]]></VALUE>
                       </CONST>
                     </CONSTS>
                     <REGIONS />
@@ -186,7 +182,7 @@
                         </OUTPUTS>
                       </OPERATION>
                       <OPERATION Name="Grow" Layer="Update">
-                        <POSITION x="411.0927" y="663.228943" />
+                        <POSITION x="391.0927" y="657.628967" />
                         <NODEREF LastFile="GameLogic.vl">
                           <OPERATIONNODE Name="Grow" />
                           <CATEGORYPATH Name="VVVV.VLOsmos.LogicBubble" />
@@ -256,34 +252,6 @@
                           <INPUT Name="Input" />
                           <INPUT Name="Input 2" />
                           <INPUT Name="Input 3" />
-                          <INPUT Name="Enabled" />
-                        </INPUTS>
-                        <OUTPUTS>
-                          <OUPUT Name="Output" />
-                        </OUTPUTS>
-                      </OPERATION>
-                      <OPERATION Name="Outbox" Layer="Update">
-                        <POSITION x="593.5735" y="449.11676" />
-                        <NODEREF LastCat="IO" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
-                          <ANYNODE Name="Outbox" />
-                          <CATEGORY Name="IO" />
-                        </NODEREF>
-                        <INPUTS>
-                          <INPUT Name="Input" />
-                          <INPUT Name="Enabled" />
-                        </INPUTS>
-                        <OUTPUTS>
-                          <OUPUT Name="Output" />
-                        </OUTPUTS>
-                      </OPERATION>
-                      <OPERATION Name="Outbox#1" Layer="Update">
-                        <POSITION x="521.134033" y="378.5458" />
-                        <NODEREF LastCat="IO" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
-                          <ANYNODE Name="Outbox" />
-                          <CATEGORY Name="IO" />
-                        </NODEREF>
-                        <INPUTS>
-                          <INPUT Name="Input" />
                           <INPUT Name="Enabled" />
                         </INPUTS>
                         <OUTPUTS>
@@ -364,6 +332,37 @@
                           <OUPUT Name="Output" />
                         </OUTPUTS>
                       </OPERATION>
+                      <OPERATION Name="*#2" Layer="Update">
+                        <POSITION x="352.314484" y="543.895264" />
+                        <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
+                          <OPERATIONNODE Name="*" />
+                          <CATEGORY Name="Adaptive" IsDirectParent="true" />
+                        </NODEREF>
+                        <INPUTS>
+                          <INPUT Name="Input" />
+                          <INPUT Name="Input 2" />
+                          <INPUT Name="Input 3" />
+                          <INPUT Name="Enabled" />
+                        </INPUTS>
+                        <OUTPUTS>
+                          <OUPUT Name="Output" />
+                        </OUTPUTS>
+                      </OPERATION>
+                      <OPERATION Name="*#3" Layer="Update">
+                        <POSITION x="564.8993" y="545.4799" />
+                        <NODEREF LastCat="2D.Vector2" LastFile="SharpDX.Mathematics.dll" LastPackage="SharpDX.Mathematics">
+                          <OPERATIONNODE Name="*" Version="Scale" />
+                          <CATEGORY Name="Vector2" IsDirectParent="true" />
+                        </NODEREF>
+                        <INPUTS>
+                          <INPUT Name="Input" />
+                          <INPUT Name="Scalar" />
+                          <INPUT Name="Enabled" />
+                        </INPUTS>
+                        <OUTPUTS>
+                          <OUPUT Name="Output" />
+                        </OUTPUTS>
+                      </OPERATION>
                     </NODES>
                     <LINKS>
                       <Link source="Inlets/Other Bubble" sink="Nodes/Split/Inputs/Input" />
@@ -377,17 +376,10 @@
                       <Link source="Nodes/Split/Outputs/Radius" sink="Nodes/IntersectsVL/Inputs/r1" />
                       <Link source="Nodes/IntersectsVL/Outputs/intersects" sink="Nodes/AND/Inputs/Input 2" />
                       <Link source="Nodes/IntersectsVL/Outputs/intersects" sink="Nodes/AND#1/Inputs/Input 2" />
-                      <Link source="Nodes/Split/Outputs/Mass" sink="Nodes/Outbox/Inputs/Input" />
-                      <Link source="Nodes/Outbox/Outputs/Output" sink="Nodes/*/Inputs/Input" />
                       <Link source="Nodes/*/Outputs/Output" sink="Nodes/Grow/Inputs/mas" />
                       <Link source="Constants/Input 2" sink="Nodes/*/Inputs/Input 2" />
-                      <Link source="Nodes/*/Outputs/Output" sink="Nodes/Shrink/Inputs/mas" />
                       <Link source="Nodes/Split/Outputs/Position" sink="Nodes/IntersectsVL/Inputs/pos1" />
-                      <Link source="Nodes/Outbox/Outputs/Output" sink="Nodes/&gt;/Inputs/Input 2" />
-                      <Link source="Nodes/Outbox/Outputs/Output" sink="Nodes/&lt;/Inputs/Input 2" />
-                      <Link source="Nodes/Split/Outputs/Velocity" sink="Nodes/Outbox#1/Inputs/Input" />
                       <Link source="Constants/Input 2" sink="Nodes/*#1/Inputs/Scalar" />
-                      <Link source="Nodes/Outbox#1/Outputs/Output" sink="Nodes/*#1/Inputs/Input" />
                       <Link source="Inlets/Collisions" sink="Nodes/Add/Inputs/Input" />
                       <Link source="Nodes/Join/Outputs/Output" sink="Nodes/Add/Inputs/Item" />
                       <Link source="Nodes/Add/Outputs/Output" sink="Outlets/Collisions" />
@@ -396,8 +388,15 @@
                       <Link source="Nodes/IntersectsVL/Outputs/intersects" sink="Nodes/AND#2/Inputs/Input" />
                       <Link source="Nodes/AND#2/Outputs/Output" sink="Nodes/Add/Inputs/Enabled" />
                       <Link source="Nodes/IntersectsVL/Outputs/intersect pos" sink="Nodes/Join/Inputs/Position" />
-                      <Link source="Constants/velo" sink="Nodes/Shrink/Inputs/velo" />
-                      <Link source="Constants/velo" sink="Nodes/Grow/Inputs/velo" />
+                      <Link source="Nodes/*#1/Outputs/Output" sink="Nodes/Grow/Inputs/velo" />
+                      <Link source="Constants/Input 2" sink="Nodes/*#2/Inputs/Input 2" />
+                      <Link source="Nodes/Split/Outputs/Velocity" sink="Nodes/*#1/Inputs/Input" />
+                      <Link source="Nodes/Split/Outputs/Mass" sink="Nodes/*/Inputs/Input" />
+                      <Link source="Constants/Input 2" sink="Nodes/*#3/Inputs/Scalar" />
+                      <Link source="Nodes/*/Outputs/Output" sink="Nodes/Shrink/Inputs/mas" />
+                      <Link source="Nodes/*#1/Outputs/Output" sink="Nodes/Shrink/Inputs/velo" />
+                      <Link source="Nodes/Split/Outputs/Mass" sink="Nodes/&gt;/Inputs/Input 2" />
+                      <Link source="Nodes/Split/Outputs/Mass" sink="Nodes/&lt;/Inputs/Input 2" />
                     </LINKS>
                   </BODY>
                 </REGION>
@@ -487,6 +486,8 @@
                 <Link source="Inlets/Collisions" sink="Nodes/SwitchInput/Inputs/False" />
                 <Link source="Nodes/SwitchInput/Outputs/Output" sink="Outlets/Collisions" />
                 <Link source="Inlets/Index" sink="Regions/ForEachLoop/ForEachLoopBody/Nodes/&gt;#1/Inputs/Input" />
+                <Link source="Nodes/Split/Outputs/Mass" sink="Regions/ForEachLoop/ForEachLoopBody/Nodes/*#2/Inputs/Input" />
+                <Link source="Nodes/Split/Outputs/Velocity" sink="Regions/ForEachLoop/ForEachLoopBody/Nodes/*#3/Inputs/Input" />
               </LINKS>
             </BODY>
           </REGION>
@@ -512,25 +513,28 @@
         </LAYERS>
         <INLETS>
           <INLET Name="Step" Layer="Update">
-            <POSITION x="143.199982" y="126.4" />
+            <POSITION x="143.199982" y="122.399994" />
           </INLET>
           <INLET Name="Reset" Layer="Update">
-            <POSITION x="211.999985" y="126.4" />
+            <POSITION x="211.999985" y="122.399994" />
           </INLET>
           <INLET Name="MouseIn" Layer="Update">
-            <POSITION x="269.6" y="126.4" />
-          </INLET>
-          <INLET Name="NewID" Layer="Update">
-            <POSITION x="347.999969" y="126.4" />
+            <POSITION x="269.6" y="122.399994" />
           </INLET>
           <INLET Name="World" Layer="Update" PadType="Field">
             <POSITION x="412.799957" y="229.599991" />
           </INLET>
+          <INLET Name="NewID" Layer="Update">
+            <POSITION x="438.399963" y="122.399994" />
+          </INLET>
           <INLET Name="AddAI" Layer="Update">
-            <POSITION x="423.199951" y="126.4" />
+            <POSITION x="513.5999" y="122.399994" />
           </INLET>
           <INLET Name="Reset 2" Layer="Update">
-            <POSITION x="589.5999" y="126.4" />
+            <POSITION x="580.7999" y="122.399994" />
+          </INLET>
+          <INLET Name="VP" Layer="Update">
+            <POSITION x="363.999969" y="122.399994" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -569,6 +573,7 @@
             </NODEREF>
             <INPUTS>
               <INPUT Name="MouseIn" FragmentId="Update" />
+              <INPUT Name="VP" FragmentId="Update" />
               <INPUT Name="NewID" FragmentId="Update" />
               <INPUT Name="AddAI" FragmentId="Update" />
               <INPUT Name="World" FragmentId="Update" />
@@ -594,6 +599,7 @@
           <Link source="Inlets/Reset 2" sink="Nodes/Controller/Inputs/Reset" />
           <Link source="Inlets/World" sink="Nodes/Controller/Inputs/World" />
           <Link source="Nodes/GameLogicManager/Outputs/World" sink="Outlets/World#1" />
+          <Link source="Inlets/VP" sink="Nodes/Controller/Inputs/VP" />
         </LINKS>
       </BODY>
     </PATCH>

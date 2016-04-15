@@ -83,7 +83,7 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Bubble" Layer="Update">
-                  <POSITION x="-1.64917755" y="399.9999" />
+                  <POSITION x="3.15081024" y="393.5999" />
                 </INLET>
               </INLETS>
               <OUTLETS>
@@ -110,7 +110,7 @@
               <REGIONS />
               <NODES>
                 <OPERATION Name="Split" Layer="Update">
-                  <POSITION x="-3.20000458" y="442.199951" />
+                  <POSITION x="1.59998322" y="418.199951" />
                   <NODEREF LastCat="VLOsmos.Bubble" LastFile="Core.vl">
                     <OPERATIONNODE Name="Split" />
                     <CATEGORY Name="Bubble" IsDirectParent="true" />

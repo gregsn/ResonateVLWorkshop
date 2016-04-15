@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\dev\ResonateVLWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="0" top="1080" width="11364" height="11028">
+   <PATCH nodename="C:\dev\ResonateVLWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="12" scrolly="1596">
+   <BOUNDS type="Window" left="708" top="-24" width="15204" height="12384">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -25,13 +25,15 @@
    <LINK srcnodeid="-6" srcpinname="Current Frame" dstnodeid="23" dstpinname="Y Input Value">
    </LINK>
    <NODE systemname="Display" filename="Display.v4p" componentmode="InAWindow" id="24" nodename="Display.v4p">
-   <BOUNDS type="Node" left="2922" top="6444" width="100" height="100">
+   <BOUNDS type="Node" left="1950" top="6612" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="2922" top="6444" width="4800" height="3600">
+   <BOUNDS type="Box" left="1950" top="6612" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="0" top="1080" width="11364" height="11028">
+   <BOUNDS type="Window" left="708" top="-24" width="15204" height="12384">
    </BOUNDS>
    <PIN pinname="World" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Alpha" visible="1">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="37" systemname="IOBox (Value Advanced)">
@@ -61,9 +63,9 @@
    </PIN>
    </NODE>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="36">
-   <BOUNDS type="Node" left="3180" top="2730" width="100" height="100">
+   <BOUNDS type="Node" left="3372" top="2238" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="3180" top="2730" width="795" height="960">
+   <BOUNDS type="Box" left="3372" top="2238" width="795" height="960">
    </BOUNDS>
    <PIN pinname="Rows" slicecount="1" values="4">
    </PIN>
@@ -99,7 +101,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Mouse (Devices Window)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Mouse (Devices Window)" componentmode="Hidden" id="32">
-   <BOUNDS type="Node" left="2931" top="2352" width="100" height="100">
+   <BOUNDS type="Node" left="3123" top="1860" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Device" visible="1">
    </PIN>
@@ -139,13 +141,13 @@
    </PIN>
    </NODE>
    <NODE systemname="Keyboard (Devices Window)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Keyboard (Devices Window)" componentmode="Hidden" id="28">
-   <BOUNDS type="Node" left="1812" top="2391" width="100" height="100">
+   <BOUNDS type="Node" left="1704" top="2247" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Device" visible="1">
    </PIN>
    </NODE>
    <NODE systemname="KeyMatch (Keyboard)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="KeyMatch (Keyboard)" componentmode="Hidden" id="27">
-   <BOUNDS type="Node" left="1752" top="2931" width="100" height="100">
+   <BOUNDS type="Node" left="1704" top="2799" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Keyboard" visible="1">
    </PIN>
@@ -182,38 +184,10 @@
    </LINK>
    <LINK srcnodeid="27" srcpinname="P" dstnodeid="29" dstpinname="Input 1">
    </LINK>
-   <NODE systemname="Game (VLOsmos)" filename="vl\Game.vl" nodename="Game (VLOsmos)" componentmode="Hidden" id="25">
-   <BOUNDS type="Node" left="2925" top="5499" width="2145" height="270">
-   </BOUNDS>
-   <PIN pinname="WorldSerialized" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="World" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="MouseIn" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="NewID" visible="1" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Reset" visible="1">
-   </PIN>
-   <PIN pinname="AddAI" visible="1" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Step" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="32" srcpinname="Device" dstnodeid="25" dstpinname="MouseIn">
-   </LINK>
-   <LINK srcnodeid="29" srcpinname="Output" dstnodeid="25" dstpinname="NewID">
-   </LINK>
-   <LINK srcnodeid="27" srcpinname="Space" dstnodeid="25" dstpinname="Reset">
-   </LINK>
-   <LINK srcnodeid="26" srcpinname="Output" dstnodeid="25" dstpinname="AddAI">
-   </LINK>
-   <LINK srcnodeid="25" srcpinname="World" dstnodeid="24" dstpinname="World">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="38" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="1536" top="4416" width="480" height="480">
+   <BOUNDS type="Box" left="2160" top="4944" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="1536" top="4416" width="0" height="0">
+   <BOUNDS type="Node" left="2160" top="4944" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
@@ -227,7 +201,79 @@
    </PIN>
    <PIN pinname="X Input Value" slicecount="1" values="1">
    </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Run">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="38" srcpinname="Y Output Value" dstnodeid="25" dstpinname="Step">
+   <NODE systemname="Game (VLOsmos)" filename="vl\Game.vl" nodename="Game (VLOsmos)" componentmode="Hidden" id="39">
+   <BOUNDS type="Node" left="2925" top="5499" width="2145" height="270">
+   </BOUNDS>
+   <PIN pinname="Reset 2" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="VP" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Reset" visible="1" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="32" srcpinname="Device" dstnodeid="39" dstpinname="MouseIn">
+   </LINK>
+   <LINK srcnodeid="29" srcpinname="Output" dstnodeid="39" dstpinname="NewID">
+   </LINK>
+   <LINK srcnodeid="26" srcpinname="Output" dstnodeid="39" dstpinname="AddAI">
+   </LINK>
+   <LINK srcnodeid="39" srcpinname="World" dstnodeid="24" dstpinname="World">
+   </LINK>
+   <LINK srcnodeid="38" srcpinname="Y Output Value" dstnodeid="39" dstpinname="Step">
+   </LINK>
+   <NODE systemname="R (Node)" nodename="R (Node)" componentmode="Hidden" id="46">
+   <BOUNDS type="Node" left="3432" top="4260" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input Value" visible="1">
+   </PIN>
+   <PIN pinname="Receive String" slicecount="1" values="VP">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="46" srcpinname="Input Value" dstnodeid="39" dstpinname="VP">
+   </LINK>
+   <NODE systemname="MonoFlop (Animation)" nodename="MonoFlop (Animation)" componentmode="Hidden" id="49">
+   <BOUNDS type="Node" left="1692" top="3456" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Set" visible="1">
+   </PIN>
+   <PIN pinname="Inverse Output" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="27" srcpinname="Space" dstnodeid="49" dstpinname="Set">
+   </LINK>
+   <NODE systemname="TogEdge (Animation)" nodename="TogEdge (Animation)" componentmode="Hidden" id="50">
+   <BOUNDS type="Node" left="1872" top="4008" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Down Edge" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="49" srcpinname="Output" dstnodeid="50" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="50" srcpinname="Down Edge" dstnodeid="39" dstpinname="Reset">
+   </LINK>
+   <LINK srcnodeid="50" srcpinname="Down Edge" dstnodeid="39" dstpinname="Reset 2">
+   </LINK>
+   <NODE systemname="Decay (Animation)" nodename="Decay (Animation)" componentmode="Hidden" id="51">
+   <BOUNDS type="Node" left="852" top="3984" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Attack" slicecount="1" values="0.4">
+   </PIN>
+   <PIN pinname="Decay" slicecount="1" values="0.4">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="49" srcpinname="Output" dstnodeid="51" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Output" dstnodeid="24" dstpinname="Alpha">
    </LINK>
    </PATCH>

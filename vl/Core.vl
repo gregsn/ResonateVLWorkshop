@@ -165,11 +165,11 @@
         <CONSTS>
           <CONST Name="WorldSize" Layer="Split" Type="Vector2">
             <POSITION x="314.333374" y="364.888916" />
-            <VALUE><![CDATA[2.0]]></VALUE>
+            <VALUE><![CDATA[{"type":"Vector2 [2D]","value":{"X":3.2,"Y":2.0}}]]></VALUE>
           </CONST>
           <CONST Name="WorldSize#1" Layer="GetWorldSize" Type="Vector2">
             <POSITION x="875" y="340" />
-            <VALUE><![CDATA[2.0]]></VALUE>
+            <VALUE><![CDATA[{"type":"Vector2 [2D]","value":{"X":3.2,"Y":2.0}}]]></VALUE>
           </CONST>
         </CONSTS>
         <REGIONS />
@@ -652,18 +652,18 @@
           <Link source="Inlets/Position#1" sink="Outlets/Position#1" />
           <Link source="Inlets/Mass#1" sink="Outlets/Mass#1" />
           <Link source="Inlets/Name" sink="Outlets/Name" />
-          <Link source="Inlets/Mass" sink="Outlets/Mass" />
           <Link source="Inlets/ID" sink="Outlets/ID" />
           <Link source="Inlets/Name#1" sink="Outlets/Name#1" />
           <Link source="Inlets/ID#1" sink="Outlets/ID#1" />
           <Link source="Inlets/Age" sink="Outlets/Age" />
           <Link source="Inlets/Age#1" sink="Outlets/Age#1" />
           <Link source="Inlets/Radius" sink="Outlets/Radius" />
-          <Link source="Inlets/Radius#1" sink="Outlets/Radius#1" />
           <Link source="Inlets/Velocity" sink="Outlets/Velocity" />
           <Link source="Inlets/Velocity#1" sink="Outlets/Velocity#1" />
           <Link source="Inlets/IsControlled" sink="Outlets/IsControlled" />
           <Link source="Inlets/IsControlled#1" sink="Outlets/IsControlled#1" />
+          <Link source="Inlets/Mass" sink="Outlets/Mass" />
+          <Link source="Inlets/Radius#1" sink="Outlets/Radius#1" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -679,7 +679,7 @@
           <INLET Name="Position" Layer="GetEmitPosition">
             <POSITION x="571" y="141" />
           </INLET>
-          <INLET Name="Velocity" Layer="GetEmitPosition" Type="Vector2">
+          <INLET Name="Acceleration" Layer="GetEmitPosition" Type="Vector2">
             <POSITION x="681" y="141" />
           </INLET>
         </INLETS>
@@ -760,7 +760,7 @@
         <LINKS>
           <Link source="Nodes/Normalize/Outputs/Output" sink="Nodes/*/Inputs/Input" />
           <Link source="Constants/Constant" sink="Nodes/*/Inputs/Scalar" />
-          <Link source="Inlets/Velocity" sink="Nodes/Normalize/Inputs/Input" />
+          <Link source="Inlets/Acceleration" sink="Nodes/Normalize/Inputs/Input" />
           <Link source="Nodes/*/Outputs/Output" sink="Nodes/*#1/Inputs/Input" />
           <Link source="Inlets/Radius" sink="Nodes/*#1/Inputs/Scalar">
             <SEGMENTS>

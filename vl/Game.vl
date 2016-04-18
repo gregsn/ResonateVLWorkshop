@@ -513,28 +513,25 @@
         </LAYERS>
         <INLETS>
           <INLET Name="Step" Layer="Update">
-            <POSITION x="143.199982" y="122.399994" />
+            <POSITION x="131.199982" y="116.799988" />
           </INLET>
           <INLET Name="Reset" Layer="Update">
-            <POSITION x="211.999985" y="122.399994" />
+            <POSITION x="199.999985" y="116.799988" />
           </INLET>
           <INLET Name="MouseIn" Layer="Update">
-            <POSITION x="269.6" y="122.399994" />
-          </INLET>
-          <INLET Name="World" Layer="Update" PadType="Field">
-            <POSITION x="412.799957" y="229.599991" />
-          </INLET>
-          <INLET Name="NewID" Layer="Update">
-            <POSITION x="438.399963" y="122.399994" />
-          </INLET>
-          <INLET Name="AddAI" Layer="Update">
-            <POSITION x="513.5999" y="122.399994" />
-          </INLET>
-          <INLET Name="Reset 2" Layer="Update">
-            <POSITION x="580.7999" y="122.399994" />
+            <POSITION x="277.6" y="116.799988" />
           </INLET>
           <INLET Name="VP" Layer="Update">
-            <POSITION x="363.999969" y="122.399994" />
+            <POSITION x="351.999969" y="116.799988" />
+          </INLET>
+          <INLET Name="NewID" Layer="Update">
+            <POSITION x="395.999939" y="116.799988" />
+          </INLET>
+          <INLET Name="AddAI" Layer="Update">
+            <POSITION x="448.799957" y="116.799988" />
+          </INLET>
+          <INLET Name="World" Layer="Update" PadType="Field">
+            <POSITION x="570.4001" y="164.800049" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -542,7 +539,7 @@
             <POSITION x="230.399979" y="413.599945" />
           </OUTLET>
           <OUTLET Name="World#1" Layer="Update" PadType="Field">
-            <POSITION x="374.399963" y="413.599945" />
+            <POSITION x="573.6" y="362.399963" />
           </OUTLET>
         </OUTLETS>
         <CONSTS />
@@ -567,7 +564,7 @@
             </FRAGMENTS>
           </PROCESS>
           <PROCESS Name="Controller">
-            <POSITION x="330.399933" y="278.399963" />
+            <POSITION x="340.799927" y="208.799973" />
             <NODEREF LastCat="VVVV.VLOsmos" LastFile="Control.vl">
               <PROCESSNODE Name="Controller" />
             </NODEREF>
@@ -595,11 +592,11 @@
           <Link source="Nodes/Controller/Outputs/ControlData" sink="Nodes/GameLogicManager/Inputs/ControlData" />
           <Link source="Inlets/MouseIn" sink="Nodes/Controller/Inputs/MouseIn" />
           <Link source="Inlets/NewID" sink="Nodes/Controller/Inputs/NewID" />
-          <Link source="Inlets/AddAI" sink="Nodes/Controller/Inputs/AddAI" />
-          <Link source="Inlets/Reset 2" sink="Nodes/Controller/Inputs/Reset" />
-          <Link source="Inlets/World" sink="Nodes/Controller/Inputs/World" />
-          <Link source="Nodes/GameLogicManager/Outputs/World" sink="Outlets/World#1" />
           <Link source="Inlets/VP" sink="Nodes/Controller/Inputs/VP" />
+          <Link source="Nodes/GameLogicManager/Outputs/World" sink="Outlets/World#1" />
+          <Link source="Inlets/World" sink="Nodes/Controller/Inputs/World" />
+          <Link source="Inlets/AddAI" sink="Nodes/Controller/Inputs/AddAI" />
+          <Link source="Inlets/Reset" sink="Nodes/Controller/Inputs/Reset" />
         </LINKS>
       </BODY>
     </PATCH>

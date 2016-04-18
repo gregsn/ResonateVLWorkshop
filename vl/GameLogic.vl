@@ -35,7 +35,7 @@
             <POSITION x="-454.1273" y="22.5215454" />
           </OUTLET>
           <OUTLET Name="Bubbles#1" Layer="Update" PadType="Field">
-            <POSITION x="-185.544067" y="634.4813" />
+            <POSITION x="-267.848633" y="632.28656" />
           </OUTLET>
           <OUTLET Name="World" Layer="Update">
             <POSITION x="234.281708" y="693.4073" />
@@ -111,7 +111,6 @@
                   <INPUTS>
                     <INPUT Name="Input" />
                     <INPUT Name="WorldRange" />
-                    <INPUT Name="Other Bubbles" />
                     <INPUT Name="Enabled" IsEnabled="true" />
                   </INPUTS>
                   <OUTPUTS>
@@ -883,25 +882,34 @@
         </LAYERS>
         <INLETS>
           <INLET Name="Position" Layer="Update" PadType="Field">
-            <POSITION x="178.309875" y="190.871063" />
+            <POSITION x="267.909851" y="190.871063" />
+          </INLET>
+          <INLET Name="Position#1" Layer="Create" Type="Vector2">
+            <POSITION x="320.200073" y="-88.2" />
           </INLET>
           <INLET Name="Velocity#1" Layer="Update" PadType="Field">
-            <POSITION x="341.124878" y="189.6861" />
+            <POSITION x="430.724854" y="189.6861" />
+          </INLET>
+          <INLET Name="Velocity" Layer="Create" Type="Vector2">
+            <POSITION x="440.200073" y="-88.2" />
           </INLET>
           <INLET Name="WorldRange" Layer="Update">
-            <POSITION x="421.750671" y="83.857" />
+            <POSITION x="511.350647" y="83.857" />
           </INLET>
-          <INLET Name="Other Bubbles" Layer="Update">
-            <POSITION x="541.7507" y="83.857" />
+          <INLET Name="Mass#1" Layer="Create" Type="Float32">
+            <POSITION x="568.2001" y="-88.2" />
           </INLET>
           <INLET Name="Mass#2" Layer="Accelerate" PadType="Field">
             <POSITION x="610.8249" y="361.063446" />
           </INLET>
+          <INLET Name="Name" Layer="Create" Type="String">
+            <POSITION x="674.2001" y="-88.2" />
+          </INLET>
+          <INLET Name="IDFactory" Layer="Create">
+            <POSITION x="763.2001" y="-88.2" />
+          </INLET>
           <INLET Name="ActorControlData" Layer="Accelerate">
             <POSITION x="815.243" y="274.356934" />
-          </INLET>
-          <INLET Name="Position#1" Layer="Create" Type="Vector2">
-            <POSITION x="849" y="-93" />
           </INLET>
           <INLET Name="Position#2" Layer="Split" PadType="Field">
             <POSITION x="882.2001" y="102.199982" />
@@ -909,47 +917,35 @@
           <INLET Name="Velocity#3" Layer="Accelerate" PadType="Field">
             <POSITION x="897.6009" y="475.2" />
           </INLET>
-          <INLET Name="Velocity" Layer="Create" Type="Vector2">
-            <POSITION x="969" y="-93" />
-          </INLET>
           <INLET Name="Velocity#2" Layer="Split" PadType="Field">
             <POSITION x="985.2001" y="99.19998" />
           </INLET>
           <INLET Name="Mass" Layer="Split" PadType="Field">
             <POSITION x="1042.20007" y="74.19998" />
           </INLET>
-          <INLET Name="Mass#1" Layer="Create" Type="Float32">
-            <POSITION x="1097" y="-93" />
-          </INLET>
           <INLET Name="Delta Time" Layer="Accelerate">
             <POSITION x="1119.99988" y="274.356934" />
-          </INLET>
-          <INLET Name="Name" Layer="Create" Type="String">
-            <POSITION x="1203" y="-93" />
-          </INLET>
-          <INLET Name="Mass#4" Layer="Grow" PadType="Field">
-            <POSITION x="1229.6" y="234.999969" />
           </INLET>
           <INLET Name="Name#1" Layer="Split" PadType="Field">
             <POSITION x="1235.93213" y="102.222733" />
           </INLET>
-          <INLET Name="IDFactory" Layer="Create">
-            <POSITION x="1292" y="-93" />
-          </INLET>
-          <INLET Name="Velocity#4" Layer="Grow" PadType="Field">
-            <POSITION x="1304.6" y="236.999969" />
+          <INLET Name="Mass#4" Layer="Grow" PadType="Field">
+            <POSITION x="1262.3999" y="318.199921" />
           </INLET>
           <INLET Name="ID#1" Layer="Split" PadType="Field">
             <POSITION x="1320.20007" y="112.199982" />
+          </INLET>
+          <INLET Name="Velocity#4" Layer="Grow" PadType="Field">
+            <POSITION x="1337.3999" y="320.199921" />
           </INLET>
           <INLET Name="Age#1" Layer="Split" PadType="Field">
             <POSITION x="1381.20007" y="114.199982" />
           </INLET>
           <INLET Name="mas#1" Layer="Grow" Type="Float32">
-            <POSITION x="1384.6" y="236.999969" />
+            <POSITION x="1417.3999" y="320.199921" />
           </INLET>
           <INLET Name="velo" Layer="Grow">
-            <POSITION x="1486.6" y="236.999969" />
+            <POSITION x="1519.3999" y="320.199921" />
           </INLET>
           <INLET Name="Mass#3" Layer="Shrink" PadType="Field">
             <POSITION x="1767.6" y="231.999969" />
@@ -978,28 +974,37 @@
         </INLETS>
         <OUTLETS>
           <OUTLET Name="Position#2" Layer="Update" PadType="Field">
-            <POSITION x="205.309875" y="446.267944" />
+            <POSITION x="294.909851" y="446.267944" />
+          </OUTLET>
+          <OUTLET Name="Position#1" Layer="Create" PadType="Field">
+            <POSITION x="325.200073" y="-20.1999969" />
           </OUTLET>
           <OUTLET Name="Velocity#2" Layer="Update" PadType="Field">
-            <POSITION x="339.309875" y="443.267944" />
+            <POSITION x="428.909851" y="443.267944" />
+          </OUTLET>
+          <OUTLET Name="Velocity" Layer="Create" PadType="Field">
+            <POSITION x="441.200073" y="-15.1999969" />
+          </OUTLET>
+          <OUTLET Name="Mass#1" Layer="Create" PadType="Field">
+            <POSITION x="567.2001" y="-21.1999969" />
           </OUTLET>
           <OUTLET Name="Mass#2" Layer="Accelerate" PadType="Field">
             <POSITION x="603.6752" y="562.875854" />
           </OUTLET>
+          <OUTLET Name="Name" Layer="Create" PadType="Field">
+            <POSITION x="676.2001" y="-25.1999969" />
+          </OUTLET>
           <OUTLET Name="Mass Loss" Layer="Accelerate">
             <POSITION x="701.602539" y="579.2003" />
           </OUTLET>
-          <OUTLET Name="Position#1" Layer="Create" PadType="Field">
-            <POSITION x="854" y="-25" />
+          <OUTLET Name="ID" Layer="Create" PadType="Field">
+            <POSITION x="764.2001" y="-23.1999969" />
           </OUTLET>
           <OUTLET Name="Position" Layer="Split">
             <POSITION x="879.2001" y="159.199982" />
           </OUTLET>
           <OUTLET Name="Velocity#3" Layer="Accelerate" PadType="Field">
             <POSITION x="885.6009" y="571.2001" />
-          </OUTLET>
-          <OUTLET Name="Velocity" Layer="Create" PadType="Field">
-            <POSITION x="970" y="-20" />
           </OUTLET>
           <OUTLET Name="Velocity#1" Layer="Split">
             <POSITION x="979.2001" y="159.199982" />
@@ -1010,23 +1015,14 @@
           <OUTLET Name="Mass" Layer="Split">
             <POSITION x="1056.20007" y="159.199982" />
           </OUTLET>
-          <OUTLET Name="Mass#1" Layer="Create" PadType="Field">
-            <POSITION x="1096" y="-26" />
-          </OUTLET>
           <OUTLET Name="Radius" Layer="Split">
             <POSITION x="1136.20007" y="159.199982" />
-          </OUTLET>
-          <OUTLET Name="Name" Layer="Create" PadType="Field">
-            <POSITION x="1205" y="-30" />
           </OUTLET>
           <OUTLET Name="Name#1" Layer="Split">
             <POSITION x="1238.20007" y="159.199982" />
           </OUTLET>
           <OUTLET Name="Mass#4" Layer="Grow" PadType="Field">
-            <POSITION x="1283.6" y="397.999969" />
-          </OUTLET>
-          <OUTLET Name="ID" Layer="Create" PadType="Field">
-            <POSITION x="1293" y="-28" />
+            <POSITION x="1316.3999" y="481.199921" />
           </OUTLET>
           <OUTLET Name="ID#1" Layer="Split">
             <POSITION x="1321.20007" y="159.199982" />
@@ -1035,7 +1031,7 @@
             <POSITION x="1381.20007" y="159.199982" />
           </OUTLET>
           <OUTLET Name="Velocity#5" Layer="Grow" PadType="Field">
-            <POSITION x="1399.6" y="401.999969" />
+            <POSITION x="1432.3999" y="485.199921" />
           </OUTLET>
           <OUTLET Name="Mass#3" Layer="Shrink" PadType="Field">
             <POSITION x="1783.6" y="394.999969" />
@@ -1067,7 +1063,7 @@
         <REGIONS />
         <NODES>
           <PROCESS Name="DeltaTime">
-            <POSITION x="240.309875" y="233.267944" />
+            <POSITION x="329.909851" y="233.267944" />
             <NODEREF LastCat="Animation" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
               <PROCESSNODE Name="DeltaTime" />
             </NODEREF>
@@ -1081,7 +1077,7 @@
             </FRAGMENTS>
           </PROCESS>
           <OPERATION Name="+" Layer="Update">
-            <POSITION x="238.309875" y="337.267944" />
+            <POSITION x="327.909851" y="337.267944" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="+" />
               <CATEGORY Name="Adaptive" IsDirectParent="true" />
@@ -1097,7 +1093,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="*" Layer="Update">
-            <POSITION x="261.309875" y="296.267944" />
+            <POSITION x="350.909851" y="296.267944" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <CATEGORY Name="Adaptive" IsDirectParent="true" />
               <OPERATIONNODE Name="*" Version="Scale" />
@@ -1112,7 +1108,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Reflect" Layer="Update">
-            <POSITION x="300.309875" y="391.267944" />
+            <POSITION x="389.909851" y="391.267944" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="Reflect" />
               <CATEGORY Name="Adaptive" IsDirectParent="true" />
@@ -1130,7 +1126,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Split" Layer="Update">
-            <POSITION x="421.750671" y="182.657" />
+            <POSITION x="511.350647" y="182.657" />
             <NODEREF LastCat="Math.Ranges.Range" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="Split" />
               <CATEGORY Name="Range" IsDirectParent="true" />
@@ -1176,7 +1172,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="GenerateID" Layer="Create">
-            <POSITION x="1301.899" y="-60.95868" />
+            <POSITION x="773.0991" y="-56.1586761" />
             <NODEREF LastCat="VVVV.VLOsmos.IDFactory" LastFile="GameLogic.vl">
               <OPERATIONNODE Name="GenerateID" />
             </NODEREF>
@@ -1339,7 +1335,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="+#3" Layer="Grow">
-            <POSITION x="1423.6" y="302.999969" />
+            <POSITION x="1456.3999" y="386.199921" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="+" />
               <CATEGORY Name="Adaptive" IsDirectParent="true" />
@@ -1355,7 +1351,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="+#4" Layer="Grow">
-            <POSITION x="1324.6" y="295.999969" />
+            <POSITION x="1357.3999" y="379.199921" />
             <NODEREF LastCat="Adaptive" LastFile="VL.CoreLib.dll" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="+" />
               <CATEGORY Name="Adaptive" IsDirectParent="true" />
@@ -1371,7 +1367,7 @@
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Max#1" Layer="Grow">
-            <POSITION x="1323.6" y="344.999969" />
+            <POSITION x="1356.3999" y="428.199921" />
             <NODEREF LastCat="Primitive.Float32" LastFile="VL.CoreLib.vl" LastPackage="VL.CoreLib">
               <OPERATIONNODE Name="Max" />
               <CATEGORY Name="Float32" IsDirectParent="true" />
@@ -2133,7 +2129,7 @@
             <POSITION x="315.956" y="118.820007" />
           </INLET>
           <INLET Name="GameLogic" Layer="Update" PadType="Field">
-            <POSITION x="367.2955" y="209.975449" />
+            <POSITION x="377.6955" y="223.575455" />
           </INLET>
           <INLET Name="Reset" Layer="Update">
             <POSITION x="425.449524" y="118.820007" />
@@ -2147,13 +2143,13 @@
             <POSITION x="435.629456" y="564.9397" />
           </OUTLET>
           <OUTLET Name="World" Layer="Update">
-            <POSITION x="522.4038" y="626.092468" />
+            <POSITION x="528.0038" y="570.892456" />
           </OUTLET>
         </OUTLETS>
         <CONSTS />
         <REGIONS>
           <REGION Name="IfElse" Layer="Update" Kind="IfElse">
-            <POSITION x="430.898956" y="263.109619" />
+            <POSITION x="444.498962" y="251.9096" />
             <SIZE x="80" y="80" />
             <INPUTS>
               <INPUT Name="Condition" />
@@ -2168,19 +2164,19 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Output" Layer="True">
-                  <POSITION x="433.398956" y="264.4878" />
+                  <POSITION x="446.998962" y="253.287781" />
                 </INLET>
               </INLETS>
               <OUTLETS>
                 <OUTLET Name="Output" Layer="True">
-                  <POSITION x="433.398956" y="347.261658" />
+                  <POSITION x="446.998962" y="336.061646" />
                 </OUTLET>
               </OUTLETS>
               <CONSTS />
               <REGIONS />
               <NODES>
                 <OPERATION Name="Create" Layer="True">
-                  <POSITION x="457.1767" y="298.965454" />
+                  <POSITION x="455.5767" y="288.56546" />
                   <NODEREF LastCat="VVVV.VLOsmos.GameLogic" LastFile="GameLogic.vl">
                     <CATEGORY Name="GameLogic" />
                     <OPERATIONNODE Name="Create" />
@@ -2310,8 +2306,12 @@
           <Link source="Regions/IfElse#1/Outputs/Output" sink="Outlets/GameLogic" />
           <Link source="Regions/IfElse/Outputs/Output" sink="Regions/IfElse#1/Inputs/Output Default" />
           <Link source="Regions/IfElse/Outputs/Output" sink="Nodes/GetWorld/Inputs/Input" />
-          <Link source="Inlets/Step" sink="Regions/IfElse#1/Inputs/Condition" />
           <Link source="Nodes/GetWorld/Outputs/World 2" sink="Regions/IfElse#1/Inputs/World Default" />
+          <Link source="Inlets/Step" sink="Regions/IfElse#1/Inputs/Condition">
+            <SEGMENTS>
+              <Point x="-0.95602417" y="218.579956" />
+            </SEGMENTS>
+          </Link>
         </LINKS>
       </BODY>
     </PATCH>

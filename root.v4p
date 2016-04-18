@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
    <PATCH nodename="C:\dev\ResonateVLWorkshop\root.v4p" systemname="root" filename="E:\dev\ResonateVLWorkshop\root.v4p" scrollx="12" scrolly="1596">
-   <BOUNDS type="Window" left="708" top="-24" width="15204" height="12384">
+   <BOUNDS type="Window" left="10092" top="756" width="10728" height="11064">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -24,16 +24,18 @@
    </NODE>
    <LINK srcnodeid="-6" srcpinname="Current Frame" dstnodeid="23" dstpinname="Y Input Value">
    </LINK>
-   <NODE systemname="Display" filename="Display.v4p" componentmode="InAWindow" id="24" nodename="Display.v4p">
+   <NODE systemname="Display" filename="Display.v4p" componentmode="Hidden" id="24" nodename="Display.v4p">
    <BOUNDS type="Node" left="1950" top="6612" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="1950" top="6612" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="708" top="-24" width="15204" height="12384">
+   <BOUNDS type="Window" left="948" top="540" width="10728" height="11064">
    </BOUNDS>
    <PIN pinname="World" slicecount="1" visible="1" values="||">
    </PIN>
    <PIN pinname="Alpha" visible="1">
+   </PIN>
+   <PIN pinname="Texture Out" visible="1">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="37" systemname="IOBox (Value Advanced)">
@@ -140,16 +142,10 @@
    <PIN pinname="Input 3" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="Keyboard (Devices Window)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Keyboard (Devices Window)" componentmode="Hidden" id="28">
-   <BOUNDS type="Node" left="1704" top="2247" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Device" visible="1">
-   </PIN>
-   </NODE>
    <NODE systemname="KeyMatch (Keyboard)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="KeyMatch (Keyboard)" componentmode="Hidden" id="27">
    <BOUNDS type="Node" left="1704" top="2799" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Keyboard" visible="1">
+   <PIN pinname="Keyboard" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Key Match" slicecount="1" values="|space, a, p|">
    </PIN>
@@ -162,8 +158,6 @@
    <PIN pinname="P" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="28" srcpinname="Device" dstnodeid="27" dstpinname="Keyboard">
-   </LINK>
    <NODE systemname="OR (Boolean)" nodename="OR (Boolean)" componentmode="Hidden" id="26">
    <BOUNDS type="Node" left="4332" top="4251" width="100" height="100">
    </BOUNDS>
@@ -275,5 +269,23 @@
    <LINK srcnodeid="49" srcpinname="Output" dstnodeid="51" dstpinname="Input">
    </LINK>
    <LINK srcnodeid="51" srcpinname="Output" dstnodeid="24" dstpinname="Alpha">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="52" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="2304" top="7200" width="792" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2304" top="7200" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Texture Out|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="24" srcpinname="Texture Out" dstnodeid="52" dstpinname="Input Node">
+   </LINK>
+   <NODE systemname="Keyboard (Devices Desktop)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Keyboard (Devices Desktop)" componentmode="Hidden" id="28">
+   <BOUNDS type="Node" left="1704" top="2247" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Device" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="28" srcpinname="Device" dstnodeid="27" dstpinname="Keyboard">
    </LINK>
    </PATCH>

@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\dev\ResonateVLWorkshop\Display.v4p" systemname="Display" filename="C:\dev\ResonateVLWorkshop\Display.v4p" scrollx="60" scrolly="708">
-   <BOUNDS type="Window" left="708" top="-24" width="15204" height="12384">
+   <PATCH nodename="C:\dev\ResonateVLWorkshop\Display.v4p" systemname="Display" filename="C:\dev\ResonateVLWorkshop\Display.v4p" scrollx="0" scrolly="60">
+   <BOUNDS type="Window" left="888" top="744" width="10728" height="11064">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -14,12 +14,12 @@
    <PIN pinname="Descriptive Name" slicecount="1" values="World">
    </PIN>
    </NODE>
-   <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="InAWindow" id="2">
+   <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="Hidden" id="2">
    <BOUNDS type="Node" left="1866" top="11061" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="1866" top="11061" width="2400" height="1800">
    </BOUNDS>
-   <BOUNDS type="Window" left="11472" top="3060" width="11568" height="8772">
+   <BOUNDS type="Window" left="10356" top="2328" width="11568" height="8772">
    </BOUNDS>
    <PIN pinname="Layers" visible="1" slicecount="1" values="||">
    </PIN>
@@ -29,19 +29,21 @@
    </PIN>
    <PIN pinname="Aspect Ratio" visible="1">
    </PIN>
-   <PIN pinname="Background Color" slicecount="1" values="|0.14397,0.18948,0.15255,1.00000|" visible="1">
+   <PIN pinname="Background Color" slicecount="1" visible="1" values="|0.14397,0.18948,0.15255,1.00000|">
    </PIN>
    <PIN pinname="Window Handle" visible="1" pintype="Output">
    </PIN>
    <PIN pinname="View" visible="1" slicecount="1" values="||">
    </PIN>
+   <PIN pinname="EX9 Out" visible="1">
+   </PIN>
    </NODE>
    <NODE systemname="AspectRatio (Transform)" nodename="AspectRatio (Transform)" componentmode="Hidden" id="11">
-   <BOUNDS type="Node" left="3984" top="10911" width="100" height="100">
+   <BOUNDS type="Node" left="3780" top="10563" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Aspect Width" visible="1">
+   <PIN pinname="Aspect Width" visible="1" slicecount="1" values="1920">
    </PIN>
-   <PIN pinname="Aspect Height" visible="1">
+   <PIN pinname="Aspect Height" visible="1" slicecount="1" values="1080">
    </PIN>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
@@ -50,10 +52,6 @@
    <PIN pinname="Alignment" slicecount="1" values="FitHeight">
    </PIN>
    </NODE>
-   <LINK srcnodeid="2" srcpinname="Actual Backbuffer Width" dstnodeid="11" dstpinname="Aspect Width">
-   </LINK>
-   <LINK srcnodeid="2" srcpinname="Actual Backbuffer Height" dstnodeid="11" dstpinname="Aspect Height">
-   </LINK>
    <LINK srcnodeid="11" srcpinname="Transform Out" dstnodeid="2" dstpinname="Aspect Ratio">
    </LINK>
    <NODE systemname="Group (EX9)" nodename="Group (EX9)" componentmode="Hidden" id="23">
@@ -485,7 +483,7 @@
    </PIN>
    <PIN pinname="Position Out" visible="1">
    </PIN>
-   <PIN pinname="FilterTime" slicecount="1" values="0" visible="1">
+   <PIN pinname="FilterTime" slicecount="1" visible="1" values="0">
    </PIN>
    </NODE>
    <LINK srcnodeid="59" srcpinname="Output" dstnodeid="98" dstpinname="Go To Position">
@@ -559,7 +557,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="360" top="9120" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Color Input" slicecount="1" visible="1" values="|0.07918,0.10104,0.10421,1.00000|">
+   <PIN pinname="Color Input" slicecount="1" visible="1" values="|0.03099,0.03931,0.10006,1.00000|">
    </PIN>
    <PIN pinname="Color Output" visible="1">
    </PIN>
@@ -1178,4 +1176,46 @@
    </LINK>
    <LINK srcnodeid="154" srcpinname="Y Output Value" dstnodeid="140" dstpinname="FilterTime">
    </LINK>
+   <NODE systemname="DX9Texture (EX9.Texture)" nodename="DX9Texture (EX9.Texture)" componentmode="Hidden" id="155">
+   <BOUNDS type="Node" left="3840" top="11340" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Source" visible="1">
+   </PIN>
+   <PIN pinname="Texture Out" visible="1">
+   </PIN>
+   <PIN pinname="Width" slicecount="1" values="1920">
+   </PIN>
+   <PIN pinname="Height" slicecount="1" values="1080">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="EX9 Out" dstnodeid="155" dstpinname="Source">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="156" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="4320" top="12084" width="792" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4320" top="12084" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Texture Out|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="155" srcpinname="Texture Out" dstnodeid="156" dstpinname="Input Node">
+   </LINK>
+   <NODE systemname="R (Node)" nodename="R (Node)" componentmode="Hidden" id="157">
+   <BOUNDS type="Node" left="6384" top="4656" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Receive String" slicecount="1" values="cam">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Color)" componentmode="InABox" id="158" systemname="IOBox (Color)">
+   <BOUNDS type="Box" left="288" top="8448" width="972" height="396">
+   </BOUNDS>
+   <BOUNDS type="Node" left="288" top="8448" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Color Input" slicecount="1" visible="1" values="|0.07918,0.10120,0.10421,1.00000|">
+   </PIN>
+   <PIN pinname="Color Output" visible="1">
+   </PIN>
+   <PIN pinname="Show Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
    </PATCH>
